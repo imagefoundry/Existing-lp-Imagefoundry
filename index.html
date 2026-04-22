@@ -58,9 +58,15 @@
     }
     .footer-grid {
       display: grid;
-      grid-template-columns: 280px 1fr auto;
+      grid-template-columns: 280px 1fr;
       gap: 64px;
       margin-bottom: 60px;
+    }
+    .footer-right {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+      gap: 80px;
     }
     .footer-logo-block { display: flex; flex-direction: column; gap: 28px; }
     .footer-logo-mark {
@@ -329,7 +335,7 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background-image: url('images/img01.jpg');
+      background-image: url('images/AI People - Cafe.jpg');
       background-size: cover; background-position: center;
     }
     .hero-content {
@@ -545,10 +551,10 @@
     }
     .gallery-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 0;
+      gap: 6px;
     }
-    .gi { overflow: hidden; position: relative; }
-    .gi img { width: 100%; height: auto; display: block; transition: transform 0.7s ease; }
+    .gi { overflow: hidden; position: relative; aspect-ratio: 4/3; }
+    .gi img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.7s ease; }
     .gi:hover img { transform: scale(1.06); }
     .gi-tag {
       position: absolute; bottom: 0; left: 0; right: 0;
@@ -590,7 +596,7 @@
 
     /* CTA */
     .section-cta {
-      background: var(--teal); padding: 100px 64px;
+      background: var(--teal); padding: 60px 64px;
       display: flex; flex-direction: column; align-items: flex-start;
     }
     .cta-eyebrow {
@@ -632,6 +638,7 @@
       .gallery-head { flex-direction: column; align-items: flex-start; gap: 16px; }
       .gallery-sub { text-align: left; }
       .footer-grid { grid-template-columns: 1fr; }
+      .footer-right { flex-direction: column; gap: 32px; }
       .footer-legal { align-items: flex-start; }
     }
     @media (max-width: 600px) {
@@ -732,14 +739,14 @@
       </div>
     </div>
     <div class="method-image">
-      <img src="images/img02.jpg" alt="2D Cut-Out People" loading="lazy" />
+      <img src="images/2D Cut-Out People.jpg" alt="2D Cut-Out People" loading="lazy" />
     </div>
   </div>
 
   <!-- METHOD 02 -->
   <div class="method-row flip wow">
     <div class="method-image">
-      <img src="images/img03.jpg" alt="3D People" loading="lazy" />
+      <img src="images/3D People.jpg" alt="3D People" loading="lazy" />
     </div>
     <div class="method-body-wrap">
       <span class="method-tag">Method 02</span>
@@ -779,7 +786,7 @@
       </div>
     </div>
     <div class="mf-image">
-      <img src="images/img04.jpg" alt="Mixed Methodology result" loading="lazy" />
+      <img src="images/Mixed Methodology.jpg" alt="Mixed Methodology result" loading="lazy" />
       <div class="mf-teal"></div>
       <div class="mf-caption">Hybrid Output — Optima Project</div>
     </div>
@@ -800,14 +807,14 @@
       </div>
     </div>
     <div class="method-image">
-      <img src="images/img05.jpg" alt="Classic Photo Shoot" loading="lazy" />
+      <img src="images/Classic Photo Shoot.jpg" alt="Classic Photo Shoot" loading="lazy" />
     </div>
   </div>
 
   <!-- METHOD 05 -->
   <div class="method-row flip wow">
     <div class="method-image">
-      <img src="images/img06.jpg" alt="AI-Based People" loading="lazy" />
+      <img src="images/AI-Based People.png" alt="AI-Based People" loading="lazy" />
     </div>
     <div class="method-body-wrap">
       <span class="method-tag">Method 05</span>
@@ -833,11 +840,12 @@
       <p class="gallery-sub">Lifestyle figures generated with AI tools, matched to scene lighting and context.</p>
     </div>
     <div class="gallery-grid">
-      <div class="gi wow"><img src="images/img07.jpg" alt="AI People 1" loading="lazy" /><div class="gi-tag">AI Generation — 01</div></div>
-      <div class="gi wow"><img src="images/img08.jpg" alt="AI People 2" loading="lazy" /><div class="gi-tag">AI Generation — 02</div></div>
-      <div class="gi wow"><img src="images/img09.jpg" alt="AI People 3" loading="lazy" /><div class="gi-tag">AI Generation — 03</div></div>
-      <div class="gi wow"><img src="images/img10.jpg" alt="AI People 4" loading="lazy" /><div class="gi-tag">AI Generation — 04</div></div>
-      <div class="gi wow"><img src="images/img11.jpg" alt="AI People 5" loading="lazy" /><div class="gi-tag">AI Generation — 05</div></div>
+      <div class="gi wow"><img src="images/AI People - Restaurant.jpg" alt="AI People 1" loading="lazy" /><div class="gi-tag">AI Generation — 01</div></div>
+      <div class="gi wow"><img src="images/AI People - Study Lounge.jpg" alt="AI People 2" loading="lazy" /><div class="gi-tag">AI Generation — 02</div></div>
+      <div class="gi wow"><img src="images/AI People - Communal Lounge.jpg" alt="AI People 3" loading="lazy" /><div class="gi-tag">AI Generation — 03</div></div>
+      <div class="gi wow"><img src="images/AI People - Apartment.jpg" alt="AI People 4" loading="lazy" /><div class="gi-tag">AI Generation — 04</div></div>
+      <div class="gi wow"><img src="images/AI People - Cafe.jpg" alt="AI People 5" loading="lazy" /><div class="gi-tag">AI Generation — 05</div></div>
+      <div class="gi wow"><img src="images/AI-Based People.png" alt="AI People 6" loading="lazy" /><div class="gi-tag">AI Generation — 06</div></div>
     </div>
   </section>
 
@@ -888,23 +896,23 @@
   <div class="footer-grid">
     <div class="footer-logo-block">
       <div>
-        <div class="footer-logo-mark">F</div>
-        <div class="footer-logo-name">Image Foundry</div>
-        <div class="footer-logo-tagline">Persuasive CGI</div>
+        <img src="images/logo.svg" alt="Image Foundry" style="width:150px; display:block; filter: brightness(0) invert(1); margin-bottom: 8px;" />
       </div>
       <a href="https://www.imagefoundry.co.uk/contact-us/" class="footer-lets-talk">Let's talk</a>
     </div>
-    <nav>
-      <ul class="footer-nav">
-        <li><a href="https://www.imagefoundry.co.uk/about-us/">Who We Are</a></li>
-        <li><a href="https://www.imagefoundry.co.uk/insights/">Insights</a></li>
-        <li><a href="https://www.imagefoundry.co.uk/process/">Our Process</a></li>
-        <li><a href="https://www.imagefoundry.co.uk/contact-us/">Contact Us</a></li>
-      </ul>
-    </nav>
-    <div class="footer-legal">
-      <a href="https://www.imagefoundry.co.uk/privacy-policy/privacy-policy/">Privacy</a>
-      <a href="#">Cookies</a>
+    <div class="footer-right">
+      <nav>
+        <ul class="footer-nav">
+          <li><a href="https://www.imagefoundry.co.uk/about-us/">Who We Are</a></li>
+          <li><a href="https://www.imagefoundry.co.uk/insights/">Insights</a></li>
+          <li><a href="https://www.imagefoundry.co.uk/process/">Our Process</a></li>
+          <li><a href="https://www.imagefoundry.co.uk/contact-us/">Contact Us</a></li>
+        </ul>
+      </nav>
+      <div class="footer-legal">
+        <a href="https://www.imagefoundry.co.uk/privacy-policy/privacy-policy/">Privacy</a>
+        <a href="#">Cookies</a>
+      </div>
     </div>
   </div>
   <div class="footer-bottom">
