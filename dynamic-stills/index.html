@@ -1333,9 +1333,13 @@
       .intro-left { padding-right: 0; border-right: none; border-bottom: 2px solid var(--black); padding-bottom: 48px; }
       .intro-right { padding-left: 0; }
 
-      .showcase { grid-template-columns: 1fr; }
-      .showcase-right { min-height: 360px; }
-      .playlist { max-height: 320px; border-top: 1px solid rgba(255,255,255,0.07); }
+      /* Showcase: stack to full-width video above, playlist below as horizontal scroll */
+      .showcase { grid-template-columns: 1fr; grid-template-rows: auto auto; height: auto; }
+      .showcase-left { flex-direction: row; overflow-x: auto; border-right: none; border-top: 1px solid rgba(255,255,255,0.08); -webkit-overflow-scrolling: touch; }
+      .showcase-info { display: none; }
+      #playlist { display: flex; flex-direction: row; width: max-content; }
+      .pl-item { width: 140px; flex-shrink: 0; border-right: 1px solid rgba(255,255,255,0.08); border-bottom: none; height: auto; }
+      .showcase-right { aspect-ratio: 16/9; min-height: unset; order: -1; }
 
       .verdict-grid { grid-template-columns: 1fr; }
       .verdict-divider { height: 2px; width: 100%; }
@@ -1346,6 +1350,72 @@
       .lessons-timeline { grid-template-columns: 1fr; gap: 40px; }
       .tl-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding: 0 0 40px 0; margin-right: 0; }
       .tl-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+      /* Hero buttons — wrap onto separate lines */
+      .hero-content { padding: 0 24px; text-align: center; }
+      .btn-outline-white { margin-left: 0; margin-top: 12px; }
+      .hero-content a.btn { display: inline-block; }
+    }
+
+    @media (max-width: 600px) {
+      .hero-content { padding: 0 20px; }
+      .hero-sub { font-size: 17px; }
+      /* Buttons stack vertically */
+      .hero-content .btn { display: block; width: 100%; max-width: 320px; margin: 0 auto; text-align: center; }
+      .hero-content .btn + .btn { margin-top: 12px; }
+      .btn-outline-white { margin-left: auto; }
+
+      .ticker-inner span { font-size: 12px; padding: 0 24px; }
+
+      .what-text p, .intro-right p, .step-body, .lesson-body, .tl-body { font-size: 16px; }
+      .intro-right blockquote { font-size: 18px; padding-left: 20px; }
+
+      .how { padding: 48px 20px; }
+      .how-header p { font-size: 16px; }
+      .step { padding: 40px 28px; }
+      .step-num { font-size: 56px; }
+
+      .pros-col, .cons-col { padding: 48px 20px; }
+      .item-text strong { font-size: 18px; }
+      .item-text p { font-size: 16px; }
+
+      .verdict-pros, .verdict-cons { padding: 32px 20px; }
+      .verdict-item p { font-size: 16px; }
+      .verdict-item strong { font-size: 18px; }
+
+      .lessons { padding: 48px 20px; }
+      .lessons-quote { font-size: 16px; }
+
+      .cta-text { padding: 48px 20px; }
+      .cta-sub { font-size: 17px; }
+
+      .gallery { grid-template-columns: 1fr; grid-template-rows: repeat(6, 220px); }
+      .gallery-cell { border-right: none; }
+      .gallery-cell:nth-child(odd) { border-right: none; }
+      .gallery-cell:nth-last-child(-n+2) { border-bottom: 2px solid var(--black); }
+      .gallery-cell:last-child { border-bottom: none; }
+
+      footer { padding: 40px 20px 24px; }
+      .footer-nav a { font-size: 22px; }
+    }
+
+    @media (max-width: 480px) {
+      /* Showcase playlist thumbnails narrower */
+      .pl-item { width: 110px; }
+      .pl-title { font-size: 11px; }
+      .showcase-right { aspect-ratio: 16/9; min-height: unset; }
+      .player-title { font-size: 18px; }
+
+      /* Nav full width */
+      .nav-links-panel { width: 100%; min-width: unset; padding: 7rem 20px 3rem; }
+      .nav-content-panel { display: none; }
+
+      /* Footer */
+      .footer-lets-talk { font-size: 15px; padding: 12px 20px; }
+      .footer-nav a { font-size: 20px; }
+
+      /* How steps */
+      .step { padding: 32px 20px; }
     }
   </style>
 </head>

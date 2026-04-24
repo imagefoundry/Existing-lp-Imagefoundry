@@ -677,12 +677,59 @@
       .footer-grid { grid-template-columns: 1fr; }
       .footer-right { flex-direction: column; gap: 32px; }
       .footer-legal { align-items: flex-start; }
+      /* CTA split — stack on tablet */
+      .section-cta { grid-template-columns: 1fr; }
+      .cta-text { padding: 64px var(--px); }
+      .cta-image { aspect-ratio: 16/9; }
+      /* Methods header — stack label below heading */
+      .methods-header { flex-direction: column; align-items: flex-start; gap: 12px; padding: 48px var(--px) 20px; }
+      /* Reduce section padding */
+      .section-takeaways { padding: 64px var(--px); }
+      footer { padding: 64px var(--px) 32px; }
     }
+
     @media (max-width: 600px) {
+      :root { --px: 24px; }
       .takeaways-grid { grid-template-columns: 1fr; }
       .takeaway-card { border-right: none; border-bottom: 1px solid var(--light-grey); }
-      .gallery-grid { grid-template-columns: 1fr; }
-      .method-body-wrap, .mf-body { padding: 32px 24px; }
+      .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 240px; }
+      .method-body-wrap, .mf-body { padding: 32px var(--px); }
+      .intro-left, .intro-right { padding: 48px var(--px); }
+      .section-takeaways { padding: 48px var(--px); }
+      .section-gallery { padding-top: 56px; padding-bottom: 56px; }
+      .gallery-head { padding: 0 var(--px); margin-bottom: 28px; }
+      .methods-header { padding: 40px var(--px) 16px; }
+      footer { padding: 48px var(--px) 28px; }
+      .cta-text { padding: 56px var(--px); }
+      /* Reduce heavy font sizes on small screens */
+      .intro-text { font-size: 18px; }
+      .method-desc, .mf-desc { font-size: 16px; }
+      .mf-step-t { font-size: 15px; }
+      .ta-body { font-size: 15px; }
+      .cta-sub { font-size: 17px; }
+    }
+
+    @media (max-width: 480px) {
+      :root { --px: 20px; }
+      .hero-content { padding: 0 var(--px) 64px; }
+      .hero-chevron { display: none; }
+      /* Single-col gallery */
+      .gallery-grid { grid-auto-rows: 200px; }
+      /* Prevent method pills from overflowing */
+      .method-pills { gap: 8px; }
+      .pill { font-size: 10px; padding: 5px 10px; }
+      /* Takeaway cards tighter */
+      .takeaway-card { padding: 28px 20px; }
+      /* Footer tighter */
+      .footer-nav a { font-size: 22px; }
+      .footer-lets-talk { font-size: 16px; padding: 12px 24px; }
+      /* Nav overlay full-width on very small screens */
+      .nav-links-panel { width: 100%; min-width: unset; padding: 7rem 24px 3rem; }
+      .nav-content-panel { display: none; }
+      /* Section padding */
+      .section-takeaways { padding: 40px var(--px); }
+      .cta-text { padding: 48px var(--px); }
+      footer { padding: 40px var(--px) 24px; }
     }
   </style>
 </head>
