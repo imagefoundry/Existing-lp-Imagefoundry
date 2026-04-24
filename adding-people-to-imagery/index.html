@@ -19,6 +19,7 @@
       --mid-grey:    #B7B7B7;
       --near-black:  #212529;
       --font: 'Barlow Condensed', sans-serif;
+      --px: clamp(64px, 7vw, 120px);
     }
 
     html { scroll-behavior: smooth; }
@@ -41,6 +42,10 @@
       -webkit-text-stroke: 2px var(--white);
       -webkit-text-fill-color: transparent;
     }
+    .outline-teal {
+      -webkit-text-stroke: 2px var(--teal);
+      -webkit-text-fill-color: transparent;
+    }
 
     .wow {
       opacity: 0; transform: translateY(28px);
@@ -54,7 +59,7 @@
     footer {
       background: var(--black);
       border-top: 1px solid rgba(255,255,255,0.1);
-      padding: 80px 64px 40px;
+      padding: 80px var(--px) 40px;
     }
     .footer-grid {
       display: grid;
@@ -337,21 +342,21 @@
     }
     .hero-content {
       position: relative; z-index: 3;
-      padding: 0 64px 100px; max-width: 1000px;
+      padding: 0 var(--px) 100px; max-width: 1100px;
     }
     .hero-eyebrow {
-      font-size: 18px; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--mid-grey);
-      margin-bottom: 20px; display: block;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--white);
+      margin-bottom: 24px; display: block;
     }
     .hero-h1 {
       font-size: clamp(58px, 9vw, 110px); font-weight: 800;
-      letter-spacing: -1.2px; text-transform: uppercase; line-height: 0.93;
+      letter-spacing: 0.1em; text-transform: uppercase; line-height: 0.9;
       color: var(--white); margin-bottom: 32px;
     }
     .hero-sub {
-      font-size: 22px; font-weight: 400; letter-spacing: -0.27px;
-      color: rgba(255,255,255,0.72); max-width: 560px; line-height: 1.5;
+      font-size: 20px; font-weight: 400; letter-spacing: 0;
+      color: rgba(255,255,255,0.8); max-width: 560px; line-height: 1.55;
     }
     .hero-chevron {
       position: absolute; bottom: 40px; left: 50%;
@@ -372,18 +377,18 @@
     }
     .intro-left {
       background: var(--black);
-      padding: 80px 64px;
+      padding: 80px var(--px);
       display: flex; flex-direction: column; justify-content: center;
       border-right: 4px solid var(--teal);
     }
     .intro-label {
-      font-size: 13px; font-weight: 700; letter-spacing: 0.1em;
+      font-size: 13px; font-weight: 700; letter-spacing: 0.26em;
       text-transform: uppercase; color: var(--teal);
       margin-bottom: 24px; display: block;
     }
     .intro-heading {
       font-size: clamp(52px, 6vw, 88px); font-weight: 800;
-      letter-spacing: -0.5px; text-transform: uppercase; line-height: 0.93;
+      letter-spacing: 0.1em; text-transform: uppercase; line-height: 0.9;
       color: var(--white);
     }
     .intro-heading span {
@@ -392,7 +397,7 @@
     }
     .intro-right {
       background: var(--off-white);
-      padding: 80px 64px;
+      padding: 80px var(--px);
       display: flex; flex-direction: column; justify-content: center; gap: 28px;
     }
     .intro-text {
@@ -406,16 +411,16 @@
 
     /* METHODS HEADER */
     .methods-header {
-      padding: 60px 64px 24px;
+      padding: 60px var(--px) 24px;
       display: flex; align-items: flex-end; justify-content: space-between;
       border-bottom: 1px solid var(--light-grey);
     }
     .methods-h2 {
       font-size: clamp(46px, 6vw, 90px); font-weight: 800;
-      letter-spacing: 0.05em; text-transform: uppercase; line-height: 0.95;
+      letter-spacing: 0.1em; text-transform: uppercase; line-height: 0.9;
     }
     .methods-count {
-      font-size: 16px; font-weight: 700; letter-spacing: -0.2px;
+      font-size: 13px; font-weight: 700; letter-spacing: 0.22em;
       text-transform: uppercase; color: var(--mid-grey); padding-bottom: 8px;
     }
 
@@ -429,7 +434,7 @@
     .method-num {
       background: var(--off-white);
       display: flex; align-items: center; justify-content: center;
-      font-size: 13px; font-weight: 700; letter-spacing: 0.15em;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.22em;
       text-transform: uppercase; color: var(--mid-grey);
       writing-mode: vertical-rl; transform: rotate(180deg);
       border-right: 1px solid var(--light-grey);
@@ -444,28 +449,28 @@
     }
     .method-tag {
       display: inline-block; margin-bottom: 24px; width: fit-content;
-      font-size: 13px; font-weight: 700; letter-spacing: 0.1em;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.22em;
       text-transform: uppercase; color: var(--white);
       background: var(--teal); padding: 4px 12px;
     }
     .method-tag.dark { background: var(--black); }
     .method-title {
       font-size: clamp(36px, 4vw, 60px); font-weight: 800;
-      letter-spacing: 0.02em; text-transform: uppercase; line-height: 1; margin-bottom: 10px;
+      letter-spacing: 0.1em; text-transform: uppercase; line-height: 0.95; margin-bottom: 10px;
     }
     .method-subtitle {
-      font-size: 18px; font-weight: 500; letter-spacing: 0.05em;
+      font-size: 16px; font-weight: 700; letter-spacing: 0.14em;
       color: var(--teal); text-transform: uppercase; margin-bottom: 24px;
     }
     .method-desc {
-      font-size: 18px; font-weight: 400; letter-spacing: -0.27px;
-      line-height: 1.7; color: var(--near-black); max-width: 420px;
+      font-size: 18px; font-weight: 400; letter-spacing: 0;
+      line-height: 1.65; color: var(--near-black); max-width: 420px;
     }
     .method-pills {
       display: flex; gap: 10px; margin-top: 28px; flex-wrap: wrap;
     }
     .pill {
-      font-size: 13px; font-weight: 700; letter-spacing: 0.08em;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
       text-transform: uppercase; padding: 6px 14px;
       border: 1.5px solid var(--light-grey); color: var(--near-black);
     }
@@ -502,22 +507,22 @@
     .mf-body { padding: 48px; display: flex; flex-direction: column; justify-content: center; }
     .mf-rec {
       display: inline-block; margin-bottom: 20px; width: fit-content;
-      font-size: 12px; font-weight: 700; letter-spacing: 0.18em;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.22em;
       text-transform: uppercase; color: var(--teal);
       border: 1.5px solid var(--teal); padding: 4px 14px;
     }
     .mf-title {
       font-size: clamp(40px, 4.5vw, 68px); font-weight: 800;
-      letter-spacing: 0.02em; text-transform: uppercase; line-height: 0.95;
+      letter-spacing: 0.1em; text-transform: uppercase; line-height: 0.9;
       color: var(--white); margin-bottom: 10px;
     }
     .mf-subtitle {
-      font-size: 18px; font-weight: 500; letter-spacing: 0.05em;
+      font-size: 16px; font-weight: 700; letter-spacing: 0.14em;
       color: var(--teal); text-transform: uppercase; margin-bottom: 28px;
     }
     .mf-desc {
-      font-size: 18px; font-weight: 400; letter-spacing: -0.27px;
-      line-height: 1.7; color: var(--mid-grey); max-width: 420px;
+      font-size: 18px; font-weight: 400; letter-spacing: 0;
+      line-height: 1.65; color: var(--mid-grey); max-width: 420px;
     }
     .mf-desc strong { color: var(--white); font-weight: 600; }
     .mf-steps { margin-top: 36px; border-top: 1px solid #2a2a2a; }
@@ -526,10 +531,10 @@
       gap: 16px; padding: 18px 0; border-bottom: 1px solid #2a2a2a;
     }
     .mf-step-n {
-      font-size: 13px; font-weight: 700; letter-spacing: 0.12em;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.22em;
       text-transform: uppercase; color: var(--teal); padding-top: 2px;
     }
-    .mf-step-t { font-size: 16px; font-weight: 400; letter-spacing: -0.2px; line-height: 1.6; color: var(--mid-grey); }
+    .mf-step-t { font-size: 16px; font-weight: 400; letter-spacing: 0; line-height: 1.65; color: var(--mid-grey); }
     .mf-step-t strong { color: var(--white); font-weight: 600; }
     .mf-image { position: relative; overflow: hidden; border-left: 1px solid #222; }
     .mf-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.8s ease; }
@@ -544,13 +549,13 @@
 
     /* GALLERY */
     .section-gallery { background: var(--white); padding: 80px 0; border-top: 1px solid var(--light-grey); }
-    .gallery-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 40px; padding: 0 64px; }
+    .gallery-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 40px; padding: 0 var(--px); }
     .gallery-h2 {
       font-size: clamp(40px, 5vw, 72px); font-weight: 800;
-      letter-spacing: -1px; text-transform: uppercase; line-height: 0.95;
+      letter-spacing: 0.1em; text-transform: uppercase; line-height: 0.9;
     }
     .gallery-sub {
-      font-size: 18px; font-weight: 400; letter-spacing: -0.2px;
+      font-size: 18px; font-weight: 400; letter-spacing: 0;
       color: var(--mid-grey); max-width: 300px; line-height: 1.5; text-align: right;
     }
     .gallery-grid {
@@ -579,16 +584,16 @@
     .gi:hover .gi-tag { transform: translateY(0); }
 
     /* TAKEAWAYS */
-    .section-takeaways { padding: 80px 64px; border-top: 1px solid var(--light-grey); }
+    .section-takeaways { padding: 80px var(--px); border-top: 1px solid var(--light-grey); }
     .takeaways-hdr { margin-bottom: 56px; }
     .section-eyebrow {
-      font-size: 18px; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--mid-grey);
-      margin-bottom: 20px; display: block;
+      font-size: 13px; font-weight: 700; letter-spacing: 0.26em;
+      text-transform: uppercase; color: var(--teal);
+      margin-bottom: 16px; display: block;
     }
     .section-h2 {
       font-size: clamp(46px, 5.5vw, 80px); font-weight: 700;
-      letter-spacing: -1.28px; text-transform: uppercase; line-height: 0.95;
+      letter-spacing: 0.1em; text-transform: uppercase; line-height: 0.9;
     }
     .takeaways-grid {
       display: grid; grid-template-columns: repeat(4, 1fr);
@@ -597,14 +602,14 @@
     .takeaway-card:last-child { border-right: none; }
     .takeaway-card:first-child { border-top: 4px solid var(--teal); }
     .ta-num {
-      font-size: 14px; font-weight: 700; letter-spacing: 0.1em;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.22em;
       text-transform: uppercase; color: var(--teal); margin-bottom: 20px; display: block;
     }
     .ta-title {
-      font-size: 26px; font-weight: 700; letter-spacing: 0.05em;
-      text-transform: uppercase; line-height: 1.1; margin-bottom: 16px;
+      font-size: 26px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; line-height: 1.05; margin-bottom: 16px;
     }
-    .ta-body { font-size: 16px; font-weight: 400; letter-spacing: -0.2px; line-height: 1.7; color: var(--near-black); }
+    .ta-body { font-size: 16px; font-weight: 400; letter-spacing: 0; line-height: 1.65; color: var(--near-black); }
     .ta-body strong { font-weight: 600; color: var(--black); }
 
     /* CTA */
@@ -616,7 +621,7 @@
     }
     .cta-text {
       background: var(--black);
-      padding: 80px 64px;
+      padding: 80px var(--px);
       display: flex; flex-direction: column; align-items: flex-start; justify-content: center;
     }
     .cta-image {
@@ -632,41 +637,38 @@
       background: rgba(0,0,0,0.25);
     }
     .cta-eyebrow {
-      font-size: 14px; font-weight: 700; letter-spacing: 0.22em;
+      font-size: 13px; font-weight: 700; letter-spacing: 0.26em;
       text-transform: uppercase; color: var(--teal);
       margin-bottom: 20px; display: block;
     }
     .cta-h2 {
       font-size: clamp(44px, 5.5vw, 84px); font-weight: 800;
-      letter-spacing: 0.06em; text-transform: uppercase; line-height: 0.95;
+      letter-spacing: 0.1em; text-transform: uppercase; line-height: 0.9;
       color: var(--white); margin-bottom: 28px;
     }
     .cta-sub {
       font-size: 20px; font-weight: 400;
-      color: rgba(255,255,255,0.6); max-width: 440px; line-height: 1.55; margin-bottom: 44px;
+      color: rgba(255,255,255,0.75); max-width: 440px; line-height: 1.55; margin-bottom: 44px;
     }
     .cta-btn {
       display: inline-block; background: var(--teal); color: var(--white);
       font-family: var(--font); font-size: 18px; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+      letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none;
       padding: 18px 52px; transition: background 0.2s, color 0.2s;
     }
     .cta-btn:hover { background: var(--white); color: var(--black); }
 
     /* RESPONSIVE */
     @media (max-width: 1024px) {
-      .hero-content { padding: 0 32px 80px; }
+      :root { --px: 32px; }
+      .hero-content { padding: 0 var(--px) 80px; }
       .intro-strip { grid-template-columns: 1fr; }
-      .intro-left { padding: 60px 32px; border-right: none; border-bottom: 4px solid var(--teal); }
-      .intro-right { padding: 60px 32px; }
-      .methods-header { padding: 60px 32px 24px; }
+      .intro-left { border-right: none; border-bottom: 4px solid var(--teal); }
       .method-row, .method-row.flip, .method-featured { grid-template-columns: 1fr; min-height: auto; }
       .method-num, .mf-num { display: none; }
       .method-image, .mf-image { aspect-ratio: 16/9; border: none !important; }
-      .method-body-wrap, .mf-body { padding: 40px 32px; }
-      .section-takeaways, .section-cta, footer { padding-left: 32px; padding-right: 32px; }
+      .method-body-wrap, .mf-body { padding: 40px var(--px); }
       .section-gallery { padding-left: 0; padding-right: 0; }
-      .gallery-head { padding: 0 32px; }
       .takeaways-grid { grid-template-columns: 1fr 1fr; }
       .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 260px; gap: 3px; background: transparent; }
       .gallery-grid .gi:nth-child(n) { grid-column: span 1; }
@@ -736,7 +738,7 @@
         Adding People<br>
         <span class="outline-white">to Images</span>
       </h1>
-      <p class="hero-sub">Five methods compared — from 2D cut-outs to AI generation — explained honestly so you know exactly what to choose.</p>
+      <p class="hero-sub">A straight-talking guide to every technique — from quick cut-outs to full AI generation — so you brief your studio with confidence.</p>
     </div>
     <a class="hero-chevron" href="#intro">↓</a>
   </section>
@@ -749,13 +751,13 @@
     </div>
     <div class="intro-right">
       <div class="intro-divider"></div>
-      <p class="intro-text">We can add people using <strong>AI</strong> — and it's genuinely impressive. But it's not always the right tool. Let's compare every technique with full transparency.</p>
+      <p class="intro-text">We can add people using <strong>AI</strong> — and the results are genuinely impressive. But not every method suits every brief. Here's an <strong>honest comparison of all five techniques</strong>, so you can make the right call from the start.</p>
     </div>
   </section>
 
   <!-- METHODS HEADER -->
   <div class="methods-header wow">
-    <h2 class="methods-h2">Five<br><span class="outline">Methods</span></h2>
+    <h2 class="methods-h2">Five<br><span class="outline-teal">Methods</span></h2>
     <span class="methods-count">01 — 05 Techniques Compared</span>
   </div>
 
@@ -804,7 +806,7 @@
       <span class="mf-rec">★ Recommended Method</span>
       <h3 class="mf-title">Mixed<br><span class="outline-white">Methodology</span></h3>
       <p class="mf-subtitle">3D Models + AI Editing in Photoshop</p>
-      <p class="mf-desc">This hybrid approach combines the best of both worlds. We place <strong>3D people</strong> inside the scene for perfect lighting and perspective, then use <strong>AI-powered Photoshop tools</strong> to make them indistinguishably real — fixing faces, adding photo-like texture, refining skin and clothing.</p>
+      <p class="mf-desc">This is our go-to for foreground figures. We place <strong>3D people</strong> inside the scene for geometrically correct lighting and perspective, then use <strong>AI-powered Photoshop tools</strong> to make them indistinguishably real — refining faces, skin, and clothing until no one asks questions.</p>
       <div class="mf-steps">
         <div class="mf-step">
           <span class="mf-step-n">Step 01</span>
@@ -869,9 +871,9 @@
     <div class="gallery-head wow">
       <div>
         <span class="section-eyebrow">AI Results — Recent Work</span>
-        <h2 class="gallery-h2">AI-Generated<br><span class="outline">People</span></h2>
+        <h2 class="gallery-h2">AI-Generated<br><span class="outline-teal">People</span></h2>
       </div>
-      <p class="gallery-sub">Lifestyle figures generated with AI tools, matched to scene lighting and context.</p>
+      <p class="gallery-sub">Recent outputs from our AI workflow — matched to scene lighting, perspective, and context.</p>
     </div>
     <div class="gallery-grid">
       <div class="gi wow"><img src="images/AI People - Restaurant.jpg" alt="AI People 1" loading="lazy" /><div class="gi-tag">AI Generation — 01</div></div>
@@ -887,7 +889,7 @@
   <section class="section-takeaways">
     <div class="takeaways-hdr wow">
       <span class="section-eyebrow">What this means for you</span>
-      <h2 class="section-h2">Four Things<br><span class="outline">Worth Knowing</span></h2>
+      <h2 class="section-h2">Four Things<br><span class="outline-teal">Worth Knowing</span></h2>
     </div>
     <div class="takeaways-grid">
       <div class="takeaway-card wow">
@@ -916,10 +918,10 @@
   <!-- CTA -->
   <section class="section-cta">
     <div class="cta-text">
-      <span class="cta-eyebrow">Find the right method</span>
-      <h2 class="cta-h2">WHICH METHOD<br>FITS YOUR<br>BRAND?</h2>
-      <p class="cta-sub">We'll be transparent about what we recommend and why. If you'd like examples or want to discuss a specific project, just ask.</p>
-      <a href="https://www.imagefoundry.co.uk/contact-us/" class="cta-btn">Let's Talk</a>
+      <span class="cta-eyebrow">Ready to go further?</span>
+      <h2 class="cta-h2">LET'S FIND<br>THE RIGHT<br>METHOD</h2>
+      <p class="cta-sub">Tell us about your project and we'll recommend exactly what to use — and why. No commitment, no jargon. Just a straight answer.</p>
+      <a href="https://www.imagefoundry.co.uk/contact-us/" class="cta-btn">Start the Conversation</a>
     </div>
     <div class="cta-image">
       <img src="images/Mixed Methodology.jpg" alt="Mixed Methodology" />

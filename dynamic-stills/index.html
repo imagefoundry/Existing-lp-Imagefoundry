@@ -252,7 +252,6 @@
       max-width: 560px;
       margin: 0 auto 44px;
       line-height: 1.55;
-      letter-spacing: 0.02em;
     }
 
     .btn {
@@ -506,7 +505,7 @@
     .step-num {
       font-size: 80px;
       font-weight: 700;
-      letter-spacing: -0.02em;
+      letter-spacing: 0.1em;
       line-height: 1;
       margin-bottom: 20px;
       color: rgba(0,0,0,0.06);
@@ -647,7 +646,7 @@
       color: rgba(255,255,255,0.15);
       line-height: 1;
       margin-bottom: 20px;
-      letter-spacing: -0.02em;
+      letter-spacing: 0.1em;
       transition: color 0.2s;
     }
 
@@ -743,7 +742,7 @@
     }
     .cta-headline {
       font-size: clamp(44px, 5.5vw, 80px);
-      font-weight: 800; letter-spacing: 0.08em;
+      font-weight: 700; letter-spacing: 0.1em;
       text-transform: uppercase; line-height: 0.92;
       color: var(--white); margin-bottom: 28px;
     }
@@ -795,7 +794,8 @@
     .intro-right blockquote {
       font-size: clamp(20px, 2.4vw, 28px);
       font-weight: 700;
-      letter-spacing: 0.04em;
+      font-style: normal;
+      letter-spacing: 0.1em;
       line-height: 1.25;
       text-transform: uppercase;
       color: var(--if-pink);
@@ -815,45 +815,144 @@
     /* ─────────────────────────────────────────
        SHOWCASE — 3D video sphere
     ───────────────────────────────────────── */
+    /* ── SHOWCASE: left sidebar + right video ── */
     .showcase {
-      background: var(--near-black);
+      background: var(--black);
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      height: 570px;
+    }
+
+    .showcase-left {
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid rgba(255,255,255,0.08);
       overflow: hidden;
     }
 
-    .showcase-header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: end;
-      padding: 80px 48px 52px;
-      background: var(--if-blue);
-      border-bottom: none;
+    .showcase-info {
+      padding: 20px 20px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      flex-shrink: 0;
     }
-    .showcase-header .section-label { color: rgba(255,255,255,0.55); letter-spacing: 0.22em; margin-bottom: 12px; }
-    .showcase-header .section-headline { color: var(--white); }
-    .showcase-header p { font-size: 18px; line-height: 1.65; color: rgba(255,255,255,0.65); align-self: end; }
+    .showcase-info .section-label { color: rgba(255,255,255,0.5); margin-bottom: 8px; }
+    .showcase-info .section-headline { color: var(--white); font-size: clamp(32px, 3.5vw, 48px); }
 
-    /* ── VIDEO PLAYER + PLAYLIST ── */
-    .player-wrap {
-      background: #0a0a0a;
-      display: grid;
-      grid-template-columns: 1fr 340px;
-      max-height: 480px;
+    .showcase-desc {
+      font-size: 15px; font-weight: 400; line-height: 1.5;
+      color: rgba(255,255,255,0.4); margin-top: 10px;
     }
 
-    .player-main {
+    /* ── MAIN VIDEO (right panel) ── */
+    .showcase-right {
       position: relative;
-      background: #000;
       overflow: hidden;
-      max-height: 480px;
     }
 
-    .player-main video {
-      width: 100%;
-      height: 100%;
+    .showcase-right > video {
+      width: 100%; height: 100%;
       object-fit: contain;
       display: block;
+      background: var(--black);
     }
+
+    .showcase-right .player-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 24px 28px;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+      z-index: 2;
+    }
+
+    /* ── SIDEBAR THUMBNAILS ── */
+    .pl-item {
+      position: relative;
+      height: 62px;
+      cursor: pointer;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: opacity 0.2s;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .pl-item:last-child { border-bottom: none; }
+    .pl-item:hover { opacity: 0.85; }
+    .pl-item.active { border-left: 3px solid var(--if-pink); }
+
+    .pl-thumb { width: 100%; height: 100%; }
+    .pl-thumb video { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+
+    .pl-info {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 100%);
+      padding: 0 10px;
+      display: flex; flex-direction: column; justify-content: center; gap: 2px;
+    }
+    .pl-num { font-size: 10px; font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase; color: var(--if-yellow); margin-bottom: 2px; }
+    .pl-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--white); line-height: 1.1; }
+    .pl-item.active .pl-title { color: var(--if-pink); }
+    .pl-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+
+    /* ── VIDEO GRID (Option C — keep for reference but hidden) ── */
+    .video-grid {
+      display: none;
+    }
+
+    .vg-cell {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      cursor: pointer;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .vg-cell:nth-child(3n) { border-right: none; }
+    .vg-cell:nth-child(n+4) { border-bottom: none; }
+
+    .vg-cell video {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .vg-cell:hover video { transform: scale(1.05); }
+
+    .vg-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.35);
+      transition: background 0.3s;
+    }
+    .vg-cell:hover .vg-overlay { background: rgba(0,0,0,0.55); }
+
+    .vg-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 20px 20px 16px;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+    }
+    .vg-num {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--if-yellow);
+      display: block; margin-bottom: 4px;
+    }
+    .vg-title {
+      font-size: 15px; font-weight: 700; letter-spacing: 0.05em;
+      text-transform: uppercase; color: var(--white); line-height: 1.2;
+    }
+    .vg-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(255,255,255,0.45);
+      display: block; margin-top: 3px;
+    }
+
+    .vg-play {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      border: 1.5px solid rgba(255,255,255,0.5);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white); font-size: 14px;
+      opacity: 0; transition: opacity 0.3s, transform 0.3s;
+    }
+    .vg-cell:hover .vg-play { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 
     .player-overlay {
       position: absolute;
@@ -876,33 +975,29 @@
     }
 
     .player-prompt {
-      font-size: 15px; font-style: italic;
+      font-size: 15px; font-style: normal;
       color: rgba(255,255,255,0.5); line-height: 1.5;
     }
 
     /* Playlist sidebar */
-    .playlist {
-      border-left: 1px solid rgba(255,255,255,0.07);
-      display: flex;
-      flex-direction: column;
-    }
 
     .pl-item {
-      display: grid;
-      grid-template-columns: 90px 1fr;
+      display: flex;
+      flex-direction: column;
       cursor: pointer;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      border-right: 1px solid rgba(255,255,255,0.06);
       transition: background 0.2s;
-      flex: 1;
+      overflow: hidden;
     }
 
-    .pl-item:last-child { border-bottom: none; }
-    .pl-item:hover { background: rgba(255,255,255,0.04); }
-    .pl-item.active { background: rgba(166,0,100,0.12); border-left: 3px solid var(--if-pink); }
+    .pl-item:last-child { border-right: none; }
+    .pl-item:hover { background: rgba(255,255,255,0.06); }
+    .pl-item.active { background: rgba(166,0,100,0.12); border-top: 3px solid var(--if-pink); }
 
     .pl-thumb {
       position: relative;
       overflow: hidden;
+      aspect-ratio: 16/9;
     }
 
     .pl-thumb video {
@@ -924,7 +1019,6 @@
       padding: 10px 14px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       gap: 3px;
     }
 
@@ -935,7 +1029,7 @@
     }
 
     .pl-title {
-      font-size: 13px; font-weight: 700;
+      font-size: 12px; font-weight: 700;
       text-transform: uppercase; letter-spacing: 0.05em;
       color: var(--white); line-height: 1.15;
     }
@@ -950,14 +1044,23 @@
 
     .playlist-header {
       padding: 14px 16px;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+      border-left: none;
+      border-right: 1px solid rgba(255,255,255,0.07);
       font-size: 11px; font-weight: 700;
-      letter-spacing: 0.22em; text-transform: uppercase;
+      letter-spacing: 0.15em; text-transform: uppercase;
       color: rgba(255,255,255,0.35);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
     }
 
     .playlist-header span {
       color: var(--if-yellow);
+      writing-mode: horizontal-tb;
+      transform: none;
     }
 
     /* ── VIDEO MODAL ── */
@@ -1002,7 +1105,7 @@
 
     .modal-prompt {
       font-size: 15px; color: rgba(255,255,255,0.45);
-      font-style: italic; margin-top: 8px; line-height: 1.5;
+      font-style: normal; margin-top: 8px; line-height: 1.5;
     }
 
     .modal-close {
@@ -1117,7 +1220,7 @@
       font-size: 19px;
       line-height: 1.65;
       color: rgba(255,255,255,0.75);
-      font-style: italic;
+      font-style: normal;
     }
 
     .lessons-timeline {
@@ -1230,9 +1333,9 @@
       .intro-left { padding-right: 0; border-right: none; border-bottom: 2px solid var(--black); padding-bottom: 48px; }
       .intro-right { padding-left: 0; }
 
-      .showcase-header { grid-template-columns: 1fr; gap: 16px; padding: 48px 24px 36px; }
-      .player-wrap { grid-template-columns: 1fr; }
-      .playlist { max-height: 360px; border-left: none; border-top: 1px solid rgba(255,255,255,0.07); }
+      .showcase { grid-template-columns: 1fr; }
+      .showcase-right { min-height: 360px; }
+      .playlist { max-height: 320px; border-top: 1px solid rgba(255,255,255,0.07); }
 
       .verdict-grid { grid-template-columns: 1fr; }
       .verdict-divider { height: 2px; width: 100%; }
@@ -1291,9 +1394,9 @@
     <div class="hero-content">
       <span class="hero-kicker">Image Foundry Labs</span>
       <h1 class="hero-headline">Dynamic<br/>Stills</h1>
-      <p class="hero-sub">Entry level motion — one of the most interesting applications of AI in visualisation.</p>
-      <a href="#what" class="btn btn-pink">Explore the Process</a>
-      <a href="https://www.imagefoundry.co.uk/contact/" target="_blank" class="btn btn-outline-white">Let's Talk</a>
+      <p class="hero-sub">AI-powered motion from a single CGI still. No re-render, no animation rig, no production overhead.</p>
+      <a href="#what" class="btn btn-pink">See How It Works</a>
+      <a href="https://www.imagefoundry.co.uk/contact/" target="_blank" class="btn btn-outline-white">Start the Conversation</a>
     </div>
   </section>
 
@@ -1301,12 +1404,12 @@
   <div class="ticker" aria-hidden="true">
     <div class="ticker-inner">
       <span>Dynamic Stills</span>
-      <span>Entry Level Motion</span>
+      <span>Motion from a Single Still</span>
       <span>Image Foundry Labs</span>
       <span>AI Visualisation</span>
       <span>CGI Animation</span>
       <span>Dynamic Stills</span>
-      <span>Entry Level Motion</span>
+      <span>Motion from a Single Still</span>
       <span>Image Foundry Labs</span>
       <span>AI Visualisation</span>
       <span>CGI Animation</span>
@@ -1320,69 +1423,109 @@
       <h2 class="section-headline">Motion from<br/>a single still</h2>
     </div>
     <div class="intro-right reveal">
-      <blockquote>"One of the most interesting applications of AI in visualisation is the ability to create motion from a single still image."</blockquote>
-      <p>Dynamic stills allow us to breathe life into static scenes, moving the "camera" through a space that doesn't technically exist beyond the pixels in the original image.</p>
-      <p>With the right software, we can push, pull, pan, tilt or glide through a scene. The AI fills in missing information as it goes, building plausible details where none existed before.</p>
+      <blockquote>"Your CGI stills represent a significant investment. Dynamic Stills unlock a second life for that asset — real motion, zero re-render."</blockquote>
+      <p>Dynamic stills let us bring movement to a scene that was never modelled for animation. We push, pull, pan, tilt or glide through a space — the AI fills in what the camera uncovers as it moves.</p>
+      <p>The result is a short, polished clip ready for social, digital advertising or pitch decks. One asset. A fraction of the time. Genuinely cinematic output.</p>
     </div>
   </section>
 
   <!-- VIDEO PLAYER + PLAYLIST -->
   <section class="showcase" id="work">
-    <div class="showcase-header">
-      <div>
+
+    <!-- LEFT SIDEBAR: title + thumbnails -->
+    <div class="showcase-left">
+      <div class="showcase-info">
         <div class="section-label">The Work</div>
-        <h2 class="section-headline">Six examples</h2>
+        <h2 class="section-headline">Six<br>Examples</h2>
+        <p class="showcase-desc">Each clip began as a single CGI still. A prompt was written, generate pressed, and the AI did the rest.</p>
       </div>
-      <p>Each clip began as a single CGI still. A prompt was written, generate pressed, and the AI did the rest.</p>
-    </div>
-
-    <div class="player-wrap">
-      <div class="player-main">
-        <video id="mainVideo" autoplay muted playsinline>
-          <source id="mainSrc" src="videos/sunset-tower-dolly-pan.mp4" type="video/mp4"/>
-        </video>
-        <div class="player-overlay">
-          <div class="player-num" id="mainNum">01</div>
-          <div class="player-title" id="mainTitle">Slow dolly pan</div>
-          <div class="player-prompt" id="mainPrompt">"Slow dolly pan the camera and have the sunset shine from behind the tower"</div>
-        </div>
-      </div>
-
-      <div class="playlist" id="playlist">
-        <div class="playlist-header"><span>6</span> clips — click to play</div>
-
+      <div id="playlist">
         <div class="pl-item active" data-src="videos/sunset-tower-dolly-pan.mp4" data-num="01" data-title="Slow dolly pan" data-tag="Architectural" data-prompt='"Slow dolly pan the camera and have the sunset shine from behind the tower"'>
           <div class="pl-thumb"><video autoplay muted loop playsinline><source src="videos/sunset-tower-dolly-pan.mp4" type="video/mp4"/></video></div>
           <div class="pl-info"><div class="pl-num">01</div><div class="pl-title">Slow dolly pan</div><div class="pl-tag">Architectural</div></div>
         </div>
-
         <div class="pl-item" data-src="videos/waterfall-car-dolly-zoom.mp4" data-num="02" data-title="Dolly zoom in" data-tag="Lifestyle" data-prompt='"Slow dolly zoom in — animate the waterfall in the back, do not move the car"'>
           <div class="pl-thumb"><video autoplay muted loop playsinline><source src="videos/waterfall-car-dolly-zoom.mp4" type="video/mp4"/></video></div>
           <div class="pl-info"><div class="pl-num">02</div><div class="pl-title">Dolly zoom in</div><div class="pl-tag">Lifestyle</div></div>
         </div>
-
         <div class="pl-item" data-src="videos/snow-scene-dolly-zoom.mp4" data-num="03" data-title="Dolly zoom out" data-tag="Seasonal" data-prompt='"Have snow gently falling across the scene in front of the camera"'>
           <div class="pl-thumb"><video autoplay muted loop playsinline><source src="videos/snow-scene-dolly-zoom.mp4" type="video/mp4"/></video></div>
           <div class="pl-info"><div class="pl-num">03</div><div class="pl-title">Dolly zoom out</div><div class="pl-tag">Seasonal</div></div>
         </div>
-
         <div class="pl-item" data-src="videos/product-rotate-fan.mp4" data-num="04" data-title="Product rotation" data-tag="Product · KBB" data-prompt='"Slowly rotate the product left — make the fan under the grate spin"'>
           <div class="pl-thumb"><video autoplay muted loop playsinline><source src="videos/product-rotate-fan.mp4" type="video/mp4"/></video></div>
           <div class="pl-info"><div class="pl-num">04</div><div class="pl-title">Product rotation</div><div class="pl-tag">Product · KBB</div></div>
         </div>
-
         <div class="pl-item" data-src="videos/tap-dolly-pan.mp4" data-num="05" data-title="Slow dolly pan" data-tag="Bathroom" data-prompt='"Slow dolly pan the camera in — have the tap running"'>
           <div class="pl-thumb"><video autoplay muted loop playsinline><source src="videos/tap-dolly-pan.mp4" type="video/mp4"/></video></div>
           <div class="pl-info"><div class="pl-num">05</div><div class="pl-title">Slow dolly pan</div><div class="pl-tag">Bathroom</div></div>
         </div>
-
         <div class="pl-item" data-src="videos/jacuzzi-steam.mp4" data-num="06" data-title="Animate &amp; atmosphere" data-tag="Lifestyle" data-prompt='"Animate steam — turn on the jacuzzi, make the water bubble and froth"'>
           <div class="pl-thumb"><video autoplay muted loop playsinline><source src="videos/jacuzzi-steam.mp4" type="video/mp4"/></video></div>
           <div class="pl-info"><div class="pl-num">06</div><div class="pl-title">Animate &amp; atmosphere</div><div class="pl-tag">Lifestyle</div></div>
         </div>
-
       </div>
     </div>
+
+    <!-- RIGHT: main video -->
+    <div class="showcase-right">
+      <video id="mainVideo" autoplay muted playsinline>
+        <source id="mainSrc" src="videos/sunset-tower-dolly-pan.mp4" type="video/mp4"/>
+      </video>
+      <div class="player-overlay">
+        <div class="player-num" id="mainNum">01</div>
+        <div class="player-title" id="mainTitle">Slow dolly pan</div>
+        <div class="player-prompt" id="mainPrompt">"Slow dolly pan the camera and have the sunset shine from behind the tower"</div>
+      </div>
+    </div>
+
+    <!-- (hidden grid cells kept for JS compatibility) -->
+    <div class="video-grid" style="display:none">
+
+      <div class="vg-cell" data-src="videos/sunset-tower-dolly-pan.mp4" data-num="01" data-title="Slow dolly pan" data-prompt='"Slow dolly pan the camera and have the sunset shine from behind the tower"'>
+        <video autoplay muted loop playsinline><source src="videos/sunset-tower-dolly-pan.mp4" type="video/mp4"/></video>
+        <div class="vg-overlay"></div>
+        <div class="vg-play">▶</div>
+        <div class="vg-label"><span class="vg-num">01</span><div class="vg-title">Slow dolly pan</div><span class="vg-tag">Architectural</span></div>
+      </div>
+
+      <div class="vg-cell" data-src="videos/waterfall-car-dolly-zoom.mp4" data-num="02" data-title="Dolly zoom in" data-prompt='"Slow dolly zoom in — animate the waterfall in the back, do not move the car"'>
+        <video autoplay muted loop playsinline><source src="videos/waterfall-car-dolly-zoom.mp4" type="video/mp4"/></video>
+        <div class="vg-overlay"></div>
+        <div class="vg-play">▶</div>
+        <div class="vg-label"><span class="vg-num">02</span><div class="vg-title">Dolly zoom in</div><span class="vg-tag">Lifestyle</span></div>
+      </div>
+
+      <div class="vg-cell" data-src="videos/snow-scene-dolly-zoom.mp4" data-num="03" data-title="Dolly zoom out" data-prompt='"Have snow gently falling across the scene in front of the camera"'>
+        <video autoplay muted loop playsinline><source src="videos/snow-scene-dolly-zoom.mp4" type="video/mp4"/></video>
+        <div class="vg-overlay"></div>
+        <div class="vg-play">▶</div>
+        <div class="vg-label"><span class="vg-num">03</span><div class="vg-title">Dolly zoom out</div><span class="vg-tag">Seasonal</span></div>
+      </div>
+
+      <div class="vg-cell" data-src="videos/product-rotate-fan.mp4" data-num="04" data-title="Product rotation" data-prompt='"Slowly rotate the product left — make the fan under the grate spin"'>
+        <video autoplay muted loop playsinline><source src="videos/product-rotate-fan.mp4" type="video/mp4"/></video>
+        <div class="vg-overlay"></div>
+        <div class="vg-play">▶</div>
+        <div class="vg-label"><span class="vg-num">04</span><div class="vg-title">Product rotation</div><span class="vg-tag">Product · KBB</span></div>
+      </div>
+
+      <div class="vg-cell" data-src="videos/tap-dolly-pan.mp4" data-num="05" data-title="Slow dolly pan" data-prompt='"Slow dolly pan the camera in — have the tap running"'>
+        <video autoplay muted loop playsinline><source src="videos/tap-dolly-pan.mp4" type="video/mp4"/></video>
+        <div class="vg-overlay"></div>
+        <div class="vg-play">▶</div>
+        <div class="vg-label"><span class="vg-num">05</span><div class="vg-title">Slow dolly pan</div><span class="vg-tag">Bathroom</span></div>
+      </div>
+
+      <div class="vg-cell" data-src="videos/jacuzzi-steam.mp4" data-num="06" data-title="Animate &amp; atmosphere" data-prompt='"Animate steam — turn on the jacuzzi, make the water bubble and froth"'>
+        <video autoplay muted loop playsinline><source src="videos/jacuzzi-steam.mp4" type="video/mp4"/></video>
+        <div class="vg-overlay"></div>
+        <div class="vg-play">▶</div>
+        <div class="vg-label"><span class="vg-num">06</span><div class="vg-title">Animate &amp; atmosphere</div><span class="vg-tag">Lifestyle</span></div>
+      </div>
+
+    </div>
+
   </section>
 
   <!-- HOW IT WORKS — 3 full-width steps -->
@@ -1398,7 +1541,7 @@
       <div class="step">
         <div class="step-num">01</div>
         <div class="step-title">Feed in the still</div>
-        <p class="step-body">A single still image enters AI software designed for this type of motion generation. There are a number of platforms — this week we have mostly been using Runway.</p>
+        <p class="step-body">A single CGI still is loaded into AI motion software. No additional modelling, rigging or scene setup required — the still itself is the starting point.</p>
       </div>
       <div class="step">
         <div class="step-num">02</div>
@@ -1511,9 +1654,9 @@
   <section class="cta-section" id="contact">
     <div class="cta-text">
       <span class="cta-eyebrow">Bring your stills to life</span>
-      <h2 class="cta-headline">WANT TO ADD<br>MOTION TO YOUR<br>CGI STILLS?</h2>
-      <p class="cta-sub">We'll be transparent about what's possible and what isn't. If you'd like to see examples or discuss a project, just ask.</p>
-      <a href="https://www.imagefoundry.co.uk/contact-us/" class="cta-btn">Let's Talk</a>
+      <h2 class="cta-headline">TURN YOUR CGI<br>STILLS INTO<br>MOVING CONTENT</h2>
+      <p class="cta-sub">If you already have CGI stills, you're closer to motion content than you think. Tell us what you're working on and we'll show you exactly what's possible.</p>
+      <a href="https://www.imagefoundry.co.uk/contact-us/" class="cta-btn">Get in Touch</a>
     </div>
     <div class="cta-video-panel">
       <video class="cta-video" autoplay muted loop playsinline>
@@ -1672,18 +1815,15 @@
       mainNum.textContent    = item.dataset.num;
       mainTitle.textContent  = item.dataset.title;
       mainPrompt.textContent = item.dataset.prompt;
-      mainVideo.loop = false;
       mainVideo.load();
       mainVideo.play();
     }
 
     plItems.forEach(item => item.addEventListener('click', () => playItem(item)));
 
-    // Auto-advance to next video when current ends
     mainVideo.addEventListener('ended', () => {
       const current = plItems.findIndex(i => i.classList.contains('active'));
-      const next = plItems[(current + 1) % plItems.length];
-      playItem(next);
+      playItem(plItems[(current + 1) % plItems.length]);
     });
 
     document.querySelector('.sf-burger').addEventListener('click', () => {
