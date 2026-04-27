@@ -716,6 +716,71 @@
     /* ─────────────────────────────────────────
        CTA — matches index.html
     ───────────────────────────────────────── */
+    /* MORE EXAMPLES GRID */
+    .more-examples {
+      background: var(--near-black);
+      padding: 72px clamp(32px, 7vw, 120px);
+    }
+    .more-examples-header {
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;
+      margin-bottom: 40px;
+    }
+    .more-examples-header h2 { color: var(--white); }
+    .more-examples-header p { color: var(--mid-grey); font-family: var(--font); font-size: 17px; font-weight: 400; max-width: 340px; line-height: 1.5; }
+    .more-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .more-cell {
+      position: relative;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      cursor: pointer;
+      background: #1a1a1a;
+    }
+    .more-cell video {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .more-cell-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 12px 16px;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+      font-family: var(--font); font-size: 13px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em; color: var(--white);
+    }
+    .more-cell-tag {
+      font-size: 11px; font-weight: 400; letter-spacing: 0.12em;
+      color: var(--if-yellow); display: block; margin-bottom: 2px;
+    }
+    /* Placeholder slot */
+    .more-cell.placeholder {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 12px;
+      cursor: default;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .more-cell.placeholder .ph-icon {
+      width: 48px; height: 48px; border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.25); font-size: 18px;
+    }
+    .more-cell.placeholder span {
+      font-family: var(--font); font-size: 12px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+    }
+    @media (max-width: 900px) {
+      .more-grid { grid-template-columns: repeat(2, 1fr); }
+      .more-examples-header { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 540px) {
+      .more-grid { grid-template-columns: 1fr; }
+    }
+
     /* CTA — split: pink text left, video right */
     .cta-section {
       display: grid;
@@ -1598,6 +1663,60 @@
 
   </section>
 
+  <!-- MORE EXAMPLES GRID -->
+  <section class="more-examples">
+    <div class="more-examples-header">
+      <div>
+        <div class="section-label" style="color:rgba(255,255,255,0.4); margin-bottom:8px;">More Examples</div>
+        <h2 class="section-headline" style="color:var(--white);">The full reel</h2>
+      </div>
+      <p>Every clip started as a single CGI still. More examples coming soon.</p>
+    </div>
+    <div class="more-grid">
+
+      <!-- LIVE CLIPS — replace src and labels when new videos are ready -->
+      <div class="more-cell" data-src="videos/sunset-tower-dolly-pan.mp4" data-num="01" data-title="Slow dolly pan" data-tag="Architectural" data-prompt='"Slow dolly pan the camera and have the sunset shine from behind the tower"'>
+        <video muted loop playsinline preload="none"><source src="videos/sunset-tower-dolly-pan.mp4" type="video/mp4"/></video>
+        <div class="more-cell-label"><span class="more-cell-tag">Architectural</span>Slow dolly pan</div>
+      </div>
+      <div class="more-cell" data-src="videos/waterfall-car-dolly-zoom.mp4" data-num="02" data-title="Dolly zoom in" data-tag="Lifestyle" data-prompt='"Slow dolly zoom in — animate the waterfall in the back, do not move the car"'>
+        <video muted loop playsinline preload="none"><source src="videos/waterfall-car-dolly-zoom.mp4" type="video/mp4"/></video>
+        <div class="more-cell-label"><span class="more-cell-tag">Lifestyle</span>Dolly zoom in</div>
+      </div>
+      <div class="more-cell" data-src="videos/snow-scene-dolly-zoom.mp4" data-num="03" data-title="Dolly zoom out" data-tag="Seasonal" data-prompt='"Have snow gently falling across the scene in front of the camera"'>
+        <video muted loop playsinline preload="none"><source src="videos/snow-scene-dolly-zoom.mp4" type="video/mp4"/></video>
+        <div class="more-cell-label"><span class="more-cell-tag">Seasonal</span>Dolly zoom out</div>
+      </div>
+      <div class="more-cell" data-src="videos/product-rotate-fan.mp4" data-num="04" data-title="Product rotation" data-tag="Product · KBB" data-prompt='"Slowly rotate the product left — make the fan under the grate spin"'>
+        <video muted loop playsinline preload="none"><source src="videos/product-rotate-fan.mp4" type="video/mp4"/></video>
+        <div class="more-cell-label"><span class="more-cell-tag">Product · KBB</span>Product rotation</div>
+      </div>
+      <div class="more-cell" data-src="videos/tap-dolly-pan.mp4" data-num="05" data-title="Slow dolly pan" data-tag="Bathroom" data-prompt='"Slow dolly pan the camera in — have the tap running"'>
+        <video muted loop playsinline preload="none"><source src="videos/tap-dolly-pan.mp4" type="video/mp4"/></video>
+        <div class="more-cell-label"><span class="more-cell-tag">Bathroom</span>Slow dolly pan</div>
+      </div>
+      <div class="more-cell" data-src="videos/jacuzzi-steam.mp4" data-num="06" data-title="Animate &amp; atmosphere" data-tag="Lifestyle" data-prompt='"Animate steam — turn on the jacuzzi, make the water bubble and froth"'>
+        <video muted loop playsinline preload="none"><source src="videos/jacuzzi-steam.mp4" type="video/mp4"/></video>
+        <div class="more-cell-label"><span class="more-cell-tag">Lifestyle</span>Animate &amp; atmosphere</div>
+      </div>
+
+      <!-- PLACEHOLDERS — swap these out when new video files are added -->
+      <div class="more-cell placeholder">
+        <div class="ph-icon">▶</div>
+        <span>Coming soon</span>
+      </div>
+      <div class="more-cell placeholder">
+        <div class="ph-icon">▶</div>
+        <span>Coming soon</span>
+      </div>
+      <div class="more-cell placeholder">
+        <div class="ph-icon">▶</div>
+        <span>Coming soon</span>
+      </div>
+
+    </div>
+  </section>
+
   <!-- HOW IT WORKS — 3 full-width steps -->
   <section class="how" id="how">
     <div class="how-header">
@@ -1894,6 +2013,18 @@
     mainVideo.addEventListener('ended', () => {
       const current = plItems.findIndex(i => i.classList.contains('active'));
       playItem(plItems[(current + 1) % plItems.length]);
+    });
+
+    // More examples grid: hover-to-play, click loads into main player
+    document.querySelectorAll('.more-cell:not(.placeholder)').forEach(cell => {
+      const v = cell.querySelector('video');
+      cell.addEventListener('mouseenter', () => v && v.play());
+      cell.addEventListener('mouseleave', () => { if (v) { v.pause(); v.currentTime = 0; } });
+      cell.addEventListener('click', () => {
+        const match = plItems.find(i => i.dataset.src === cell.dataset.src);
+        if (match) playItem(match);
+        window.scrollTo({ top: document.getElementById('work').offsetTop - 80, behavior: 'smooth' });
+      });
     });
 
     document.querySelector('.sf-burger').addEventListener('click', () => {
