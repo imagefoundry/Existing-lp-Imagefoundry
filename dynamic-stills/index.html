@@ -716,6 +716,51 @@
     /* ─────────────────────────────────────────
        CTA — matches index.html
     ───────────────────────────────────────── */
+    /* VIDEO REEL — 3-column autoplaying grid */
+    .reel {
+      background: var(--near-black);
+      padding: 80px 0 0;
+    }
+    .reel-header {
+      padding: 0 clamp(32px, 7vw, 120px) 48px;
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;
+    }
+    .reel-header h2 { color: var(--white); }
+    .reel-header p { color: var(--mid-grey); font-family: var(--font); font-size: 18px; font-weight: 400; max-width: 360px; line-height: 1.5; }
+    .reel-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .reel-cell {
+      position: relative;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .reel-cell video {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .reel-cell-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 12px 16px;
+      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+      font-family: var(--font); font-size: 13px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em; color: var(--white);
+    }
+    .reel-cell-tag {
+      font-size: 11px; font-weight: 400; letter-spacing: 0.12em;
+      color: var(--if-yellow); display: block; margin-bottom: 2px;
+    }
+    @media (max-width: 900px) {
+      .reel-grid { grid-template-columns: repeat(2, 1fr); }
+      .reel-header { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 540px) {
+      .reel-grid { grid-template-columns: 1fr; }
+    }
+
     /* CTA — split: pink text left, video right */
     .cta-section {
       display: grid;
@@ -1511,27 +1556,27 @@
       </div>
       <div id="playlist">
         <div class="pl-item active" data-src="videos/sunset-tower-dolly-pan.mp4" data-num="01" data-title="Slow dolly pan" data-tag="Architectural" data-prompt='"Slow dolly pan the camera and have the sunset shine from behind the tower"'>
-          <div class="pl-thumb"><video autoplay muted loop playsinline><source src="videos/sunset-tower-dolly-pan.mp4" type="video/mp4"/></video></div>
+          <div class="pl-thumb"><video muted loop playsinline preload="none"><source src="videos/sunset-tower-dolly-pan.mp4" type="video/mp4"/></video></div>
           <div class="pl-info"><div class="pl-num">01</div><div class="pl-title">Slow dolly pan</div><div class="pl-tag">Architectural</div></div>
         </div>
         <div class="pl-item" data-src="videos/waterfall-car-dolly-zoom.mp4" data-num="02" data-title="Dolly zoom in" data-tag="Lifestyle" data-prompt='"Slow dolly zoom in — animate the waterfall in the back, do not move the car"'>
-          <div class="pl-thumb"><video autoplay muted loop playsinline><source src="videos/waterfall-car-dolly-zoom.mp4" type="video/mp4"/></video></div>
+          <div class="pl-thumb"><video muted loop playsinline preload="none"><source src="videos/waterfall-car-dolly-zoom.mp4" type="video/mp4"/></video></div>
           <div class="pl-info"><div class="pl-num">02</div><div class="pl-title">Dolly zoom in</div><div class="pl-tag">Lifestyle</div></div>
         </div>
         <div class="pl-item" data-src="videos/snow-scene-dolly-zoom.mp4" data-num="03" data-title="Dolly zoom out" data-tag="Seasonal" data-prompt='"Have snow gently falling across the scene in front of the camera"'>
-          <div class="pl-thumb"><video autoplay muted loop playsinline><source src="videos/snow-scene-dolly-zoom.mp4" type="video/mp4"/></video></div>
+          <div class="pl-thumb"><video muted loop playsinline preload="none"><source src="videos/snow-scene-dolly-zoom.mp4" type="video/mp4"/></video></div>
           <div class="pl-info"><div class="pl-num">03</div><div class="pl-title">Dolly zoom out</div><div class="pl-tag">Seasonal</div></div>
         </div>
         <div class="pl-item" data-src="videos/product-rotate-fan.mp4" data-num="04" data-title="Product rotation" data-tag="Product · KBB" data-prompt='"Slowly rotate the product left — make the fan under the grate spin"'>
-          <div class="pl-thumb"><video autoplay muted loop playsinline><source src="videos/product-rotate-fan.mp4" type="video/mp4"/></video></div>
+          <div class="pl-thumb"><video muted loop playsinline preload="none"><source src="videos/product-rotate-fan.mp4" type="video/mp4"/></video></div>
           <div class="pl-info"><div class="pl-num">04</div><div class="pl-title">Product rotation</div><div class="pl-tag">Product · KBB</div></div>
         </div>
         <div class="pl-item" data-src="videos/tap-dolly-pan.mp4" data-num="05" data-title="Slow dolly pan" data-tag="Bathroom" data-prompt='"Slow dolly pan the camera in — have the tap running"'>
-          <div class="pl-thumb"><video autoplay muted loop playsinline><source src="videos/tap-dolly-pan.mp4" type="video/mp4"/></video></div>
+          <div class="pl-thumb"><video muted loop playsinline preload="none"><source src="videos/tap-dolly-pan.mp4" type="video/mp4"/></video></div>
           <div class="pl-info"><div class="pl-num">05</div><div class="pl-title">Slow dolly pan</div><div class="pl-tag">Bathroom</div></div>
         </div>
         <div class="pl-item" data-src="videos/jacuzzi-steam.mp4" data-num="06" data-title="Animate &amp; atmosphere" data-tag="Lifestyle" data-prompt='"Animate steam — turn on the jacuzzi, make the water bubble and froth"'>
-          <div class="pl-thumb"><video autoplay muted loop playsinline><source src="videos/jacuzzi-steam.mp4" type="video/mp4"/></video></div>
+          <div class="pl-thumb"><video muted loop playsinline preload="none"><source src="videos/jacuzzi-steam.mp4" type="video/mp4"/></video></div>
           <div class="pl-info"><div class="pl-num">06</div><div class="pl-title">Animate &amp; atmosphere</div><div class="pl-tag">Lifestyle</div></div>
         </div>
       </div>
@@ -1547,53 +1592,6 @@
         <div class="player-title" id="mainTitle">Slow dolly pan</div>
         <div class="player-prompt" id="mainPrompt">"Slow dolly pan the camera and have the sunset shine from behind the tower"</div>
       </div>
-    </div>
-
-    <!-- (hidden grid cells kept for JS compatibility) -->
-    <div class="video-grid" style="display:none">
-
-      <div class="vg-cell" data-src="videos/sunset-tower-dolly-pan.mp4" data-num="01" data-title="Slow dolly pan" data-prompt='"Slow dolly pan the camera and have the sunset shine from behind the tower"'>
-        <video autoplay muted loop playsinline><source src="videos/sunset-tower-dolly-pan.mp4" type="video/mp4"/></video>
-        <div class="vg-overlay"></div>
-        <div class="vg-play">▶</div>
-        <div class="vg-label"><span class="vg-num">01</span><div class="vg-title">Slow dolly pan</div><span class="vg-tag">Architectural</span></div>
-      </div>
-
-      <div class="vg-cell" data-src="videos/waterfall-car-dolly-zoom.mp4" data-num="02" data-title="Dolly zoom in" data-prompt='"Slow dolly zoom in — animate the waterfall in the back, do not move the car"'>
-        <video autoplay muted loop playsinline><source src="videos/waterfall-car-dolly-zoom.mp4" type="video/mp4"/></video>
-        <div class="vg-overlay"></div>
-        <div class="vg-play">▶</div>
-        <div class="vg-label"><span class="vg-num">02</span><div class="vg-title">Dolly zoom in</div><span class="vg-tag">Lifestyle</span></div>
-      </div>
-
-      <div class="vg-cell" data-src="videos/snow-scene-dolly-zoom.mp4" data-num="03" data-title="Dolly zoom out" data-prompt='"Have snow gently falling across the scene in front of the camera"'>
-        <video autoplay muted loop playsinline><source src="videos/snow-scene-dolly-zoom.mp4" type="video/mp4"/></video>
-        <div class="vg-overlay"></div>
-        <div class="vg-play">▶</div>
-        <div class="vg-label"><span class="vg-num">03</span><div class="vg-title">Dolly zoom out</div><span class="vg-tag">Seasonal</span></div>
-      </div>
-
-      <div class="vg-cell" data-src="videos/product-rotate-fan.mp4" data-num="04" data-title="Product rotation" data-prompt='"Slowly rotate the product left — make the fan under the grate spin"'>
-        <video autoplay muted loop playsinline><source src="videos/product-rotate-fan.mp4" type="video/mp4"/></video>
-        <div class="vg-overlay"></div>
-        <div class="vg-play">▶</div>
-        <div class="vg-label"><span class="vg-num">04</span><div class="vg-title">Product rotation</div><span class="vg-tag">Product · KBB</span></div>
-      </div>
-
-      <div class="vg-cell" data-src="videos/tap-dolly-pan.mp4" data-num="05" data-title="Slow dolly pan" data-prompt='"Slow dolly pan the camera in — have the tap running"'>
-        <video autoplay muted loop playsinline><source src="videos/tap-dolly-pan.mp4" type="video/mp4"/></video>
-        <div class="vg-overlay"></div>
-        <div class="vg-play">▶</div>
-        <div class="vg-label"><span class="vg-num">05</span><div class="vg-title">Slow dolly pan</div><span class="vg-tag">Bathroom</span></div>
-      </div>
-
-      <div class="vg-cell" data-src="videos/jacuzzi-steam.mp4" data-num="06" data-title="Animate &amp; atmosphere" data-prompt='"Animate steam — turn on the jacuzzi, make the water bubble and froth"'>
-        <video autoplay muted loop playsinline><source src="videos/jacuzzi-steam.mp4" type="video/mp4"/></video>
-        <div class="vg-overlay"></div>
-        <div class="vg-play">▶</div>
-        <div class="vg-label"><span class="vg-num">06</span><div class="vg-title">Animate &amp; atmosphere</div><span class="vg-tag">Lifestyle</span></div>
-      </div>
-
     </div>
 
   </section>
@@ -1721,6 +1719,43 @@
   </section>
 
   <!-- CTA — black left, video right -->
+  <!-- VIDEO REEL — all 6 clips in full-width grid -->
+  <section class="reel">
+    <div class="reel-header">
+      <div>
+        <div class="section-label" style="color:rgba(255,255,255,0.45); margin-bottom:8px;">All Six Clips</div>
+        <h2 class="section-headline" style="color:var(--white);">The full reel</h2>
+      </div>
+      <p>Every clip started as a single still. Hover to play — click to load in the player above.</p>
+    </div>
+    <div class="reel-grid">
+      <div class="reel-cell" data-src="videos/sunset-tower-dolly-pan.mp4" data-num="01" data-title="Slow dolly pan" data-tag="Architectural" data-prompt='"Slow dolly pan the camera and have the sunset shine from behind the tower"'>
+        <video muted loop playsinline preload="none"><source src="videos/sunset-tower-dolly-pan.mp4" type="video/mp4"/></video>
+        <div class="reel-cell-label"><span class="reel-cell-tag">Architectural</span>Slow dolly pan</div>
+      </div>
+      <div class="reel-cell" data-src="videos/waterfall-car-dolly-zoom.mp4" data-num="02" data-title="Dolly zoom in" data-tag="Lifestyle" data-prompt='"Slow dolly zoom in — animate the waterfall in the back, do not move the car"'>
+        <video muted loop playsinline preload="none"><source src="videos/waterfall-car-dolly-zoom.mp4" type="video/mp4"/></video>
+        <div class="reel-cell-label"><span class="reel-cell-tag">Lifestyle</span>Dolly zoom in</div>
+      </div>
+      <div class="reel-cell" data-src="videos/snow-scene-dolly-zoom.mp4" data-num="03" data-title="Dolly zoom out" data-tag="Seasonal" data-prompt='"Have snow gently falling across the scene in front of the camera"'>
+        <video muted loop playsinline preload="none"><source src="videos/snow-scene-dolly-zoom.mp4" type="video/mp4"/></video>
+        <div class="reel-cell-label"><span class="reel-cell-tag">Seasonal</span>Dolly zoom out</div>
+      </div>
+      <div class="reel-cell" data-src="videos/product-rotate-fan.mp4" data-num="04" data-title="Product rotation" data-tag="Product · KBB" data-prompt='"Slowly rotate the product left — make the fan under the grate spin"'>
+        <video muted loop playsinline preload="none"><source src="videos/product-rotate-fan.mp4" type="video/mp4"/></video>
+        <div class="reel-cell-label"><span class="reel-cell-tag">Product · KBB</span>Product rotation</div>
+      </div>
+      <div class="reel-cell" data-src="videos/tap-dolly-pan.mp4" data-num="05" data-title="Slow dolly pan" data-tag="Bathroom" data-prompt='"Slow dolly pan the camera in — have the tap running"'>
+        <video muted loop playsinline preload="none"><source src="videos/tap-dolly-pan.mp4" type="video/mp4"/></video>
+        <div class="reel-cell-label"><span class="reel-cell-tag">Bathroom</span>Slow dolly pan</div>
+      </div>
+      <div class="reel-cell" data-src="videos/jacuzzi-steam.mp4" data-num="06" data-title="Animate &amp; atmosphere" data-tag="Lifestyle" data-prompt='"Animate steam — turn on the jacuzzi, make the water bubble and froth"'>
+        <video muted loop playsinline preload="none"><source src="videos/jacuzzi-steam.mp4" type="video/mp4"/></video>
+        <div class="reel-cell-label"><span class="reel-cell-tag">Lifestyle</span>Animate &amp; atmosphere</div>
+      </div>
+    </div>
+  </section>
+
   <section class="cta-section" id="contact">
     <div class="cta-text">
       <span class="cta-eyebrow">Bring your stills to life</span>
@@ -1889,11 +1924,28 @@
       mainVideo.play();
     }
 
-    plItems.forEach(item => item.addEventListener('click', () => playItem(item)));
+    plItems.forEach(item => {
+      item.addEventListener('click', () => playItem(item));
+      const v = item.querySelector('video');
+      item.addEventListener('mouseenter', () => v && v.play());
+      item.addEventListener('mouseleave', () => { if (v) { v.pause(); v.currentTime = 0; } });
+    });
 
     mainVideo.addEventListener('ended', () => {
       const current = plItems.findIndex(i => i.classList.contains('active'));
       playItem(plItems[(current + 1) % plItems.length]);
+    });
+
+    // Reel grid: hover-to-play, click loads into main player
+    document.querySelectorAll('.reel-cell').forEach(cell => {
+      const v = cell.querySelector('video');
+      cell.addEventListener('mouseenter', () => v && v.play());
+      cell.addEventListener('mouseleave', () => { if (v) { v.pause(); v.currentTime = 0; } });
+      cell.addEventListener('click', () => {
+        const match = plItems.find(i => i.dataset.src === cell.dataset.src);
+        if (match) { playItem(match); match.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+        window.scrollTo({ top: document.getElementById('work').offsetTop - 80, behavior: 'smooth' });
+      });
     });
 
     document.querySelector('.sf-burger').addEventListener('click', () => {
