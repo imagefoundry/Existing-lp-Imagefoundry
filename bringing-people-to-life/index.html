@@ -281,15 +281,31 @@
     @keyframes blink { 0%,100%{opacity:.2} 50%{opacity:.7} }
 
     /* ── ARTICLE COLUMN ──────────────────── */
-    .article { padding: 0 var(--pad); background: var(--ink); }
+    .article { padding: 0; background: var(--ink); }
     .article.light  { background: #f6f5f3; }
     .article.white  { background: #ffffff; }
 
-    .col { max-width: 700px; margin: 0 auto; }
+    .col { max-width: 1200px; margin: 0 auto; padding: 0 var(--pad); }
 
     /* ── SECTION TEXT BLOCK ──────────────── */
     .text-block {
-      padding: clamp(60px, 8vw, 108px) 0 clamp(36px, 4vw, 56px);
+      padding: clamp(54px, 7.2vw, 97px) 0 clamp(32px, 3.6vw, 50px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 5vw, 100px);
+      align-items: center;
+      grid-template-rows: auto;
+    }
+    .text-block-left { display: flex; flex-direction: column; }
+    .text-block-right {
+      display: flex; flex-direction: column; justify-content: center;
+      border-left: 1px solid rgba(0,0,0,.15);
+      padding-left: clamp(40px, 5vw, 100px);
+      align-self: stretch;
+    }
+    .article .text-block-right { border-left-color: rgba(255,255,255,.1); }
+    @media (max-width: 680px) {
+      .text-block { grid-template-columns: 1fr; gap: 24px; }
     }
 
     /* ── labels / headings / prose — dark bg defaults ── */
@@ -321,8 +337,8 @@
 
     .pull {
       border-left: 3px solid var(--pink);
-      padding: 14px 0 14px 22px;
-      margin: 32px 0;
+      padding: 8px 0 8px 22px;
+      margin: 18px 0;
     }
     .pull p {
       font-size: clamp(20px, 2.2vw, 28px);
@@ -402,21 +418,24 @@
       padding: clamp(36px, 5vw, 64px) var(--pad);
     }
     .pink-band-inner {
-      max-width: 700px; margin: 0 auto;
-      display: flex; gap: clamp(24px, 4vw, 56px);
-      align-items: flex-start; flex-wrap: wrap;
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 5vw, 100px);
+      align-items: center;
     }
     .pink-big {
       font-size: clamp(36px, 5.5vw, 76px);
       font-weight: 800; text-transform: uppercase;
       letter-spacing: 0.1em; line-height: 0.9;
-      color: var(--white); flex: 1; min-width: 220px;
+      color: var(--white);
     }
     .pink-side {
       font-size: 18px; font-weight: 400;
       color: rgba(255,255,255,.78);
-      line-height: 1.65; max-width: 280px;
-      flex-shrink: 0; padding-top: 6px; letter-spacing: 0;
+      line-height: 1.65;
+      border-left: 1px solid rgba(255,255,255,.3);
+      padding-left: clamp(40px, 5vw, 100px);
+      letter-spacing: 0;
     }
 
     /* ── FULL-BLEED VIDEO BREAK ──────────── */
@@ -447,31 +466,48 @@
       background: var(--blue);
       padding: clamp(64px, 8vw, 108px) var(--pad);
     }
-    .closing-inner { max-width: 700px; margin: 0 auto; }
+    .closing-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 5vw, 100px);
+      align-items: center;
+    }
     .closing .section-label { color: rgba(255,255,255,.55); }
     .closing .section-label::before { background: rgba(255,255,255,.45); }
-    .closing .section-h2 { color: var(--white); }
+    .closing .section-h2 { color: var(--white); margin-bottom: 0; }
     .closing .prose p { color: rgba(255,255,255,.78); font-weight: 400; letter-spacing: 0; }
     .closing .prose strong { color: var(--white); font-weight: 700; }
+    .closing .closing-right {
+      border-left: 1px solid rgba(255,255,255,.2);
+      padding-left: clamp(40px, 5vw, 100px);
+    }
 
     /* ── CTA — yellow bg ─────────────────── */
     .cta {
       background: var(--yellow);
       padding: clamp(64px, 8vw, 108px) var(--pad);
     }
-    .cta-inner { max-width: 700px; margin: 0 auto; }
+    .cta-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 5vw, 100px);
+      align-items: center;
+    }
     .cta-h2 {
       font-size: clamp(40px, 6.5vw, 92px);
       font-weight: 800; text-transform: uppercase;
       letter-spacing: 0.1em; line-height: 0.9;
-      color: #000;
-      margin-bottom: clamp(24px, 3vw, 40px);
+      color: #000; margin-bottom: 0;
     }
     .cta-h2 span { color: var(--pink); }
+    .cta-right {
+      border-left: 1px solid rgba(0,0,0,.15);
+      padding-left: clamp(40px, 5vw, 100px);
+    }
     .cta-sub {
       font-size: 18px; font-weight: 400;
       color: rgba(0,0,0,.62);
-      line-height: 1.65; max-width: 460px;
+      line-height: 1.65;
       margin-bottom: 36px; letter-spacing: -0.27px;
     }
     .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
@@ -551,25 +587,89 @@
     .footer-social a:hover { color: #fff; }
     .footer-lang { font-size: 13px; color: #B7B7B7; cursor: pointer; }
 
+    /* ── RESPONSIVE ──────────────────────── */
+
+    /* Tablet landscape + small desktop (max 1024px) */
+    @media (max-width: 1024px) {
+      .col { max-width: 100%; }
+      .text-block { gap: clamp(32px, 4vw, 60px); }
+      .closing-inner { gap: clamp(32px, 4vw, 60px); }
+      .cta-inner { gap: clamp(32px, 4vw, 60px); }
+      .pink-band-inner { gap: clamp(32px, 4vw, 60px); }
+    }
+
+    /* Tablet portrait (max 860px) — stack two-column grids */
     @media (max-width: 860px) {
+      .text-block {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+      .text-block-right {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid rgba(0,0,0,.15);
+        padding-top: 28px;
+        justify-content: flex-start;
+        align-self: auto;
+      }
+      .article .text-block-right {
+        border-top-color: rgba(255,255,255,.1);
+      }
+      .pink-band-inner {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .pink-side {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid rgba(255,255,255,.3);
+        padding-top: 24px;
+      }
+      .closing-inner {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .closing .closing-right {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid rgba(255,255,255,.2);
+        padding-top: 24px;
+      }
+      .cta-inner {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .cta-right {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid rgba(0,0,0,.15);
+        padding-top: 24px;
+      }
+      .pair, .vid-pair { grid-template-columns: 1fr; }
+      .pair-cell, .vid-cell { aspect-ratio: 16/9; }
       .footer-grid { grid-template-columns: 1fr; }
       .footer-right { flex-direction: column; gap: 32px; }
     }
-    @media (max-width: 520px) {
+
+    /* Mobile (max 560px) */
+    @media (max-width: 560px) {
+      .nav-links-panel { width: 100%; min-width: unset; padding: 7rem 24px 3rem; }
+      .nav-content-panel { display: none; }
+      .section-h2 { letter-spacing: 0.06em; }
+      .hero-h1 { letter-spacing: 0.06em; }
+      .text-block { padding-top: clamp(40px, 8vw, 60px); padding-bottom: clamp(24px, 5vw, 36px); }
+      .cta-row { flex-direction: column; }
       .footer-nav a { font-size: 22px; }
       .footer-lets-talk { font-size: 16px; padding: 12px 24px; }
-      footer { padding: 48px clamp(24px, 6vw, 96px) 28px; }
+      footer { padding: 48px clamp(20px, 5vw, 48px) 28px; }
+      .ncp-grid { grid-template-columns: repeat(2, 1fr); }
+      .vid-break { min-height: 240px; }
     }
 
-    /* ── RESPONSIVE ──────────────────────── */
-    @media (max-width: 860px) {
-      .pair, .vid-pair { grid-template-columns: 1fr; }
-      .pair-cell, .vid-cell { aspect-ratio: 16/9; }
-      .pink-band-inner { flex-direction: column; }
-    }
-
-    @media (max-width: 520px) {
-      .cta-row { flex-direction: column; }
+    /* Small mobile (max 400px) */
+    @media (max-width: 400px) {
+      .ncp-grid { grid-template-columns: 1fr; }
+      .btn { width: 100%; text-align: center; justify-content: center; }
     }
   </style>
 </head>
@@ -613,8 +713,7 @@
      HERO — slow dolly video
 ════════════════════════════════ -->
 <section class="hero">
-  <video class="hero-video" autoplay muted loop playsinline preload="auto"
-    poster="images/AYFCS014-Octagon_INT_Co-working_txt-1024x576.jpg">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto">
     <source src="videos/Gen-4-Slow-dolly-cam-zoom-in-2563450850-4K.mp4" type="video/mp4" />
   </video>
   <div class="hero-shade"></div>
@@ -639,11 +738,15 @@
 <div class="article light">
   <div class="col">
     <div class="text-block">
-      <div class="section-label">Adding purpose</div>
-      <h2 class="section-h2">Take a CG-only<br>room set. Add people.<br>Suddenly it feels alive.</h2>
-      <div class="prose">
-        <p>AI is what makes this practical now. We used to place people with traditional techniques. It worked, but it was slow and fiddly. With AI we can populate a still in minutes and <strong>the blend looks natural.</strong></p>
-        <p>Skin tones sit right. Contact shadows sit right. It looks like it was always there.</p>
+      <div class="text-block-left">
+        <div class="section-label">Adding purpose</div>
+        <h2 class="section-h2">Take a CG-only<br>room set. Add people.<br>Suddenly it<br>feels alive.</h2>
+      </div>
+      <div class="text-block-right">
+        <div class="prose">
+          <p>People make a space readable. Without them, even the best CGI feels like a showroom — clean, correct, and empty.</p>
+          <p>We use AI to place lifelike characters directly into finished stills. The blend is seamless. <strong>Skin tones sit right. Contact shadows sit right.</strong> It looks like they were always there — and what used to take days now takes minutes.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -669,7 +772,7 @@
 <div class="pink-band">
   <div class="pink-band-inner">
     <p class="pink-big">AI makes it real.<br>In minutes.</p>
-    <p class="pink-side">We can populate a still in minutes and the blend looks natural. Skin tones sit right. Contact shadows sit right. It looks like it was always there.</p>
+    <p class="pink-side">People make a space readable. Without them, even the best CGI feels like a showroom — clean, correct, and empty. We change that, fast.</p>
   </div>
 </div>
 
@@ -681,12 +784,17 @@
 <div class="article white">
   <div class="col">
     <div class="text-block">
-      <div class="section-label">Real value</div>
-      <h2 class="section-h2">Show what the space<br>is <span style="color:var(--pink)">for</span>, not just<br>what it looks like.</h2>
-      <div class="prose">
-        <p>Moving people let you show what the space is for, not just what it looks like. A kitchen reads as breakfast in motion. A lobby reads as arrivals and greetings. A student common room reads as study, chat, and flow.</p>
-        <div class="pull">
-          <p>Purpose comes across in seconds — which wasn't viable at a sensible price point before. Now it is.</p>
+      <div class="text-block-left">
+        <div class="section-label">Real value</div>
+        <h2 class="section-h2">Show what the<br>space is <span style="color:var(--pink)">for</span>,<br>not just what<br>it looks like.</h2>
+      </div>
+      <div class="text-block-right">
+        <div class="prose">
+          <p>A rendered room tells you what a space looks like. People in motion tell you what it's <em>for</em>.</p>
+          <p>A lobby reads as arrivals. A kitchen reads as morning. A lounge reads as conversation. The brief lands in seconds — not after a paragraph of description.</p>
+          <div class="pull">
+            <p>That kind of storytelling wasn't viable at speed before. Now it is.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -716,12 +824,17 @@
 <div class="article light">
   <div class="col">
     <div class="text-block">
-      <div class="section-label">Workflow</div>
-      <h2 class="section-h2">Start with a still.<br>End with a<br>dynamic still.</h2>
-      <div class="prose">
-        <p>Our typical flow is simple. Start with a finished CGI still. Use <strong>NanoBanana 2.5</strong> to add lifelike characters — try two or three versions to get the right mix of poses and density. Then bring that image into <strong>Runway</strong>. Generate a short camera move. Think of a 7 to 10 second glide.</p>
-        <div class="pull">
-          <p>That is a dynamic still.</p>
+      <div class="text-block-left">
+        <div class="section-label">Workflow</div>
+        <h2 class="section-h2">Start with a still.<br>End with a<br>dynamic still.</h2>
+      </div>
+      <div class="text-block-right">
+        <div class="prose">
+          <p>Take a finished CGI still. Use <strong>NanoBanana 2.5</strong> to populate it with characters — try a few variations to get the right density and feel. Then bring it into <strong>Runway</strong> and generate a short camera move. A slow glide. Seven to ten seconds.</p>
+          <div class="pull">
+            <p>That is a dynamic still.</p>
+          </div>
+          <p>No shoot. No cast. No location. Just your existing asset, made to move.</p>
         </div>
       </div>
     </div>
@@ -751,14 +864,18 @@
 <div class="article white">
   <div class="col">
     <div class="text-block">
-      <div class="section-label">Quality control · Flexibility</div>
-      <h2 class="section-h2">The golden five<br>or six seconds<br>that are flawless.</h2>
-      <div class="prose">
-        <p>Quality control happens in the edit. AI is convincing until a tiny quirk sneaks in on a frame. On a slow move through a busy scene you might see an odd hand or a face that breaks for a beat.</p>
-        <div class="pull">
-          <p>We trim to the golden five or six seconds that are flawless.</p>
+      <div class="text-block-left">
+        <div class="section-label">Quality control · Flexibility</div>
+        <h2 class="section-h2">The golden<br>five or six<br>seconds that<br>are flawless.</h2>
+      </div>
+      <div class="text-block-right">
+        <div class="prose">
+          <p>AI is convincing — until a single frame isn't. An odd hand. A face that slips. We review every clip and cut to the moments that hold up completely.</p>
+          <div class="pull">
+            <p>We trim to the golden five or six seconds that are flawless.</p>
+          </div>
+          <p>From one base image we can produce multiple cuts — different demographics, different moods, different markets. Guide the AI with simple prompts: headcount, activity, dress code, age range. <strong>It stays true to the brief and looks entirely authentic.</strong></p>
         </div>
-        <p>The result is a tight, believable clip with people who feel present in the space. The flexibility is a bonus — from one base image we can create multiple cuts for different markets and audiences with different demographic make ups. We guide the AI with simple prompts: rough headcount, what they are doing, dress code, broad age range. <strong>It stays close to the intent and looks authentic.</strong></p>
       </div>
     </div>
   </div>
@@ -779,6 +896,25 @@
 </div>
 
 <!-- Full-bleed video break — cinematic close before final paragraph -->
+<!-- ════════════════════════════════
+     PARAGRAPH 4 — closing / why exciting
+════════════════════════════════ -->
+<section class="closing">
+  <div class="closing-inner">
+    <div class="closing-left">
+      <div class="section-label">Why this is exciting</div>
+      <h2 class="section-h2">Repurpose. Produce.<br>Keep consistency.</h2>
+    </div>
+    <div class="closing-right">
+      <div class="prose">
+        <p>Your CGI assets already exist. We make them work harder — adding people, adding motion, creating cuts for different audiences without starting from scratch.</p>
+        <p><strong>Costs stay sensible. Turnaround is fast.</strong> And the result feels like a space that's genuinely lived in.</p>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
 <div class="vid-break">
   <video autoplay muted loop playsinline preload="auto">
     <source src="videos/Gen-4-Slow-dolly-cam-zoom-in-2563450850-4K.mp4" type="video/mp4" />
@@ -788,25 +924,11 @@
   </div>
 </div>
 
-<!-- ════════════════════════════════
-     PARAGRAPH 4 — closing / why exciting
-     Blue background — breaks the dark run
-════════════════════════════════ -->
-<section class="closing">
-  <div class="closing-inner">
-    <div class="section-label">Why this is exciting</div>
-    <h2 class="section-h2">Repurpose. Produce.<br>Keep consistency.</h2>
-    <div class="prose">
-      <p>You can repurpose existing imagery, produce short video quickly, and keep brand consistency while tuning representation for the brief. <strong>Costs stay sensible. Turnaround is fast.</strong></p>
-      <p>Most of all, the environment feels human and purposeful.</p>
-    </div>
-  </div>
-</section>
-
 <!-- CTA — yellow background, strong contrast before black footer -->
 <section class="cta">
   <div class="cta-inner">
     <h2 class="cta-h2">Ready to bring<br>your spaces<br><span>to life?</span></h2>
+    <div class="cta-right">
     <p class="cta-sub">Talk to the Image Foundry team about adding people and motion to your CGI assets. We work across interiors, property, and product.</p>
     <div class="cta-row">
       <a class="btn btn-dark" href="mailto:hello@loveimagefoundry.com">Let's talk</a>
