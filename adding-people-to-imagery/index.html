@@ -774,8 +774,8 @@
       letter-spacing: 0.1em; text-transform: uppercase; line-height: 0.9;
     }
     .gallery-sub {
-      font-size: clamp(15px, 1.4vw, 18px); font-weight: 400; letter-spacing: 0;
-      color: var(--mid-grey); max-width: 300px; line-height: 1.5; text-align: right;
+      font-size: clamp(17px, 1.6vw, 20px); font-weight: 400; letter-spacing: 0;
+      color: var(--near-black); max-width: 340px; line-height: 1.65; text-align: right;
     }
     .gallery-grid {
       display: grid;
@@ -857,9 +857,17 @@
     .takeaway-card:nth-child(3)::before { background: var(--yellow); }
     .takeaway-card:nth-child(4)::before { background: var(--near-black); }
     .takeaway-card:last-child { border-right: none; }
+    .ta-icon {
+      width: 48px; height: 48px; margin-bottom: 20px;
+      display: block;
+    }
+    .takeaway-card:nth-child(1) .ta-icon { color: var(--pink); }
+    .takeaway-card:nth-child(2) .ta-icon { color: var(--blue); }
+    .takeaway-card:nth-child(3) .ta-icon { color: var(--yellow); }
+    .takeaway-card:nth-child(4) .ta-icon { color: var(--near-black); }
     .ta-num {
       font-size: 11px; font-weight: 700; letter-spacing: 0.26em;
-      text-transform: uppercase; color: var(--mid-grey); margin-bottom: 20px; display: block;
+      text-transform: uppercase; color: var(--mid-grey); margin-bottom: 16px; display: block;
     }
     .ta-title {
       font-size: clamp(20px, 1.8vw, 26px); font-weight: 800; letter-spacing: 0.08em;
@@ -1320,21 +1328,40 @@
     </div>
     <div class="takeaways-grid">
       <div class="takeaway-card wow">
+        <svg class="ta-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="18" cy="16" r="6"/><circle cx="32" cy="20" r="5"/><circle cx="10" cy="22" r="4"/>
+          <path d="M2 40c0-6 7-10 16-10s16 4 16 10"/><path d="M34 32c4 0 10 2 12 8"/><path d="M6 34c-3 1-5 3-4 6"/>
+        </svg>
         <span class="ta-num">BG ————</span>
         <h3 class="ta-title">Background Figures</h3>
         <p class="ta-body">For <strong>lifestyle background figures</strong> — AI, 3D, and the mixed method all deliver outstanding results quickly and affordably.</p>
       </div>
       <div class="takeaway-card wow">
+        <svg class="ta-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="24" cy="14" r="8"/>
+          <path d="M8 44c0-8 7-14 16-14s16 6 16 14"/>
+          <path d="M32 20l6 4-6 4"/>
+        </svg>
         <span class="ta-num">FG ————</span>
         <h3 class="ta-title">Foreground Focus</h3>
         <p class="ta-body">For <strong>central or hero figures</strong> — the hybrid 3D+AI approach is a genuine game-changer, producing believable people that hold up at any scale.</p>
       </div>
       <div class="takeaway-card wow">
+        <svg class="ta-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="24" cy="24" r="18"/>
+          <path d="M24 12v12l8 4"/>
+          <path d="M6 24h4M38 24h4M24 6v4M24 38v4"/>
+        </svg>
         <span class="ta-num">VOL ————</span>
         <h3 class="ta-title">Volume & Speed</h3>
         <p class="ta-body">For <strong>high-volume content</strong> — AI workflows make previously slow, expensive processes practical for everyday production.</p>
       </div>
       <div class="takeaway-card wow">
+        <svg class="ta-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="6" y="8" width="36" height="28" rx="2"/>
+          <path d="M16 36v6M32 36v6M10 42h28"/>
+          <path d="M14 20h20M14 26h14"/>
+        </svg>
         <span class="ta-num">RES ————</span>
         <h3 class="ta-title">Large Format Print</h3>
         <p class="ta-body">For <strong>A4+ print applications</strong> — AI-only may fall short on resolution. Photography or the hybrid method remain the safest choices.</p>
