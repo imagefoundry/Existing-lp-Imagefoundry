@@ -295,7 +295,7 @@
     /* ── VIDEO SHOWCASE ───────────────────── */
     .showcase-section {
       background: var(--off-white);
-      padding: clamp(72px,9vw,120px) var(--px);
+      padding: clamp(36px,4vw,56px) var(--px) clamp(72px,9vw,120px);
       border-bottom: 1px solid var(--light-grey);
     }
     .showcase-inner { max-width: 1200px; margin: 0 auto; }
@@ -317,7 +317,10 @@
       text-transform: uppercase; line-height: .92; letter-spacing: 0.08em;
       color: var(--black);
     }
-    .showcase-header p {
+    .showcase-header-right {
+      display: flex; flex-direction: column; gap: 20px; padding-bottom: 6px;
+    }
+    .showcase-header-right p {
       font-size: clamp(16px,1.7vw,20px); color: #555; line-height: 1.65;
     }
     .video-grid {
@@ -557,18 +560,22 @@
       border-bottom: 1px solid var(--light-grey);
     }
     .iyw-header {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: clamp(40px,5vw,80px); align-items: end;
-      padding: clamp(72px,9vw,120px) var(--px) clamp(48px,6vw,80px);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: clamp(24px,4vw,64px);
+      padding: clamp(28px,3vw,40px) var(--px);
       border-bottom: 1px solid var(--light-grey);
+      flex-wrap: wrap;
     }
+    .iyw-header-left { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+    .iyw-header-left .section-eyebrow { margin-bottom: 0; }
     .iyw-header h2 {
-      font-size: clamp(36px,5vw,72px); font-weight: 800;
-      text-transform: uppercase; line-height: .92; letter-spacing: 0.08em;
-      color: var(--black);
+      font-size: clamp(22px,2.5vw,34px); font-weight: 800;
+      text-transform: uppercase; line-height: 1; letter-spacing: 0.1em;
+      color: var(--black); margin: 0;
     }
     .iyw-header-desc {
-      font-size: clamp(16px,1.7vw,20px); color: #555; line-height: 1.65;
+      font-size: clamp(14px,1.4vw,17px); color: #777; line-height: 1.6;
+      max-width: 380px; text-align: right;
     }
     .iyw-row {
       display: grid; grid-template-columns: 64px 1fr 1fr;
@@ -733,7 +740,9 @@
         <p class="section-eyebrow">See the work</p>
         <h2>Six stills.<br/>Six clips.<br/>Zero re-renders.</h2>
       </div>
-      <p>Every clip below started life as a single CGI still image — the same kind you already have. Hover to preview. Click to watch full screen.</p>
+      <div class="showcase-header-right">
+        <p>Each clip below began as a single finished render — property, product, interior, exterior. No new 3D work. No reshoots. Just a cinematic camera move applied to what already exists. Hover any clip to see it in motion. Click to watch full screen.</p>
+      </div>
     </div>
     <div class="video-grid">
 
@@ -816,9 +825,9 @@
 <!-- ── IN YOUR WORLD ── -->
 <section class="iyw-section">
   <div class="iyw-header">
-    <div>
+    <div class="iyw-header-left">
       <p class="section-eyebrow">Works across every sector</p>
-      <h2>In Your<br/>World</h2>
+      <h2>In Your World</h2>
     </div>
     <p class="iyw-header-desc">The same technique. Applied to your render. Tuned to how your audience actually watches.</p>
   </div>
