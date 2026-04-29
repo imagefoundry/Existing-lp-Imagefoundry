@@ -11,22 +11,44 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --if-pink:    #a60064;
-      --if-blue:    #006680;
-      --if-yellow:  #ecaa00;
-      --white:      #ffffff;
-      --black:      #000000;
-      --near-black: #111111;
-      --mid-grey:   #B7B7B7;
-      --teal:       #2A657D;
-      --font:       'Barlow Condensed', sans-serif;
-      --section-pad: clamp(56px, 7vw, 100px);
-      --gutter:      clamp(24px, 5vw, 80px);
+      --black:       #000000;
+      --white:       #FFFFFF;
+      --pink:        #a60064;
+      --blue:        #006680;
+      --yellow:      #ecaa00;
+      --pink-accent: #e01783;
+      --blue-accent: #00a4c3;
+      --off-white:   #F6F6F6;
+      --light-grey:  #DBDBDB;
+      --mid-grey:    #B7B7B7;
+      --near-black:  #212529;
+      --font: 'Barlow Condensed', sans-serif;
+      --px: clamp(48px, 6vw, 112px);
     }
 
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
     body.nav-open { overflow: hidden; }
 
-    /* ── HEADER ── */
+    img, video { display: block; }
+
+    .outline {
+      -webkit-text-stroke: 2px var(--black);
+      -webkit-text-fill-color: transparent;
+    }
+    .outline-white {
+      -webkit-text-stroke: 2px var(--white);
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* ── NAV ──────────────────────────────── */
     .site-header {
       position: absolute; top: 0; left: 0; right: 0;
       z-index: 200; background: transparent;
@@ -46,10 +68,7 @@
       background: transparent;
       transition: background .35s, box-shadow .35s;
     }
-    .sf.scrolled .sf-top-row {
-      background: var(--black);
-      box-shadow: 0 4px 20px rgba(0,0,0,.35);
-    }
+    .sf.scrolled .sf-top-row { background: var(--black); box-shadow: 0 4px 20px rgba(0,0,0,.35); }
     .sf-phone {
       white-space: nowrap; color: var(--white);
       font-family: var(--font); font-size: 18px; font-weight: 700;
@@ -58,50 +77,35 @@
     }
     .sf-phone a { color: inherit; text-decoration: none; }
     .sf.scrolled .sf-phone { max-width: 220px; opacity: 1; }
-    .sf-contact-btn {
-      opacity: 0; pointer-events: none;
-      max-height: 0; overflow: hidden;
-      transition: opacity .3s, max-height .35s;
-    }
+    .sf-contact-btn { opacity: 0; pointer-events: none; max-height: 0; overflow: hidden; transition: opacity .3s, max-height .35s; }
     .sf.scrolled .sf-contact-btn { opacity: 1; pointer-events: auto; max-height: 80px; }
     .sf-contact-btn a {
-      background: var(--white); color: var(--black);
-      border: 1.5px solid var(--black);
+      background: var(--white); color: var(--black); border: 1.5px solid var(--black);
       text-transform: uppercase; letter-spacing: .04em;
-      white-space: nowrap; display: flex;
-      justify-content: space-between; align-items: center;
+      white-space: nowrap; display: flex; justify-content: space-between; align-items: center;
       gap: 24px; padding: 1rem 1.4rem;
       font-family: var(--font); font-size: 18px; font-weight: 500;
       text-decoration: none; transition: background .2s, color .2s;
     }
-    .sf-contact-btn a:after {
-      content: ""; background: var(--black);
-      flex-shrink: 0; width: 50px; height: 1.5px;
-      transition: background .2s;
-    }
+    .sf-contact-btn a:after { content: ""; background: var(--black); flex-shrink: 0; width: 50px; height: 1.5px; transition: background .2s; }
     .sf-contact-btn a:hover { background: var(--black); color: var(--white); }
     .sf-contact-btn a:hover:after { background: var(--white); }
-    .sf-burger {
-      cursor: pointer; width: 30px; height: 25px; position: relative; flex-shrink: 0; z-index: 10001;
-    }
+    .sf-burger { cursor: pointer; width: 30px; height: 25px; position: relative; flex-shrink: 0; z-index: 10001; }
     .sf-burger span {
       background-color: var(--white); width: 30px; height: 2px;
-      display: block; position: absolute; top: 50%; left: 50%;
-      margin-left: -15px;
+      display: block; position: absolute; top: 50%; left: 50%; margin-left: -15px;
       transition: background-color .25s, transform .25s, opacity .25s;
     }
     .sf-burger span:before, .sf-burger span:after {
-      content: ""; background-color: var(--white);
-      width: 30px; height: 2px; display: block; position: absolute;
+      content: ""; background-color: var(--white); width: 30px; height: 2px; display: block; position: absolute;
       transition: background-color .25s, transform .25s, top .25s;
     }
     .sf-burger span:before { top: -9px; }
     .sf-burger span:after  { top: 9px; }
-    body.nav-open .sf-burger span          { opacity: 0; }
-    body.nav-open .sf-burger span:before   { top: 0; transform: rotate(45deg); }
-    body.nav-open .sf-burger span:after    { top: 0; transform: rotate(-45deg); }
+    body.nav-open .sf-burger span        { opacity: 0; }
+    body.nav-open .sf-burger span:before { top: 0; transform: rotate(45deg); }
+    body.nav-open .sf-burger span:after  { top: 0; transform: rotate(-45deg); }
 
-    /* ── NAV OVERLAY ── */
     .nav-overlay {
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
       display: flex; flex-direction: row; align-items: stretch;
@@ -112,1488 +116,539 @@
     body.nav-open .nav-overlay { transform: translateX(0); }
     .nav-content-panel {
       flex: 1; background: var(--white);
-      max-height: 100vh; overflow-y: auto;
-      -ms-overflow-style: none; scrollbar-width: none;
-      transition: opacity 0.2s ease, visibility 0.2s ease;
+      padding: 80px clamp(32px,5vw,80px) 48px;
+      overflow-y: auto; visibility: hidden; opacity: 0; transition: opacity .3s;
     }
-    .nav-content-panel::-webkit-scrollbar { display: none; }
-    .ncp-heading { font-size: 50px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; line-height: 1; margin-bottom: 2rem; color: var(--black); }
-    .ncp-body { font-size: 18px; font-weight: 400; line-height: 1.5; color: #555; max-width: 400px; margin-bottom: 1.5rem; }
-    .ncp-header { padding: 3rem; }
-    .ncp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 0 3rem 3rem; }
-    .ncp-item { position: relative; overflow: hidden; display: block; text-decoration: none; height: 220px; cursor: pointer; }
-    .ncp-item::after { content: ''; background: rgba(0,0,0,0.3); width: 100%; height: 100%; position: absolute; inset: 0; }
-    .ncp-item img { object-fit: cover; width: 100%; height: 100%; display: block; transition: transform 0.4s; }
+    .ncp-header { margin-bottom: 32px; }
+    .ncp-heading { font-size: clamp(28px,4vw,48px); font-weight: 800; text-transform: uppercase; color: var(--black); margin-bottom: 12px; }
+    .ncp-body    { font-size: 18px; color: #555; }
+    .ncp-grid    { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .ncp-item    { display: block; text-decoration: none; position: relative; aspect-ratio: 4/3; overflow: hidden; }
+    .ncp-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
     .ncp-item:hover img { transform: scale(1.05); }
-    .ncp-item-label { position: absolute; bottom: 12px; left: 30px; color: var(--white); z-index: 2; font-family: var(--font); font-size: 28px; font-weight: 700; letter-spacing: -0.015em; text-transform: uppercase; text-decoration: underline; }
+    .ncp-item-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 8px 12px; background: rgba(0,0,0,.55);
+      color: var(--white); font-size: 15px; font-weight: 600; text-transform: uppercase;
+    }
     .nav-links-panel {
       width: 25%; min-width: 280px; background: var(--black);
       display: flex; flex-direction: column; justify-content: space-between;
       padding: 10rem 2rem 4rem 4rem;
       height: 100vh; overflow-y: auto; flex-shrink: 0; position: relative;
     }
-    .nav-close { position: absolute; top: 1.8rem; right: 1.8rem; background: none; border: none; color: var(--white); font-size: 24px; line-height: 1; cursor: pointer; padding: 0; transition: opacity 0.2s; }
+    .nav-close {
+      position: absolute; top: 1.8rem; right: 1.8rem;
+      background: none; border: none; color: var(--white); font-size: 24px; line-height: 1;
+      cursor: pointer; padding: 0; transition: opacity 0.2s;
+    }
     .nav-close:hover { opacity: 0.7; }
     .nav-links { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
-    .nav-links li a { font-family: var(--font); font-size: 30px; font-weight: 700; letter-spacing: -0.45px; text-transform: uppercase; line-height: normal; color: var(--white); text-decoration: none; display: block; transition: color 0.3s; }
-    .nav-links li a:hover, .nav-links li a.is-active { color: var(--if-yellow); }
+    .nav-links li a {
+      font-family: var(--font);
+      font-size: 30px; font-weight: 700; letter-spacing: -0.45px;
+      text-transform: uppercase; line-height: normal;
+      color: var(--white); text-decoration: none;
+      display: block; transition: color 0.3s;
+    }
+    .nav-links li a:hover, .nav-links li a.is-active { color: var(--pink); }
     .nav-privacy { padding-bottom: 4rem; }
-    .nav-privacy a { font-size: 18px; font-weight: 500; letter-spacing: -0.27px; color: var(--white); text-decoration: none; transition: opacity 0.2s; }
+    .nav-privacy a { font-size: 18px; font-weight: 500; color: var(--white); text-decoration: none; transition: opacity 0.2s; }
     .nav-privacy a:hover { opacity: 0.7; }
     .nav-social { display: flex; gap: 24px; padding-top: 4rem; }
     .nav-social a { font-size: 14px; font-weight: 400; color: var(--mid-grey); text-decoration: none; transition: color 0.2s; }
     .nav-social a:hover { color: var(--white); }
 
-    /* ── FOOTER ── */
-    footer {
-      background: var(--near-black);
-      border-top: 3px solid var(--if-pink);
-      padding: clamp(56px, 7vw, 100px) clamp(24px, 5vw, 80px) clamp(28px, 3vw, 48px);
+    /* ── HERO ─────────────────────────────── */
+    .hero {
+      position: relative; width: 100%; height: 100svh; min-height: 600px;
+      display: flex; align-items: flex-end; overflow: hidden;
+      background: var(--black);
     }
-    .footer-grid { display: grid; grid-template-columns: 260px 1fr; gap: clamp(40px, 5vw, 80px); margin-bottom: clamp(40px, 5vw, 64px); }
-    .footer-right { display: flex; justify-content: flex-end; align-items: flex-start; gap: clamp(40px, 6vw, 80px); }
-    .footer-logo-block { display: flex; flex-direction: column; gap: 28px; }
-    .footer-lets-talk {
-      display: inline-block; font-family: var(--font);
-      font-size: clamp(15px, 1.5vw, 18px); font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--white);
-      text-decoration: none; border: 2px solid var(--if-yellow);
-      padding: 14px 32px; align-self: flex-start;
+    .hero-video {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; z-index: 0;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.35) 55%, rgba(0,0,0,.1) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: var(--px) var(--px) clamp(72px,10vw,120px);
+      max-width: 1200px; width: 100%;
+    }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--yellow);
+      margin-bottom: 28px; display: inline-flex; align-items: center; gap: 12px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 32px; height: 2px; background: var(--yellow); flex-shrink: 0;
+    }
+    .hero-h1 {
+      font-size: clamp(64px, 10vw, 130px); font-weight: 800;
+      letter-spacing: 0.1em; text-transform: uppercase; line-height: 0.88;
+      color: var(--white); margin-bottom: 36px;
+    }
+    .hero-h1 em { font-style: normal; color: var(--yellow); }
+    .hero-sub {
+      font-size: clamp(17px, 1.8vw, 22px); font-weight: 400;
+      color: rgba(255,255,255,0.8); max-width: 560px; line-height: 1.6;
+      border-left: 3px solid var(--pink); padding-left: 20px;
+      margin-bottom: clamp(36px,4vw,56px);
+    }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 14px; }
+    .btn-primary {
+      display: inline-block; padding: 18px 52px;
+      background: var(--pink); color: var(--white);
+      font-family: var(--font); font-size: 16px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none;
+      border: 2px solid var(--pink);
       transition: background 0.2s, color 0.2s;
     }
-    .footer-lets-talk:hover { background: var(--if-yellow); color: var(--black); }
-    .footer-nav { display: flex; flex-direction: column; gap: 4px; list-style: none; }
-    .footer-nav a { font-family: var(--font); font-size: clamp(22px, 2.5vw, 32px); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white); text-decoration: none; line-height: 1.2; transition: color 0.2s; }
-    .footer-nav a:hover { color: var(--if-pink); }
-    .footer-legal { display: flex; flex-direction: column; gap: 8px; }
-    .footer-legal a { font-size: 15px; font-weight: 400; color: var(--mid-grey); text-decoration: none; transition: color 0.2s; }
-    .footer-legal a:hover { color: var(--white); }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; }
-    .footer-social { display: flex; gap: 24px; }
-    .footer-social a { font-size: 15px; font-weight: 400; color: var(--mid-grey); text-decoration: none; transition: color 0.2s; }
-    .footer-social a:hover { color: var(--white); }
-    .footer-copyright { font-size: 13px; color: rgba(255,255,255,0.25); font-family: var(--font); }
-    .footer-lang { font-size: 13px; color: var(--mid-grey); cursor: pointer; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: var(--font);
-      background: var(--white);
-      color: var(--black);
-      font-weight: 400;
-      overflow-x: hidden;
-    }
-
-    /* hero sits under transparent header — no top margin needed */
-
-    /* ─────────────────────────────────────────
-       HERO — full bleed image, centred overlay
-    ───────────────────────────────────────── */
-    .hero {
-      position: relative;
-      height: 100vh;
-      min-height: 600px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .hero-img {
-      position: absolute;
-      inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    .hero-placeholder {
-      background: #1a1a1a;
-    }
-
-
-    /* Subtle overlay — brand guideline max 0.15 dark overlay */
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.15) 0%,
-        rgba(0,0,0,0.45) 60%,
-        rgba(0,0,0,0.65) 100%
-      );
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding: 0 clamp(20px, 5vw, 80px);
-      max-width: 1100px;
-    }
-
-    .hero-kicker {
-      display: inline-block;
-      font-size: clamp(11px, 1.1vw, 13px);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.28em;
-      color: var(--if-yellow);
-      margin-bottom: 20px;
-      border: 1px solid rgba(236,170,0,0.4);
-      padding: 6px 16px;
-    }
-
-    .hero-headline {
-      font-size: clamp(72px, 12vw, 160px);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      line-height: 0.88;
-      color: var(--white);
-      margin-bottom: 28px;
-    }
-
-    .hero-sub {
-      font-size: clamp(17px, 2vw, 21px);
-      font-weight: 400;
-      color: rgba(255,255,255,0.85);
-      max-width: 540px;
-      margin: 0 auto 44px;
-      line-height: 1.6;
-    }
-
-    /* Button system — consistent across page */
-    .btn {
-      display: inline-block;
-      font-family: var(--font);
-      font-weight: 700;
-      font-size: clamp(14px, 1.4vw, 17px);
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      text-decoration: none;
-      padding: 17px 44px;
+    .btn-primary:hover { background: transparent; color: var(--white); }
+    .btn-outline {
+      display: inline-block; padding: 18px 52px;
+      background: transparent; color: var(--white);
+      font-family: var(--font); font-size: 16px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.4);
       transition: background 0.2s, color 0.2s, border-color 0.2s;
     }
+    .btn-outline:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+    .hero-accent { position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: var(--pink); z-index: 3; }
 
-    /* Primary — solid dark fill */
-    .btn-primary {
+    /* ── PROBLEM / HOOK ───────────────────── */
+    .hook-section {
+      background: var(--white);
+      padding: clamp(72px,9vw,120px) var(--px);
+      border-bottom: 1px solid var(--light-grey);
+    }
+    .hook-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: clamp(48px,6vw,100px); align-items: center;
+    }
+    .hook-left h2 {
+      font-size: clamp(36px,4.5vw,64px); font-weight: 800;
+      text-transform: uppercase; line-height: .92; letter-spacing: 0.06em;
+      color: var(--black); margin-bottom: clamp(20px,2.5vw,36px);
+    }
+    .hook-left h2 span { color: var(--pink); }
+    .hook-left p {
+      font-size: clamp(16px,1.7vw,20px); line-height: 1.7;
+      color: #555; margin-bottom: 18px;
+    }
+    .hook-left p strong { color: var(--near-black); font-weight: 700; }
+    .hook-right {
+      border-left: 1px solid var(--light-grey);
+      padding-left: clamp(40px,5vw,80px);
+    }
+    .hook-reveal {
+      background: var(--near-black);
+      padding: clamp(32px,4vw,52px);
+      border-top: 4px solid var(--yellow);
+    }
+    .hook-reveal-label {
+      font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .28em;
+      color: var(--yellow); margin-bottom: 20px;
+    }
+    .hook-reveal-heading {
+      font-size: clamp(26px,3vw,42px); font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--white); line-height: 1.0; margin-bottom: 20px;
+    }
+    .hook-reveal p {
+      font-size: clamp(15px,1.5vw,18px); color: rgba(255,255,255,.75); line-height: 1.65;
+    }
+    @media (max-width: 860px) {
+      .hook-inner { grid-template-columns: 1fr; }
+      .hook-right { border-left: none; padding-left: 0; border-top: 1px solid var(--light-grey); padding-top: clamp(32px,4vw,56px); }
+    }
+
+    /* ── TRUST BAR ────────────────────────── */
+    .trust-bar {
+      background: var(--blue);
+      padding: clamp(32px,4vw,56px) var(--px);
+      border-bottom: 1px solid var(--light-grey);
+    }
+    .trust-bar-inner { max-width: 960px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center; }
+    .trust-bar-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.26em;
+      text-transform: uppercase; color: rgba(255,255,255,.65);
+      margin-bottom: clamp(28px,4vw,48px);
+    }
+    .trust-stats { display: flex; justify-content: center; align-items: center; width: 100%; }
+    .trust-stat { padding: 0 clamp(28px,5vw,80px); text-align: center; }
+    .trust-stat + .trust-stat { border-left: 1px solid rgba(255,255,255,.2); }
+    .trust-stat-num {
+      font-size: clamp(44px,6vw,80px); font-weight: 800; line-height: 1;
+      color: var(--white); display: block; margin-bottom: 10px; padding-bottom: 24px;
+    }
+    .trust-stat-label { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+    @media (max-width: 560px) {
+      .trust-stats { flex-direction: column; }
+      .trust-stat + .trust-stat { border-left: none; padding-top: 28px; border-top: 1px solid rgba(255,255,255,.2); }
+    }
+
+    /* ── VIDEO SHOWCASE ───────────────────── */
+    .showcase-section {
+      background: var(--off-white);
+      padding: clamp(72px,9vw,120px) var(--px);
+      border-bottom: 1px solid var(--light-grey);
+    }
+    .showcase-inner { max-width: 1200px; margin: 0 auto; }
+    .section-eyebrow {
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .28em; color: var(--pink);
+      margin-bottom: 20px; display: inline-flex; align-items: center; gap: 12px;
+    }
+    .section-eyebrow::before {
+      content: ''; display: block; width: 24px; height: 2px; background: var(--pink); flex-shrink: 0;
+    }
+    .showcase-header {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: clamp(32px,4vw,80px); align-items: center;
+      margin-bottom: clamp(48px,6vw,72px);
+    }
+    .showcase-header h2 {
+      font-size: clamp(36px,5vw,72px); font-weight: 800;
+      text-transform: uppercase; line-height: .92; letter-spacing: 0.08em;
+      color: var(--black);
+    }
+    .showcase-header p {
+      font-size: clamp(16px,1.7vw,20px); color: #555; line-height: 1.65;
+    }
+    .video-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 3px; background: var(--light-grey); border: 3px solid var(--light-grey);
+    }
+    .vcard {
+      position: relative; overflow: hidden; cursor: pointer;
+      aspect-ratio: 4/3; background: var(--black);
+    }
+    .vcard video { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .vcard:hover video { transform: scale(1.04); }
+    .vcard-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.7) 0%, rgba(0,0,0,0) 55%);
+    }
+    .vcard-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 18px; }
+    .vcard-tag {
+      display: inline-block;
+      font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .15em;
+      background: var(--pink); color: var(--white); padding: 3px 10px; margin-bottom: 8px;
+    }
+    .vcard-title { font-size: clamp(14px,1.4vw,17px); font-weight: 700; text-transform: uppercase; color: var(--white); line-height: 1.2; letter-spacing: 0.06em; }
+    .vcard-play {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 52px; height: 52px; border-radius: 50%;
+      background: rgba(255,255,255,.12);
+      display: flex; align-items: center; justify-content: center;
+      transition: background .25s, transform .25s;
+    }
+    .vcard:hover .vcard-play { background: var(--pink); transform: translate(-50%,-50%) scale(1.1); }
+    .vcard-play svg { width: 18px; height: 18px; fill: var(--white); margin-left: 3px; }
+    @media (max-width: 860px) {
+      .showcase-header { grid-template-columns: 1fr; }
+      .video-grid { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 560px) {
+      .video-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── HOW IT WORKS ─────────────────────── */
+    .how-section {
+      background: var(--blue);
+      padding: clamp(72px,9vw,120px) var(--px);
+    }
+    .how-inner { max-width: 1200px; margin: 0 auto; }
+    .how-top {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: clamp(40px,5vw,80px); align-items: end;
+      margin-bottom: clamp(48px,6vw,88px);
+    }
+    .how-top h2 {
+      font-size: clamp(36px,5vw,72px); font-weight: 800;
+      text-transform: uppercase; line-height: .92; letter-spacing: 0.08em; color: var(--white);
+    }
+    .how-top p {
+      font-size: clamp(16px,1.7vw,20px); color: rgba(255,255,255,.8); line-height: 1.65;
+    }
+    .how-section .section-eyebrow { color: var(--yellow); }
+    .how-section .section-eyebrow::before { background: var(--yellow); }
+    .how-steps {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 3px; background: rgba(0,0,0,.2);
+    }
+    .how-step {
+      background: rgba(0,0,0,.15); padding: clamp(32px,4vw,56px);
+      position: relative;
+    }
+    .how-step::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 4px; background: var(--yellow);
+    }
+    .how-step-num {
+      font-size: clamp(52px,7vw,88px); font-weight: 800; line-height: 1;
+      color: var(--yellow); margin-bottom: 20px;
+    }
+    .how-step h3 {
+      font-size: clamp(20px,2.2vw,28px); font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--white); margin-bottom: 14px;
+    }
+    .how-step p { font-size: clamp(15px,1.5vw,18px); color: rgba(255,255,255,.8); line-height: 1.65; }
+    @media (max-width: 860px) {
+      .how-top   { grid-template-columns: 1fr; }
+      .how-steps { grid-template-columns: 1fr; }
+    }
+
+    /* ── WHY ──────────────────────────────── */
+    .why-section {
+      background: var(--white);
+      padding: clamp(72px,9vw,120px) var(--px);
+      border-top: 1px solid var(--light-grey);
+      border-bottom: 1px solid var(--light-grey);
+    }
+    .why-inner { max-width: 1200px; margin: 0 auto; }
+    .why-header {
+      text-align: center; margin-bottom: clamp(48px,6vw,72px);
+    }
+    .why-section .section-eyebrow { color: var(--blue); justify-content: center; }
+    .why-section .section-eyebrow::before { background: var(--blue); }
+    .why-inner > h2 {
+      font-size: clamp(36px,5vw,72px); font-weight: 800;
+      text-transform: uppercase; line-height: .92; letter-spacing: 0.1em;
+      color: var(--black); text-align: center;
+      margin-bottom: clamp(48px,6vw,72px);
+    }
+    .why-inner > h2 span {
+      -webkit-text-stroke: 2px var(--black);
+      -webkit-text-fill-color: transparent;
+    }
+    .why-cards {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 3px; background: var(--light-grey); border: 3px solid var(--light-grey);
+    }
+    .why-card {
+      background: var(--white);
+      border-top: 4px solid transparent;
+      padding: clamp(28px,3.5vw,44px) clamp(24px,3vw,40px);
+      transition: background 0.2s;
+    }
+    .why-card:nth-child(1) { border-top-color: var(--pink); }
+    .why-card:nth-child(2) { border-top-color: var(--blue); }
+    .why-card:nth-child(3) { border-top-color: var(--yellow); }
+    .why-card:hover { background: var(--off-white); }
+    .why-card-num {
+      font-size: clamp(40px,5vw,64px); font-weight: 800; line-height: 1;
+      color: var(--mid-grey); margin-bottom: 20px;
+    }
+    .why-card h3 {
+      font-size: clamp(20px,2vw,26px); font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--black); margin-bottom: 14px;
+    }
+    .why-card p { font-size: clamp(15px,1.4vw,17px); color: #555; line-height: 1.65; }
+    @media (max-width: 860px) {
+      .why-cards { grid-template-columns: 1fr; }
+    }
+
+    /* ── CTA ──────────────────────────────── */
+    .cta-section {
+      background: var(--pink);
+      padding: clamp(72px,9vw,128px) var(--px);
+    }
+    .cta-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: clamp(32px,4vw,64px); flex-wrap: wrap;
+    }
+    .cta-copy h2 {
+      font-size: clamp(36px,5.5vw,80px); font-weight: 800;
+      text-transform: uppercase; line-height: .92; letter-spacing: 0.08em;
+      color: var(--white); margin-bottom: 16px;
+    }
+    .cta-copy p {
+      font-size: clamp(17px,1.8vw,22px); color: rgba(255,255,255,.85); line-height: 1.55; max-width: 440px;
+    }
+    .btn-dark {
+      display: inline-block; padding: 18px 52px;
+      background: var(--white); color: var(--pink);
+      font-family: var(--font); font-size: clamp(17px,1.8vw,22px); font-weight: 700;
+      text-transform: uppercase; letter-spacing: .1em; text-decoration: none;
+      white-space: nowrap; flex-shrink: 0;
+      border: 2px solid var(--white);
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-dark:hover { background: transparent; color: var(--white); }
+    @media (max-width: 860px) {
+      .cta-inner { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ── FOOTER ───────────────────────────── */
+    footer {
       background: var(--black);
-      color: var(--white);
-      border: 2px solid var(--black);
+      border-top: 3px solid var(--pink);
+      padding: clamp(56px, 7vw, 96px) var(--px) clamp(32px, 4vw, 48px);
     }
-    .btn-primary:hover {
-      background: var(--if-pink);
-      border-color: var(--if-pink);
-      color: var(--white);
-    }
-
-    /* Pink fill */
-    .btn-pink {
-      background: var(--if-pink);
-      color: var(--white);
-      border: 2px solid var(--if-pink);
-    }
-    .btn-pink:hover {
-      background: #880052;
-      border-color: #880052;
-    }
-
-    /* Outlined white (on dark backgrounds) */
-    .btn-outline-white {
-      color: var(--white);
-      border: 2px solid rgba(255,255,255,0.6);
-      margin-left: 16px;
-      background: transparent;
-    }
-    .btn-outline-white:hover {
-      background: var(--white);
-      border-color: var(--white);
-      color: var(--black);
-    }
-
-    /* ─────────────────────────────────────────
-       TICKER STRIP — IF Pink
-    ───────────────────────────────────────── */
-    .ticker {
-      background: var(--if-pink);
-      overflow: hidden;
-      padding: 18px 0;
-      white-space: nowrap;
-    }
-
-    .ticker-inner {
-      display: inline-block;
-      animation: ticker 20s linear infinite;
-    }
-
-    .ticker-inner span {
-      font-size: clamp(12px, 1.3vw, 14px);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--white);
-      padding: 0 40px;
-    }
-
-    .ticker-inner span::after {
-      content: '◆';
-      margin-left: 40px;
-      opacity: 0.4;
-      font-size: 8px;
-      vertical-align: middle;
-    }
-
-    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    /* ─────────────────────────────────────────
-       SECTION UTILITIES
-    ───────────────────────────────────────── */
-    .section-label {
-      font-size: clamp(11px, 1.1vw, 13px);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.28em;
-      margin-bottom: 16px;
-      display: block;
-    }
-
-    .label-pink  { color: var(--if-pink); }
-    .label-blue  { color: var(--if-blue); }
-    .label-yellow{ color: var(--if-yellow); }
-    .label-white { color: rgba(255,255,255,0.55); }
-
-    .section-headline {
-      font-size: clamp(40px, 5.5vw, 76px);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      line-height: 0.92;
-    }
-
-    /* ─────────────────────────────────────────
-       WHAT ARE THEY — white bg, 2 col
-    ───────────────────────────────────────── */
-    .what {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 560px;
-    }
-
-    .what-text {
-      padding: var(--section-pad) clamp(40px, 5vw, 72px) var(--section-pad) clamp(24px, 4vw, 48px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      border-right: 2px solid var(--black);
-    }
-
-    .what-text .section-headline {
-      color: var(--black);
-      margin-bottom: 32px;
-    }
-
-    .what-text p {
-      font-size: clamp(17px, 1.7vw, 20px);
-      line-height: 1.7;
-      color: #444;
-      margin-bottom: 18px;
-      font-weight: 400;
-    }
-
-    .what-text p:last-child { margin-bottom: 0; }
-
-    .what-img {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .what-img img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.6s ease;
-    }
-
-    .what-img:hover img { transform: scale(1.04); }
-
-    /* Pink stat badge */
-    .what-badge {
-      position: absolute;
-      bottom: 0; left: 0;
-      background: var(--if-pink);
-      padding: 24px 32px;
-    }
-
-    .what-badge strong {
-      display: block;
-      font-size: clamp(40px, 4vw, 56px);
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      color: var(--white);
-      line-height: 1;
-      text-transform: uppercase;
-    }
-
-    .what-badge span {
-      font-size: clamp(12px, 1.2vw, 15px);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: rgba(255,255,255,0.7);
-    }
-
-    /* ─────────────────────────────────────────
-       STATEMENT — solid IF Blue
-    ───────────────────────────────────────── */
-    .statement {
-      background: var(--if-blue);
-      padding: var(--section-pad) var(--gutter);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 60px;
-    }
-
-    .statement-text {
-      font-size: clamp(32px, 4vw, 58px);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--white);
-      line-height: 1.0;
-      max-width: 700px;
-    }
-
-    .statement-cta {
-      flex-shrink: 0;
-    }
-
-    .btn-outline-white-solid {
-      display: inline-block;
-      font-family: var(--font);
-      font-weight: 700;
-      font-size: clamp(14px, 1.4vw, 17px);
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--white);
-      border: 2px solid rgba(255,255,255,0.7);
-      padding: 17px 40px;
-      text-decoration: none;
-      transition: background 0.2s, color 0.2s, border-color 0.2s;
-      white-space: nowrap;
-    }
-
-    .btn-outline-white-solid:hover {
-      background: var(--white);
-      border-color: var(--white);
-      color: var(--if-blue);
-    }
-
-    /* ─────────────────────────────────────────
-       HOW IT WORKS — white bg, numbered grid
-    ───────────────────────────────────────── */
-    .how {
-      padding: var(--section-pad) clamp(24px, 7vw, 120px);
-      background: var(--white);
-      border-top: 2px solid var(--black);
-      border-bottom: 2px solid var(--black);
-    }
-
-    .how-header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(32px, 5vw, 80px);
-      margin-bottom: clamp(40px, 5vw, 64px);
-      align-items: start;
-    }
-
-    .how-header p {
-      font-size: clamp(17px, 1.7vw, 19px);
-      line-height: 1.7;
-      color: #444;
-      padding-top: 8px;
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border: 2px solid var(--black);
-    }
-
-    .step {
-      padding: clamp(36px, 4vw, 56px) clamp(28px, 3.5vw, 48px);
-      border-right: 2px solid var(--black);
-      position: relative;
-    }
-
-    .step:last-child { border-right: none; }
-
-    /* Colour top bar per step */
-    .step:nth-child(1)::before { content:''; position:absolute; top:0;left:0;right:0; height:4px; background:var(--if-pink); }
-    .step:nth-child(2)::before { content:''; position:absolute; top:0;left:0;right:0; height:4px; background:var(--if-blue); }
-    .step:nth-child(3)::before { content:''; position:absolute; top:0;left:0;right:0; height:4px; background:var(--if-yellow); }
-
-    .step-num {
-      font-size: clamp(60px, 7vw, 96px);
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      line-height: 1;
-      margin-bottom: 16px;
-      color: rgba(0,0,0,0.05);
-    }
-
-    .step-title {
-      font-size: clamp(22px, 2.2vw, 30px);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--black);
-      margin-bottom: 14px;
-      line-height: 1.05;
-    }
-
-    .step-body {
-      font-size: clamp(16px, 1.6vw, 18px);
-      line-height: 1.7;
-      color: #555;
-    }
-
-    /* ─────────────────────────────────────────
-       PROS & CONS — yellow + white split
-    ───────────────────────────────────────── */
-    .proscons {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .pros-col {
-      background: var(--if-yellow);
-      padding: var(--section-pad) clamp(28px, 4.5vw, 56px);
-    }
-
-    .cons-col {
-      background: var(--white);
-      padding: var(--section-pad) clamp(28px, 4.5vw, 56px);
-      border-left: 2px solid var(--black);
-    }
-
-    .col-title {
-      font-size: clamp(11px, 1.1vw, 13px);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.26em;
-      margin-bottom: 40px;
-    }
-
-    .pros-col .col-title { color: rgba(0,0,0,0.5); }
-    .cons-col .col-title { color: var(--if-pink); }
-
-    .pros-col .section-headline { color: var(--black); margin-bottom: 40px; }
-    .cons-col .section-headline { color: var(--black); margin-bottom: 40px; }
-
-    .item-list { list-style: none; display: flex; flex-direction: column; gap: 28px; }
-
-    .item-list li {
-      display: grid;
-      grid-template-columns: 20px 1fr;
-      gap: 20px;
-      align-items: start;
-      padding-bottom: 28px;
-      border-bottom: 1px solid rgba(0,0,0,0.1);
-    }
-
-    .item-list li:last-child { border-bottom: none; padding-bottom: 0; }
-
-    .item-tick {
-      width: 20px; height: 20px;
-      margin-top: 3px;
-      flex-shrink: 0;
-    }
-
-    .item-text strong {
-      display: block;
-      font-size: clamp(18px, 1.8vw, 22px);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      color: var(--black);
-      margin-bottom: 8px;
-    }
-
-    .item-text p {
-      font-size: clamp(16px, 1.6vw, 18px);
-      line-height: 1.7;
-      color: #444;
-    }
-
-    .pros-col .item-text p { color: rgba(0,0,0,0.65); }
-
-    /* ─────────────────────────────────────────
-       LESSONS — pink bg, white reversed text
-    ───────────────────────────────────────── */
-    .lessons {
-      background: var(--if-pink);
-      padding: var(--section-pad) var(--gutter);
-    }
-
-    .lessons-header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto auto;
-      gap: clamp(20px, 3vw, 32px) clamp(32px, 5vw, 60px);
-      margin-bottom: clamp(40px, 5vw, 64px);
-      align-items: end;
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-      padding-bottom: clamp(36px, 4vw, 48px);
-    }
-
-    /* Label spans full width row */
-    .lessons-header .section-label {
-      grid-column: 1 / -1;
+    .footer-grid {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      padding-bottom: clamp(40px,5vw,72px); gap: 40px; flex-wrap: wrap;
       margin-bottom: 0;
     }
+    .footer-logo-block { display: flex; flex-direction: column; gap: 28px; }
+    .footer-lets-talk {
+      display: inline-block;
+      font-family: var(--font);
+      font-size: 18px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--white);
+      text-decoration: none; border: 2px solid var(--pink);
+      padding: 14px 36px; align-self: flex-start;
+      transition: background 0.2s, color 0.2s;
+    }
+    .footer-lets-talk:hover { background: var(--pink); color: var(--white); }
+    .footer-right { display: flex; flex-direction: column; gap: 24px; align-items: flex-end; }
+    .footer-nav { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .footer-nav a {
+      font-family: var(--font);
+      font-size: 28px; font-weight: 800;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--white); text-decoration: none;
+      line-height: 1.25; transition: color 0.2s;
+    }
+    .footer-nav a:hover { color: var(--pink); }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { color: rgba(255,255,255,.3); text-decoration: none; font-size: 15px; transition: color 0.2s; }
+    .footer-legal a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding-top: 28px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-social { display: flex; gap: 24px; }
+    .footer-social a { color: var(--mid-grey); text-decoration: none; font-size: 15px; font-weight: 400; transition: color 0.2s; }
+    .footer-social a:hover { color: var(--white); }
+    .footer-copyright { color: var(--mid-grey); font-size: 13px; }
+    .footer-lang { color: var(--mid-grey); font-size: 13px; text-transform: uppercase; letter-spacing: .1em; cursor: pointer; }
 
-    .lessons-header .section-headline { color: var(--white); }
-
-    .lessons-header p {
-      font-size: clamp(17px, 1.7vw, 20px);
-      line-height: 1.7;
-      color: rgba(255,255,255,0.8);
-      align-self: end;
-    }
-
-    .lessons-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-    }
-
-    .lesson-card {
-      background: rgba(255,255,255,0.07);
-      padding: clamp(32px, 3.5vw, 48px);
-      border-top: 3px solid rgba(255,255,255,0.15);
-      transition: background 0.25s, border-color 0.25s;
-    }
-
-    .lesson-card:hover {
-      background: rgba(255,255,255,0.13);
-      border-color: var(--if-yellow);
-    }
-
-    .lesson-num {
-      font-size: clamp(44px, 5vw, 64px);
-      font-weight: 800;
-      color: rgba(255,255,255,0.12);
-      line-height: 1;
-      margin-bottom: 16px;
-      letter-spacing: 0.08em;
-      transition: color 0.25s;
-    }
-
-    .lesson-card:hover .lesson-num { color: var(--if-yellow); }
-
-    .lesson-title {
-      font-size: clamp(20px, 2vw, 28px);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--white);
-      margin-bottom: 12px;
-      line-height: 1.05;
-    }
-
-    .lesson-body {
-      font-size: clamp(16px, 1.6vw, 18px);
-      line-height: 1.7;
-      color: rgba(255,255,255,0.72);
-    }
-
-    /* ─────────────────────────────────────────
-       GALLERY STRIP — 3 images
-    ───────────────────────────────────────── */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(2, 340px);
-      border-top: 2px solid var(--black);
-      border-bottom: 2px solid var(--black);
-    }
-
-    .gallery-cell {
-      overflow: hidden;
-      border-right: 2px solid var(--black);
-      position: relative;
-    }
-
-    .gallery-cell:last-child { border-right: none; }
-
-    .gallery-cell img,
-    .gallery-cell video {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.6s ease;
-    }
-
-    .gallery-cell:hover img,
-    .gallery-cell:hover video { transform: scale(1.06); }
-
-    .gallery-cell-label {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      background: var(--if-blue);
-      padding: 14px 20px;
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--white);
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
-    }
-
-    .gallery-cell:hover .gallery-cell-label { transform: translateY(0); }
-
-    /* ─────────────────────────────────────────
-       CTA — matches index.html
-    ───────────────────────────────────────── */
-    /* USE CASES */
-    .use-cases {
-      background: var(--white);
-      border-top: 2px solid var(--black);
-      border-bottom: 2px solid var(--black);
-    }
-    .use-cases-header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(32px, 5vw, 60px);
-      align-items: end;
-      padding: var(--section-pad) clamp(24px, 7vw, 120px) clamp(40px, 5vw, 64px);
-      border-bottom: 2px solid var(--black);
-    }
-    .use-cases-header h2 { color: var(--black); }
-    .use-cases-header p {
-      font-family: var(--font); font-size: clamp(17px, 1.7vw, 19px); font-weight: 400;
-      line-height: 1.7; color: #555;
-    }
-    .use-cases-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      background: var(--black);
-      gap: 2px;
-    }
-    .uc-card {
-      background: var(--white);
-      padding: clamp(32px, 3.5vw, 48px) clamp(24px, 3vw, 48px) clamp(36px, 4vw, 52px);
-      display: flex; flex-direction: column; gap: 0;
-      border-bottom: 4px solid transparent;
-      transition: border-color 0.25s, background 0.25s;
-    }
-    .uc-card:hover { background: #fafafa; border-bottom-color: var(--if-pink); }
-    .uc-num {
-      font-family: var(--font); font-size: 11px; font-weight: 700;
-      letter-spacing: 0.26em; text-transform: uppercase;
-      color: var(--if-pink); margin-bottom: 16px;
-    }
-    .uc-title {
-      font-family: var(--font); font-size: clamp(20px, 2vw, 28px); font-weight: 800;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--black); line-height: 1.0; margin-bottom: 14px;
-    }
-    .uc-desc {
-      font-family: var(--font); font-size: clamp(15px, 1.5vw, 17px); font-weight: 400;
-      line-height: 1.7; color: #555; margin-bottom: 24px; flex: 1;
-    }
-    .uc-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 8px; }
-    .uc-tag {
-      font-family: var(--font); font-size: 11px; font-weight: 700;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--if-blue); border: 1px solid rgba(0,102,128,0.3);
-      padding: 4px 10px;
-    }
-    @media (max-width: 860px) {
-      .use-cases-header { grid-template-columns: 1fr; }
-      .use-cases-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 560px) {
-      .use-cases-grid { grid-template-columns: 1fr; }
-    }
-
-    /* MORE EXAMPLES — video card grid */
-    .more-examples {
-      background: var(--near-black);
-      padding: var(--section-pad) clamp(24px, 7vw, 120px);
-    }
-    .more-examples-header {
-      display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;
-      margin-bottom: clamp(32px, 4vw, 56px);
-    }
-    .more-examples-header h2 { color: var(--white); }
-    .more-examples-header p { color: var(--mid-grey); font-family: var(--font); font-size: clamp(15px, 1.5vw, 17px); font-weight: 400; max-width: 360px; line-height: 1.6; }
-    .more-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .more-card {
-      display: flex; flex-direction: column;
-      background: #111; cursor: pointer;
-    }
-    .more-card.placeholder { cursor: default; }
-    .more-card-video {
-      position: relative; aspect-ratio: 16/9;
-      overflow: hidden; background: #0d0d0d;
-    }
-    .more-card-video video { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .more-card-video .play-hint {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-      transition: opacity 0.2s;
-    }
-    .more-card:hover .play-hint { opacity: 0; }
-    .more-card-video .play-hint::before {
-      content: ''; width: 44px; height: 44px; border-radius: 50%;
-      border: 1.5px solid rgba(255,255,255,0.35); background: rgba(0,0,0,0.4);
-    }
-    .more-card-video .play-hint::after {
-      content: '▶'; position: absolute;
-      font-size: 14px; color: rgba(255,255,255,0.7); margin-left: 3px;
-    }
-    .more-card-body { padding: 16px 18px 22px; border-top: 1px solid rgba(255,255,255,0.07); }
-    .more-card-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
-    .more-card-num { font-family: var(--font); font-size: 11px; font-weight: 700; letter-spacing: 0.22em; color: var(--if-yellow); text-transform: uppercase; }
-    .more-card-tag { font-family: var(--font); font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: rgba(255,255,255,0.3); text-transform: uppercase; }
-    .more-card-title { font-family: var(--font); font-size: clamp(16px, 1.6vw, 19px); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white); margin-bottom: 8px; line-height: 1.1; }
-    .more-card-prompt { font-family: var(--font); font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.4); line-height: 1.55; }
-    .more-card.placeholder .more-card-video { display: flex; align-items: center; justify-content: center; border: 1px dashed rgba(255,255,255,0.1); }
-    .ph-icon { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.2); font-size: 16px; }
-    .more-card.placeholder .more-card-title { color: rgba(255,255,255,0.2); }
-    .more-card.placeholder .more-card-prompt { color: rgba(255,255,255,0.15); }
-    @media (max-width: 860px) {
-      .more-grid { grid-template-columns: repeat(2, 1fr); }
-      .more-examples-header { flex-direction: column; align-items: flex-start; }
-    }
-    @media (max-width: 560px) { .more-grid { grid-template-columns: 1fr; } }
-
-    /* CTA — yellow left, video right */
-    .cta-section {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 560px;
-    }
-    .cta-text {
-      background: var(--if-yellow);
-      padding: var(--section-pad) clamp(32px, 5vw, 72px);
-      display: flex; flex-direction: column;
-      align-items: flex-start; justify-content: center;
-    }
-    .cta-video-panel {
-      position: relative; overflow: hidden;
-    }
-    .cta-video {
-      width: 100%; height: 100%;
-      object-fit: cover; display: block;
-    }
-    .cta-eyebrow {
-      font-size: clamp(11px, 1.1vw, 13px); font-weight: 700; letter-spacing: 0.28em;
-      text-transform: uppercase; color: rgba(0,0,0,0.5);
-      margin-bottom: 20px; display: block;
-    }
-    .cta-headline {
-      font-size: clamp(44px, 5.5vw, 80px);
-      font-weight: 800; letter-spacing: 0.08em;
-      text-transform: uppercase; line-height: 0.9;
-      color: var(--black); margin-bottom: 24px;
-    }
-    .cta-sub {
-      font-size: clamp(17px, 1.7vw, 20px); font-weight: 400;
-      color: rgba(0,0,0,0.7); max-width: 420px;
-      line-height: 1.6; margin-bottom: 44px;
-    }
-    .cta-btn {
-      display: inline-block; background: var(--black); color: var(--white);
-      font-family: var(--font); font-size: clamp(15px, 1.5vw, 18px); font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;
-      padding: 18px 52px; border: 2px solid var(--black);
-      transition: background 0.2s, color 0.2s, border-color 0.2s;
-    }
-    .cta-btn:hover {
-      background: transparent;
-      color: var(--black);
-    }
-    /* Secondary outlined CTA */
-    .cta-btn-secondary {
-      display: inline-block; background: transparent; color: var(--black);
-      font-family: var(--font); font-size: clamp(15px, 1.5vw, 18px); font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;
-      padding: 17px 44px; border: 2px solid rgba(0,0,0,0.4);
-      transition: background 0.2s, color 0.2s, border-color 0.2s;
-      margin-left: 12px;
-    }
-    .cta-btn-secondary:hover {
-      background: var(--black);
-      color: var(--white);
-      border-color: var(--black);
-    }
-
-
-    /* ─────────────────────────────────────────
-       INTRO — 2-col: headline left, text right
-    ───────────────────────────────────────── */
-    .intro {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      padding: var(--section-pad) var(--gutter);
-      border-bottom: 2px solid var(--black);
-    }
-
-    .intro-left {
-      padding-right: clamp(40px, 5vw, 80px);
-      border-right: 2px solid var(--black);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-    }
-
-    .intro-left .section-headline {
-      color: var(--black);
-      margin-top: 16px;
-    }
-
-    .intro-right {
-      padding-left: clamp(40px, 5vw, 80px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .intro-right blockquote {
-      font-size: clamp(18px, 2.2vw, 26px);
-      font-weight: 700;
-      font-style: normal;
-      letter-spacing: 0.07em;
-      line-height: 1.3;
-      text-transform: uppercase;
-      color: var(--if-pink);
-      border-left: 4px solid var(--if-pink);
-      padding-left: 28px;
-      margin-bottom: 32px;
-    }
-
-    .intro-right p {
-      font-size: clamp(17px, 1.7vw, 19px);
-      line-height: 1.75;
-      color: #444;
-      margin-bottom: 18px;
-    }
-    .intro-right p:last-child { margin-bottom: 0; }
-
-    /* ─────────────────────────────────────────
-       SHOWCASE — 3D video sphere
-    ───────────────────────────────────────── */
-    /* ── SHOWCASE: left sidebar + right video ── */
-    .showcase {
-      background: var(--black);
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      align-items: stretch;
-    }
-
-    .showcase-left {
-      display: flex;
-      flex-direction: column;
-      border-right: 1px solid rgba(255,255,255,0.08);
-      overflow: hidden;
-      min-height: 520px;
-    }
-
-    .showcase-info {
-      padding: 20px 20px 16px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      flex-shrink: 0;
-    }
-    .showcase-info .section-label { color: rgba(255,255,255,0.5); margin-bottom: 8px; }
-    .showcase-info .section-headline { color: var(--white); font-size: clamp(32px, 3.5vw, 48px); }
-
-    .showcase-desc {
-      font-size: 15px; font-weight: 400; line-height: 1.5;
-      color: rgba(255,255,255,0.4); margin-top: 10px;
-    }
-
-    /* ── MAIN VIDEO (right panel) ── */
-    .showcase-right {
-      position: relative;
-      overflow: hidden;
-      aspect-ratio: 16/9;
-    }
-
-    .showcase-right > video {
-      width: 100%; height: 100%;
-      object-fit: contain;
-      display: block;
-      background: var(--black);
-    }
-
-    .showcase-right .player-overlay {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 24px 28px;
-      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
-      z-index: 2;
-    }
-
-    /* ── SIDEBAR THUMBNAILS ── */
-    .pl-item {
-      position: relative;
-      height: 74px;
-      cursor: pointer;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      transition: opacity 0.2s;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-    .pl-item:last-child { border-bottom: none; }
-    .pl-item:hover { opacity: 0.85; }
-    .pl-item.active { border-left: 3px solid var(--if-pink); }
-
-    .pl-thumb { width: 100%; height: 100%; }
-    .pl-thumb video { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
-
-    .pl-info {
-      position: absolute; inset: 0;
-      background: linear-gradient(to right, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 100%);
-      padding: 0 10px;
-      display: flex; flex-direction: column; justify-content: center; gap: 2px;
-    }
-    .pl-num { font-size: 10px; font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase; color: var(--if-yellow); margin-bottom: 2px; }
-    .pl-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--white); line-height: 1.1; }
-    .pl-item.active .pl-title { color: var(--if-pink); }
-    .pl-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
-
-    /* ── VIDEO GRID (Option C — keep for reference but hidden) ── */
-    .video-grid {
-      display: none;
-    }
-
-    .vg-cell {
-      position: relative;
-      overflow: hidden;
-      aspect-ratio: 16/9;
-      cursor: pointer;
-      border-right: 1px solid rgba(255,255,255,0.08);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    .vg-cell:nth-child(3n) { border-right: none; }
-    .vg-cell:nth-child(n+4) { border-bottom: none; }
-
-    .vg-cell video {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.6s ease;
-    }
-    .vg-cell:hover video { transform: scale(1.05); }
-
-    .vg-overlay {
-      position: absolute; inset: 0;
-      background: rgba(0,0,0,0.35);
-      transition: background 0.3s;
-    }
-    .vg-cell:hover .vg-overlay { background: rgba(0,0,0,0.55); }
-
-    .vg-label {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 20px 20px 16px;
-      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
-    }
-    .vg-num {
-      font-size: 10px; font-weight: 700; letter-spacing: 0.22em;
-      text-transform: uppercase; color: var(--if-yellow);
-      display: block; margin-bottom: 4px;
-    }
-    .vg-title {
-      font-size: 15px; font-weight: 700; letter-spacing: 0.05em;
-      text-transform: uppercase; color: var(--white); line-height: 1.2;
-    }
-    .vg-tag {
-      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; color: rgba(255,255,255,0.45);
-      display: block; margin-top: 3px;
-    }
-
-    .vg-play {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%, -50%) scale(0.8);
-      width: 44px; height: 44px; border-radius: 50%;
-      background: rgba(255,255,255,0.15);
-      border: 1.5px solid rgba(255,255,255,0.5);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--white); font-size: 14px;
-      opacity: 0; transition: opacity 0.3s, transform 0.3s;
-    }
-    .vg-cell:hover .vg-play { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-
-    .player-overlay {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 32px 36px;
-      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
-    }
-
-    .player-num {
-      font-size: 11px; font-weight: 700;
-      letter-spacing: 0.28em; color: var(--if-yellow);
-      margin-bottom: 8px;
-    }
-
-    .player-title {
-      font-size: clamp(22px, 3vw, 36px);
-      font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.08em; color: var(--white);
-      line-height: 1.05; margin-bottom: 10px;
-    }
-
-    .player-prompt {
-      font-size: 15px; font-style: normal;
-      color: rgba(255,255,255,0.5); line-height: 1.5;
-    }
-
-    /* Playlist sidebar */
-
-    .pl-item {
-      display: flex;
-      flex-direction: column;
-      cursor: pointer;
-      border-right: 1px solid rgba(255,255,255,0.06);
-      transition: background 0.2s;
-      overflow: hidden;
-    }
-
-    .pl-item:last-child { border-right: none; }
-    .pl-item:hover { background: rgba(255,255,255,0.06); }
-    .pl-item.active { background: rgba(166,0,100,0.12); border-top: 3px solid var(--if-pink); }
-
-    .pl-thumb {
-      position: relative;
-      overflow: hidden;
-      aspect-ratio: 16/9;
-    }
-
-    .pl-thumb video {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-      pointer-events: none;
-    }
-
-    .pl-thumb::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: rgba(0,0,0,0.2);
-    }
-
-    .pl-item.active .pl-thumb::after { background: rgba(166,0,100,0.25); }
-
-    .pl-info {
-      padding: 10px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .pl-num {
-      font-size: 10px; font-weight: 700;
-      letter-spacing: 0.22em;
-      color: rgba(255,255,255,0.25);
-    }
-
-    .pl-title {
-      font-size: 12px; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.05em;
-      color: var(--white); line-height: 1.15;
-    }
-
-    .pl-item.active .pl-title { color: var(--if-pink); }
-
-    .pl-tag {
-      font-size: 10px; font-weight: 700;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: rgba(255,255,255,0.22);
-    }
-
-    .playlist-header {
-      padding: 14px 16px;
-      border-left: none;
-      border-right: 1px solid rgba(255,255,255,0.07);
-      font-size: 11px; font-weight: 700;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 4px;
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-    }
-
-    .playlist-header span {
-      color: var(--if-yellow);
-      writing-mode: horizontal-tb;
-      transform: none;
-    }
-
-    /* ── VIDEO MODAL ── */
+    /* ── MODAL ────────────────────────────── */
     .video-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 99999;
-      background: rgba(0,0,0,0.92);
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      padding: 40px;
+      position: fixed; inset: 0; z-index: 9000;
+      background: rgba(0,0,0,.93);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity .3s;
     }
-    .video-modal.open { display: flex; }
-
-    .modal-inner {
-      position: relative;
-      max-width: 900px;
-      width: 100%;
-    }
-
-    .modal-video {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .modal-info {
-      padding: 20px 0 0;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .modal-title {
-      font-size: 28px; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.08em;
-      color: var(--white); line-height: 1.1;
-    }
-
-    .modal-prompt {
-      font-size: 15px; color: rgba(255,255,255,0.45);
-      font-style: normal; margin-top: 8px; line-height: 1.5;
-    }
-
+    .video-modal.open { opacity: 1; pointer-events: all; }
+    .modal-inner { width: min(92vw, 860px); display: flex; flex-direction: column; gap: 16px; }
+    .modal-video { width: 100%; max-height: 80vh; object-fit: contain; }
     .modal-close {
-      background: none; border: 2px solid rgba(255,255,255,0.3);
-      color: var(--white); font-size: 20px; font-family: var(--font);
-      font-weight: 700; cursor: pointer; padding: 8px 18px;
-      flex-shrink: 0; transition: border-color 0.2s, color 0.2s;
+      align-self: flex-end;
+      background: none; border: 1.5px solid rgba(255,255,255,.4); color: var(--white);
+      font-family: var(--font); font-size: 16px; font-weight: 700;
+      letter-spacing: 0.1em; padding: 10px 24px; cursor: pointer; text-transform: uppercase;
+      transition: border-color .2s, background .2s;
     }
-    .modal-close:hover { border-color: var(--if-pink); color: var(--if-pink); }
+    .modal-close:hover { border-color: var(--white); background: rgba(255,255,255,.08); }
 
-    /* ─────────────────────────────────────────
-       VERDICT — typographic pros/cons
-    ───────────────────────────────────────── */
-    .verdict {
+    /* ── IN YOUR WORLD ───────────────────── */
+    .iyw-section {
       background: var(--white);
-      border-top: 2px solid var(--black);
-      border-bottom: 2px solid var(--black);
+      border-bottom: 1px solid var(--light-grey);
     }
-
-    .verdict-header {
-      padding: var(--section-pad) var(--gutter) clamp(36px, 4vw, 56px);
-      border-bottom: 2px solid var(--black);
+    .iyw-header {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: clamp(40px,5vw,80px); align-items: end;
+      padding: clamp(72px,9vw,120px) var(--px) clamp(48px,6vw,80px);
+      border-bottom: 1px solid var(--light-grey);
     }
-
-    .verdict-header .section-headline { color: var(--black); margin-top: 12px; }
-
-    .verdict-grid {
-      display: grid;
-      grid-template-columns: 1fr 1px 1fr;
-    }
-
-    .verdict-divider {
-      background: var(--black);
-    }
-
-    .verdict-pros {
-      padding: clamp(40px, 5vw, 64px) clamp(28px, 4.5vw, 64px);
-    }
-
-    .verdict-cons {
-      padding: clamp(40px, 5vw, 64px) clamp(28px, 4.5vw, 64px);
-    }
-
-    .verdict-label {
-      font-size: clamp(11px, 1.1vw, 13px);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.28em;
-      margin-bottom: 36px;
-      color: rgba(0,0,0,0.3);
-    }
-
-    .verdict-item {
-      display: flex;
-      gap: 28px;
-      align-items: flex-start;
-      padding-bottom: 36px;
-      margin-bottom: 36px;
-      border-bottom: 1px solid rgba(0,0,0,0.08);
-    }
-
-    .verdict-item:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
-
-    .verdict-icon {
-      font-size: clamp(40px, 4vw, 56px);
-      font-weight: 800;
-      line-height: 1;
-      color: var(--if-blue);
-      flex-shrink: 0;
-      width: 36px;
-      text-align: center;
-    }
-
-    .verdict-item strong {
-      display: block;
-      font-size: clamp(18px, 1.8vw, 23px);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+    .iyw-header h2 {
+      font-size: clamp(36px,5vw,72px); font-weight: 800;
+      text-transform: uppercase; line-height: .92; letter-spacing: 0.08em;
       color: var(--black);
-      margin-bottom: 10px;
     }
-
-    .verdict-item p {
-      font-size: clamp(16px, 1.6vw, 18px);
-      line-height: 1.7;
-      color: #555;
+    .iyw-header-desc {
+      font-size: clamp(16px,1.7vw,20px); color: #555; line-height: 1.65;
     }
-
-    /* ─────────────────────────────────────────
-       LESSONS TIMELINE — dark bg, horizontal grid
-    ───────────────────────────────────────── */
-    /* Lessons section — second instance styles */
-    .lessons-quote {
-      font-size: clamp(17px, 1.7vw, 20px);
-      line-height: 1.7;
-      color: rgba(255,255,255,0.78);
-      font-style: normal;
+    .iyw-row {
+      display: grid; grid-template-columns: 64px 1fr 1fr;
+      border-bottom: 1px solid var(--light-grey);
+      min-height: 480px;
     }
-
-    .lessons-timeline {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
+    .iyw-row.iyw-flip { grid-template-columns: 1fr 1fr 64px; }
+    .iyw-num {
+      background: var(--off-white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--mid-grey);
+      writing-mode: vertical-rl; transform: rotate(180deg);
+      border-right: 1px solid var(--light-grey);
+      flex-shrink: 0;
     }
-
-    .tl-item {
-      padding: 0 clamp(24px, 3vw, 40px) 0 0;
-      margin-right: clamp(24px, 3vw, 40px);
-      border-right: 1px solid rgba(255,255,255,0.18);
+    .iyw-row.iyw-flip .iyw-num {
+      transform: rotate(0deg);
+      border-right: none; border-left: 1px solid var(--light-grey);
     }
-
-    .tl-item:last-child { border-right: none; margin-right: 0; padding-right: 0; }
-
-    .tl-num {
-      font-size: clamp(48px, 5.5vw, 72px);
-      font-weight: 800;
-      color: rgba(255,255,255,0.12);
-      line-height: 1;
-      margin-bottom: 16px;
-      letter-spacing: -0.02em;
+    .iyw-body {
+      padding: clamp(40px,5vw,64px) clamp(32px,4vw,56px);
+      display: flex; flex-direction: column; justify-content: center;
     }
-
-    .tl-line {
-      width: 40px;
-      height: 2px;
-      background: rgba(255,255,255,0.35);
-      margin-bottom: 20px;
+    .iyw-tag {
+      display: inline-block; margin-bottom: 20px; width: fit-content;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--white);
+      background: var(--pink); padding: 5px 14px;
     }
-
-    .tl-title {
-      font-size: clamp(18px, 1.8vw, 23px);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      color: var(--white);
-      margin-bottom: 14px;
-      line-height: 1.05;
+    .iyw-title {
+      font-size: clamp(28px,3.5vw,52px); font-weight: 800;
+      letter-spacing: 0.08em; text-transform: uppercase; line-height: 0.95;
+      color: var(--black); margin-bottom: 20px;
     }
-
-    .tl-body {
-      font-size: clamp(15px, 1.5vw, 17px);
-      line-height: 1.7;
-      color: rgba(255,255,255,0.65);
+    .iyw-desc {
+      font-size: clamp(15px,1.5vw,18px); font-weight: 400;
+      line-height: 1.7; color: #555; max-width: 440px; margin-bottom: 28px;
     }
-
-    /* ─────────────────────────────────────────
-       SCROLL REVEAL
-    ───────────────────────────────────────── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
+    .iyw-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+    .iyw-pill {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; padding: 6px 14px;
+      border: 1.5px solid var(--light-grey); color: var(--near-black);
     }
-
-    .reveal.visible { opacity: 1; transform: none; }
-
-    .stagger > * {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
+    .iyw-pill.iyw-pill-accent { border-color: var(--blue); color: var(--blue); }
+    .iyw-media {
+      position: relative; overflow: hidden;
+      border-left: 1px solid var(--light-grey);
     }
-
-    .stagger.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:0s; }
-    .stagger.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.1s; }
-    .stagger.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.2s; }
-    .stagger.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.3s; }
-    .stagger.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:0.4s; }
-    .stagger.visible > *:nth-child(6) { opacity:1; transform:none; transition-delay:0.5s; }
-
-    /* ─────────────────────────────────────────
-       RESPONSIVE — 1200 / 860 / 560 / 400
-    ───────────────────────────────────────── */
-
-    /* ── 1200px — wide but not full desktop ── */
-    @media (max-width: 1200px) {
-      .footer-right { gap: 40px; }
-      .verdict-pros, .verdict-cons { padding: 48px 40px; }
+    .iyw-row.iyw-flip .iyw-media {
+      border-left: none; border-right: 1px solid var(--light-grey);
     }
-
-    /* ── 860px — tablet landscape / small desktop ── */
+    .iyw-media video {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.8s ease;
+    }
+    .iyw-row:hover .iyw-media video { transform: scale(1.03); }
+    .iyw-media-label {
+      position: absolute; bottom: 16px; left: 16px; z-index: 2;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--white);
+      background: rgba(0,0,0,0.55); padding: 5px 12px;
+    }
     @media (max-width: 860px) {
-      .how-header { grid-template-columns: 1fr; gap: 16px; }
-      .how-header p { padding-top: 0; }
-
-      .what,
-      .proscons,
-      .lessons-grid,
-      .cta-section { grid-template-columns: 1fr; }
-
-      .what-text { padding: 56px 28px; border-right: none; border-bottom: 2px solid var(--black); }
-      .what-img { height: 320px; }
-
-      .steps { grid-template-columns: 1fr; }
-      .step { border-right: none; border-bottom: 2px solid var(--black); }
-      .step:last-child { border-bottom: none; }
-
-      .cons-col { border-left: none; border-top: 2px solid var(--black); }
-
-      .statement { flex-direction: column; gap: 32px; }
-
-      .cta-text { order: 2; }
-      .cta-video-panel { height: 340px; order: 1; }
-      .cta-btn-secondary { margin-left: 0; margin-top: 12px; display: inline-block; }
-
-      .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 260px); }
-      .gallery-cell { border-right: none; border-bottom: 2px solid var(--black); }
-      .gallery-cell:nth-child(odd) { border-right: 2px solid var(--black); }
-      .gallery-cell:nth-last-child(-n+2) { border-bottom: none; }
-
-      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-      .footer-right { flex-direction: column; gap: 28px; }
-
-      .intro { grid-template-columns: 1fr; gap: 0; }
-      .intro-left { padding-right: 0; border-right: none; border-bottom: 2px solid var(--black); padding-bottom: 48px; }
-      .intro-right { padding-left: 0; padding-top: 48px; }
-
-      /* Showcase: stack — video on top, playlist horizontal scroll below */
-      .showcase { grid-template-columns: 1fr; grid-template-rows: auto auto; height: auto; }
-      .showcase-left { flex-direction: row; overflow-x: auto; border-right: none; border-top: 1px solid rgba(255,255,255,0.08); -webkit-overflow-scrolling: touch; }
-      .showcase-info { display: none; }
-      #playlist { display: flex; flex-direction: row; width: max-content; }
-      .pl-item { width: 140px; flex-shrink: 0; border-right: 1px solid rgba(255,255,255,0.08); border-bottom: none; height: auto; }
-      .showcase-right { aspect-ratio: 16/9; min-height: unset; order: -1; }
-
-      .verdict-grid { grid-template-columns: 1fr; }
-      .verdict-divider { height: 2px; width: 100%; }
-      .verdict-pros, .verdict-cons { padding: 40px 28px; }
-
-      .lessons-header { grid-template-columns: 1fr; gap: 24px; }
-      .lessons-timeline { grid-template-columns: 1fr 1fr; gap: 40px; }
-      .tl-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15); padding: 0 0 40px 0; margin-right: 0; }
-      .tl-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.15); padding-right: 32px; }
-      .tl-item:nth-last-child(-n+2) { border-bottom: none; padding-bottom: 0; }
-
-      .hero-content { padding: 0 28px; }
-      .btn-outline-white { margin-left: 0; margin-top: 12px; }
-
-      .use-cases-header { grid-template-columns: 1fr; }
-      .use-cases-grid { grid-template-columns: 1fr 1fr; }
-
-      .more-grid { grid-template-columns: repeat(2, 1fr); }
-      .more-examples-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .iyw-header { grid-template-columns: 1fr; }
+      .iyw-row, .iyw-row.iyw-flip { grid-template-columns: 1fr; }
+      .iyw-num { display: none; }
+      .iyw-media { min-height: 260px; border-left: none !important; border-right: none !important; border-top: 1px solid var(--light-grey); }
+      .iyw-row.iyw-flip .iyw-media { order: -1; }
     }
 
-    /* ── 560px — tablet portrait / large phone ── */
+    /* ── RESPONSIVE ──────────────────────── */
+    @media (max-width: 860px) { .ncp-grid { grid-template-columns: repeat(2,1fr); } }
     @media (max-width: 560px) {
-      .hero-content { padding: 0 20px; text-align: center; }
-      .hero-kicker { font-size: 10px; }
-      /* Buttons stack */
-      .hero-content .btn { display: block; width: 100%; max-width: 320px; margin: 0 auto; text-align: center; }
-      .hero-content .btn + .btn { margin-top: 12px; margin-left: 0; }
-
-      .ticker-inner span { padding: 0 24px; }
-
-      .what-text p, .intro-right p, .step-body, .lesson-body, .tl-body { font-size: 16px; }
-      .intro-right blockquote { padding-left: 20px; }
-
-      .step { padding: 36px 24px; }
-
-      .pros-col, .cons-col { padding: 48px 20px; }
-
-      .verdict-pros, .verdict-cons { padding: 32px 20px; }
-      .verdict-header { padding: 48px 20px 32px; }
-
-      .lessons-timeline { grid-template-columns: 1fr; }
-      .tl-item { border-right: none !important; padding-right: 0 !important; border-bottom: 1px solid rgba(255,255,255,0.15) !important; padding-bottom: 32px !important; }
-      .tl-item:last-child { border-bottom: none !important; padding-bottom: 0 !important; }
-
-      .cta-text { padding: 48px 20px; }
-      .cta-btn, .cta-btn-secondary { display: block; width: 100%; text-align: center; }
-      .cta-btn-secondary { margin-left: 0; margin-top: 12px; }
-
-      .gallery { grid-template-columns: 1fr; grid-template-rows: repeat(6, 220px); }
-      .gallery-cell { border-right: none; }
-      .gallery-cell:nth-child(odd) { border-right: none; }
-      .gallery-cell { border-bottom: 2px solid var(--black); }
-      .gallery-cell:last-child { border-bottom: none; }
-
-      .use-cases-grid { grid-template-columns: 1fr; }
-
-      .more-grid { grid-template-columns: 1fr; }
-
-      .footer-nav a { font-size: 22px; }
-    }
-
-    /* ── 400px — small phones ── */
-    @media (max-width: 400px) {
-      .hero-headline { font-size: 64px; }
-      .hero-kicker { display: none; }
-
-      .pl-item { width: 110px; }
-      .pl-title { font-size: 11px; }
-      .player-title { font-size: 18px; }
-
-      .nav-links-panel { width: 100%; min-width: unset; padding: 7rem 20px 3rem; }
+      :root { --px: 24px; }
       .nav-content-panel { display: none; }
-
-      .footer-lets-talk { font-size: 14px; padding: 12px 20px; }
-      .footer-nav a { font-size: 20px; }
-
-      .step { padding: 28px 16px; }
-      .verdict-pros, .verdict-cons { padding: 28px 16px; }
-      .verdict-header { padding: 40px 16px 24px; }
-
-      .section-headline { letter-spacing: 0.07em; }
+      .nav-links-panel { width: 100%; }
     }
+    @media (max-width: 400px) { .hero-btns { flex-direction: column; } }
   </style>
 </head>
 <body>
@@ -1632,483 +687,306 @@
   </div>
 </nav>
 
-  <!-- HERO — full bleed video -->
-  <section class="hero">
-    <video class="hero-img" autoplay muted loop playsinline>
-      <source src="videos/sunset-tower-dolly-pan.mp4" type="video/mp4" />
-    </video>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <span class="hero-kicker">Image Foundry Labs</span>
-      <h1 class="hero-headline">Dynamic<br/>Stills</h1>
-      <p class="hero-sub">AI-powered motion from a single CGI still. No re-render, no animation rig, no production overhead.</p>
-      <a href="#what" class="btn btn-pink">See How It Works</a>
-      <a href="https://www.imagefoundry.co.uk/contact/" target="_blank" class="btn btn-outline-white">Start the Conversation</a>
-    </div>
-  </section>
-
-  <!-- TICKER — IF Pink -->
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker-inner">
-      <span>Dynamic Stills</span>
-      <span>Motion from a Single Still</span>
-      <span>Image Foundry Labs</span>
-      <span>AI Visualisation</span>
-      <span>CGI Animation</span>
-      <span>Dynamic Stills</span>
-      <span>Motion from a Single Still</span>
-      <span>Image Foundry Labs</span>
-      <span>AI Visualisation</span>
-      <span>CGI Animation</span>
+<!-- ── HERO ── -->
+<section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="videos/sunset-tower-dolly-pan.mp4" type="video/mp4" />
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Image Foundry — Dynamic Stills</span>
+    <h1 class="hero-h1">Your CGI.<br/>Now <em>moving.</em></h1>
+    <p class="hero-sub">You already have the render. We add a cinematic camera move and hand you back a looping video clip — no re-render, no new shoot, ready in days.</p>
+    <div class="hero-btns">
+      <a href="#showcase" class="btn-primary">See It In Action</a>
+      <a href="https://www.imagefoundry.co.uk/contact-us/" class="btn-outline">Get a Quote</a>
     </div>
   </div>
+  <div class="hero-accent"></div>
+</section>
 
-  <!-- INTRO — what are they -->
-  <section class="intro" id="what">
-    <div class="intro-left reveal">
-      <div class="section-label label-pink">What Are Dynamic Stills</div>
-      <h2 class="section-headline">Motion from<br/>a single still</h2>
+<!-- ── HOOK / PROBLEM ── -->
+<section class="hook-section" id="what">
+  <div class="hook-inner">
+    <div class="hook-left">
+      <h2>Your CGI stills<br/>deserve <span>more</span><br/>than one use.</h2>
+      <p>You paid for a polished CGI render. It went on the website, maybe into a brochure. Then it sat there.</p>
+      <p><strong>Video content is what drives engagement now</strong> — on Instagram, on Meta ads, on digital hoardings. But commissioning new animation or a live-action video shoot costs a fortune and takes weeks.</p>
+      <p>There's a faster way. One that starts with what you already own.</p>
     </div>
-    <div class="intro-right reveal">
-      <blockquote>"Your CGI stills represent a significant investment. Dynamic Stills unlock a second life for that asset — real motion, zero re-render."</blockquote>
-      <p>Dynamic stills let us bring movement to a scene that was never modelled for animation. We push, pull, pan, tilt or glide through a space — the AI fills in what the camera uncovers as it moves.</p>
-      <p>The result is a short, polished clip ready for social, digital advertising or pitch decks. One asset. A fraction of the time. Genuinely cinematic output.</p>
-    </div>
-  </section>
-
-  <!-- VIDEO PLAYER + PLAYLIST -->
-  <section class="showcase" id="work">
-
-    <!-- LEFT SIDEBAR: title + thumbnails -->
-    <div class="showcase-left">
-      <div class="showcase-info">
-        <div class="section-label">The Work</div>
-        <h2 class="section-headline">Six<br>Examples</h2>
-        <p class="showcase-desc">Each clip began as a single CGI still. A prompt was written, generate pressed, and the AI did the rest.</p>
-      </div>
-      <div id="playlist">
-        <div class="pl-item active" data-src="videos/sunset-tower-dolly-pan.mp4" data-num="01" data-title="Slow dolly pan" data-tag="Architectural" data-prompt='"Slow dolly pan the camera and have the sunset shine from behind the tower"'>
-          <div class="pl-thumb"><video autoplay muted loop playsinline><source src="videos/sunset-tower-dolly-pan.mp4" type="video/mp4"/></video></div>
-          <div class="pl-info"><div class="pl-num">01</div><div class="pl-title">Slow dolly pan</div><div class="pl-tag">Architectural</div></div>
-        </div>
-        <div class="pl-item" data-src="videos/waterfall-car-dolly-zoom.mp4" data-num="02" data-title="Dolly zoom in" data-tag="Lifestyle" data-prompt='"Slow dolly zoom in — animate the waterfall in the back, do not move the car"'>
-          <div class="pl-thumb"><video autoplay muted loop playsinline><source src="videos/waterfall-car-dolly-zoom.mp4" type="video/mp4"/></video></div>
-          <div class="pl-info"><div class="pl-num">02</div><div class="pl-title">Dolly zoom in</div><div class="pl-tag">Lifestyle</div></div>
-        </div>
-        <div class="pl-item" data-src="videos/snow-scene-dolly-zoom.mp4" data-num="03" data-title="Dolly zoom out" data-tag="Seasonal" data-prompt='"Have snow gently falling across the scene in front of the camera"'>
-          <div class="pl-thumb"><video autoplay muted loop playsinline><source src="videos/snow-scene-dolly-zoom.mp4" type="video/mp4"/></video></div>
-          <div class="pl-info"><div class="pl-num">03</div><div class="pl-title">Dolly zoom out</div><div class="pl-tag">Seasonal</div></div>
-        </div>
-        <div class="pl-item" data-src="videos/product-rotate-fan.mp4" data-num="04" data-title="Product rotation" data-tag="Product · KBB" data-prompt='"Slowly rotate the product left — make the fan under the grate spin"'>
-          <div class="pl-thumb"><video autoplay muted loop playsinline><source src="videos/product-rotate-fan.mp4" type="video/mp4"/></video></div>
-          <div class="pl-info"><div class="pl-num">04</div><div class="pl-title">Product rotation</div><div class="pl-tag">Product · KBB</div></div>
-        </div>
-        <div class="pl-item" data-src="videos/tap-dolly-pan.mp4" data-num="05" data-title="Slow dolly pan" data-tag="Bathroom" data-prompt='"Slow dolly pan the camera in — have the tap running"'>
-          <div class="pl-thumb"><video autoplay muted loop playsinline><source src="videos/tap-dolly-pan.mp4" type="video/mp4"/></video></div>
-          <div class="pl-info"><div class="pl-num">05</div><div class="pl-title">Slow dolly pan</div><div class="pl-tag">Bathroom</div></div>
-        </div>
-        <div class="pl-item" data-src="videos/jacuzzi-steam.mp4" data-num="06" data-title="Animate &amp; atmosphere" data-tag="Lifestyle" data-prompt='"Animate steam — turn on the jacuzzi, make the water bubble and froth"'>
-          <div class="pl-thumb"><video autoplay muted loop playsinline><source src="videos/jacuzzi-steam.mp4" type="video/mp4"/></video></div>
-          <div class="pl-info"><div class="pl-num">06</div><div class="pl-title">Animate &amp; atmosphere</div><div class="pl-tag">Lifestyle</div></div>
-        </div>
+    <div class="hook-right">
+      <div class="hook-reveal">
+        <p class="hook-reveal-label">What we do</p>
+        <h2 class="hook-reveal-heading">We take your<br/>existing CGI still<br/>and make it move.</h2>
+        <p>A single cinematic camera movement — a dolly, a pan, a slow push-in — applied to your existing render using AI-guided motion. The result is a 7–10 second looping clip. Scroll-stopping on social. Powerful in ads. Built from an asset you already own.</p>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- RIGHT: main video -->
-    <div class="showcase-right">
-      <video id="mainVideo" autoplay muted playsinline>
-        <source id="mainSrc" src="videos/sunset-tower-dolly-pan.mp4" type="video/mp4"/>
-      </video>
-      <div class="player-overlay">
-        <div class="player-num" id="mainNum">01</div>
-        <div class="player-title" id="mainTitle">Slow dolly pan</div>
-        <div class="player-prompt" id="mainPrompt">"Slow dolly pan the camera and have the sunset shine from behind the tower"</div>
-      </div>
-    </div>
 
-    <!-- (hidden grid cells kept for JS compatibility) -->
-    <div class="video-grid" style="display:none">
-
-      <div class="vg-cell" data-src="videos/sunset-tower-dolly-pan.mp4" data-num="01" data-title="Slow dolly pan" data-prompt='"Slow dolly pan the camera and have the sunset shine from behind the tower"'>
-        <video autoplay muted loop playsinline><source src="videos/sunset-tower-dolly-pan.mp4" type="video/mp4"/></video>
-        <div class="vg-overlay"></div>
-        <div class="vg-play">▶</div>
-        <div class="vg-label"><span class="vg-num">01</span><div class="vg-title">Slow dolly pan</div><span class="vg-tag">Architectural</span></div>
-      </div>
-
-      <div class="vg-cell" data-src="videos/waterfall-car-dolly-zoom.mp4" data-num="02" data-title="Dolly zoom in" data-prompt='"Slow dolly zoom in — animate the waterfall in the back, do not move the car"'>
-        <video autoplay muted loop playsinline><source src="videos/waterfall-car-dolly-zoom.mp4" type="video/mp4"/></video>
-        <div class="vg-overlay"></div>
-        <div class="vg-play">▶</div>
-        <div class="vg-label"><span class="vg-num">02</span><div class="vg-title">Dolly zoom in</div><span class="vg-tag">Lifestyle</span></div>
-      </div>
-
-      <div class="vg-cell" data-src="videos/snow-scene-dolly-zoom.mp4" data-num="03" data-title="Dolly zoom out" data-prompt='"Have snow gently falling across the scene in front of the camera"'>
-        <video autoplay muted loop playsinline><source src="videos/snow-scene-dolly-zoom.mp4" type="video/mp4"/></video>
-        <div class="vg-overlay"></div>
-        <div class="vg-play">▶</div>
-        <div class="vg-label"><span class="vg-num">03</span><div class="vg-title">Dolly zoom out</div><span class="vg-tag">Seasonal</span></div>
-      </div>
-
-      <div class="vg-cell" data-src="videos/product-rotate-fan.mp4" data-num="04" data-title="Product rotation" data-prompt='"Slowly rotate the product left — make the fan under the grate spin"'>
-        <video autoplay muted loop playsinline><source src="videos/product-rotate-fan.mp4" type="video/mp4"/></video>
-        <div class="vg-overlay"></div>
-        <div class="vg-play">▶</div>
-        <div class="vg-label"><span class="vg-num">04</span><div class="vg-title">Product rotation</div><span class="vg-tag">Product · KBB</span></div>
-      </div>
-
-      <div class="vg-cell" data-src="videos/tap-dolly-pan.mp4" data-num="05" data-title="Slow dolly pan" data-prompt='"Slow dolly pan the camera in — have the tap running"'>
-        <video autoplay muted loop playsinline><source src="videos/tap-dolly-pan.mp4" type="video/mp4"/></video>
-        <div class="vg-overlay"></div>
-        <div class="vg-play">▶</div>
-        <div class="vg-label"><span class="vg-num">05</span><div class="vg-title">Slow dolly pan</div><span class="vg-tag">Bathroom</span></div>
-      </div>
-
-      <div class="vg-cell" data-src="videos/jacuzzi-steam.mp4" data-num="06" data-title="Animate &amp; atmosphere" data-prompt='"Animate steam — turn on the jacuzzi, make the water bubble and froth"'>
-        <video autoplay muted loop playsinline><source src="videos/jacuzzi-steam.mp4" type="video/mp4"/></video>
-        <div class="vg-overlay"></div>
-        <div class="vg-play">▶</div>
-        <div class="vg-label"><span class="vg-num">06</span><div class="vg-title">Animate &amp; atmosphere</div><span class="vg-tag">Lifestyle</span></div>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- HOW IT WORKS — 3 full-width steps -->
-  <section class="how" id="how">
-    <div class="how-header">
+<!-- ── VIDEO SHOWCASE ── -->
+<section class="showcase-section" id="showcase">
+  <div class="showcase-inner">
+    <div class="showcase-header">
       <div>
-        <div class="section-label label-blue">The Process</div>
-        <h2 class="section-headline">How it<br/>works</h2>
+        <p class="section-eyebrow">See the work</p>
+        <h2>Six stills.<br/>Six clips.<br/>Zero re-renders.</h2>
       </div>
-      <p>A single still image is fed into AI software designed for motion generation. We provide a prompt, the system generates a short animated clip — usually only a few seconds long.</p>
+      <p>Every clip below started life as a single CGI still image — the same kind you already have. Hover to preview. Click to watch full screen.</p>
     </div>
-    <div class="steps stagger">
-      <div class="step">
-        <div class="step-num">01</div>
-        <div class="step-title">Feed in the still</div>
-        <p class="step-body">A single CGI still is loaded into AI motion software. No additional modelling, rigging or scene setup required — the still itself is the starting point.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <div class="step-title">Write the prompt</div>
-        <p class="step-body">We provide a prompt that gives broad direction such as the type of camera movement. Simple, direct prompts produce the most consistent results.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <div class="step-title">Generate &amp; edit</div>
-        <p class="step-body">The system generates a short clip — the initial few seconds tend to be most useful. Multiple clips edited together create a polished narrative quickly.</p>
-      </div>
-    </div>
-  </section>
+    <div class="video-grid">
 
-  <!-- PROS & CONS — large typographic format -->
-  <section class="verdict" id="strengths">
-    <div class="verdict-header">
-      <div class="section-label label-yellow" style="color:var(--if-yellow);">Honest Assessment</div>
-      <h2 class="section-headline">The Verdict</h2>
-    </div>
-    <div class="verdict-grid">
-      <div class="verdict-pros">
-        <div class="verdict-label">Pros</div>
-        <div class="verdict-item reveal">
-          <span class="verdict-icon">+</span>
-          <div>
-            <strong>Fast and cost-effective</strong>
-            <p>Minutes or hours — not days or weeks. A fraction of traditional animation costs.</p>
-          </div>
+      <div class="vcard" data-src="videos/sunset-tower-dolly-pan.mp4">
+        <video muted loop playsinline>
+          <source src="videos/sunset-tower-dolly-pan.mp4" type="video/mp4" />
+        </video>
+        <div class="vcard-overlay"></div>
+        <div class="vcard-info">
+          <span class="vcard-tag">Property</span>
+          <div class="vcard-title">Sunset Tower — Dolly Pan</div>
         </div>
-        <div class="verdict-item reveal">
-          <span class="verdict-icon">+</span>
-          <div>
-            <strong>Lightweight and flexible</strong>
-            <p>Ideal for short-form content — social, email, digital ads — where a little movement goes a long way.</p>
-          </div>
+        <div class="vcard-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+
+      <div class="vcard" data-src="videos/waterfall-car-dolly-zoom.mp4">
+        <video muted loop playsinline>
+          <source src="videos/waterfall-car-dolly-zoom.mp4" type="video/mp4" />
+        </video>
+        <div class="vcard-overlay"></div>
+        <div class="vcard-info">
+          <span class="vcard-tag">Automotive</span>
+          <div class="vcard-title">Waterfall Scene — Dolly Zoom</div>
         </div>
+        <div class="vcard-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
-      <div class="verdict-divider"></div>
-      <div class="verdict-cons">
-        <div class="verdict-label">Cons</div>
-        <div class="verdict-item reveal">
-          <span class="verdict-icon" style="color:var(--if-pink);">−</span>
-          <div>
-            <strong>Limited control</strong>
-            <p>Broad direction only. Fine adjustments to timing or specific object movement aren't possible.</p>
-          </div>
+
+      <div class="vcard" data-src="videos/jacuzzi-steam.mp4">
+        <video muted loop playsinline>
+          <source src="videos/jacuzzi-steam.mp4" type="video/mp4" />
+        </video>
+        <div class="vcard-overlay"></div>
+        <div class="vcard-info">
+          <span class="vcard-tag">Bathroom</span>
+          <div class="vcard-title">Jacuzzi — Steam &amp; Atmosphere</div>
         </div>
-        <div class="verdict-item reveal">
-          <span class="verdict-icon" style="color:var(--if-pink);">−</span>
-          <div>
-            <strong>Simplistic cameras only</strong>
-            <p>Exploratory or complex camera paths cause the AI to fabricate detail — simple moves stay truest.</p>
-          </div>
+        <div class="vcard-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+
+      <div class="vcard" data-src="videos/product-rotate-fan.mp4">
+        <video muted loop playsinline>
+          <source src="videos/product-rotate-fan.mp4" type="video/mp4" />
+        </video>
+        <div class="vcard-overlay"></div>
+        <div class="vcard-info">
+          <span class="vcard-tag">Product</span>
+          <div class="vcard-title">Fan — Product Rotate</div>
         </div>
-        <div class="verdict-item reveal">
-          <span class="verdict-icon" style="color:var(--if-pink);">−</span>
-          <div>
-            <strong>Unpredictable results</strong>
-            <p>Each generation is unique — expect iteration before arriving at the ideal clip.</p>
-          </div>
+        <div class="vcard-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+
+      <div class="vcard" data-src="videos/snow-scene-dolly-zoom.mp4">
+        <video muted loop playsinline>
+          <source src="videos/snow-scene-dolly-zoom.mp4" type="video/mp4" />
+        </video>
+        <div class="vcard-overlay"></div>
+        <div class="vcard-info">
+          <span class="vcard-tag">Exterior</span>
+          <div class="vcard-title">Snow Scene — Dolly Zoom</div>
         </div>
-        <div class="verdict-item reveal">
-          <span class="verdict-icon" style="color:var(--if-pink);">−</span>
-          <div>
-            <strong>Short sequences only</strong>
-            <p>Not a replacement for full animation. Works best as short, punchy supporting content.</p>
-          </div>
+        <div class="vcard-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+
+      <div class="vcard" data-src="videos/tap-dolly-pan.mp4">
+        <video muted loop playsinline>
+          <source src="videos/tap-dolly-pan.mp4" type="video/mp4" />
+        </video>
+        <div class="vcard-overlay"></div>
+        <div class="vcard-info">
+          <span class="vcard-tag">KBB</span>
+          <div class="vcard-title">Tap — Dolly Pan</div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LESSONS — horizontal scrolling timeline on dark bg -->
-  <section class="lessons" id="lessons">
-    <div class="lessons-header">
-      <div class="section-label label-white">Lessons Learned</div>
-      <h2 class="section-headline">In practice</h2>
-      <p class="lessons-quote">"Quality comes down to the strength of the initial prompt and knowing when to restart rather than over-iterate."</p>
-    </div>
-    <div class="lessons-timeline">
-      <div class="tl-item reveal">
-        <div class="tl-num">01</div>
-        <div class="tl-line"></div>
-        <div class="tl-title">Prompt quality is everything</div>
-        <p class="tl-body">Specific, directional language — camera type, movement style, pace — delivers far more consistent clips than vague direction.</p>
-      </div>
-      <div class="tl-item reveal">
-        <div class="tl-num">02</div>
-        <div class="tl-line"></div>
-        <div class="tl-title">Know when to restart</div>
-        <p class="tl-body">If the output isn't working, starting fresh usually beats trying to salvage a bad generation.</p>
-      </div>
-      <div class="tl-item reveal">
-        <div class="tl-num">03</div>
-        <div class="tl-line"></div>
-        <div class="tl-title">Edit clips together</div>
-        <p class="tl-body">Trimming, reversing, or speeding up several clips creates surprisingly polished narratives in very little time.</p>
-      </div>
-      <div class="tl-item reveal">
-        <div class="tl-num">04</div>
-        <div class="tl-line"></div>
-        <div class="tl-title">They fill an important gap</div>
-        <p class="tl-body">Dynamic stills won't replace traditional animation, but they make movement-driven content accessible without the production overhead.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- USE CASES -->
-  <section class="use-cases">
-    <div class="use-cases-header">
-      <div>
-        <div class="section-label label-pink">Where It Works</div>
-        <h2 class="section-headline">Use cases</h2>
-      </div>
-      <p>Dynamic Stills work anywhere a little motion adds impact. These are the scenarios where we see them perform best.</p>
-    </div>
-    <div class="use-cases-grid">
-
-      <div class="uc-card reveal">
-        <div class="uc-num">01</div>
-        <div class="uc-title">Property Marketing</div>
-        <p class="uc-desc">A slow camera drift through a CGI render creates scale and atmosphere that static images can't — before a brick is laid.</p>
-        <div class="uc-tags"><span class="uc-tag">Residential</span><span class="uc-tag">Commercial</span></div>
-      </div>
-
-      <div class="uc-card reveal">
-        <div class="uc-num">02</div>
-        <div class="uc-title">Social Media</div>
-        <p class="uc-desc">A looping clip stops the scroll. Short-form motion content from a single still — ready for Instagram, LinkedIn and TikTok without a production budget.</p>
-        <div class="uc-tags"><span class="uc-tag">Instagram</span><span class="uc-tag">LinkedIn</span><span class="uc-tag">TikTok</span></div>
-      </div>
-
-      <div class="uc-card reveal">
-        <div class="uc-num">03</div>
-        <div class="uc-title">Seasonal Campaigns</div>
-        <p class="uc-desc">Add weather or atmosphere to an existing render. Snow falling, steam rising — seasonal motion content without a reshoot or new CGI file.</p>
-        <div class="uc-tags"><span class="uc-tag">Christmas</span><span class="uc-tag">Spring</span><span class="uc-tag">Campaigns</span></div>
-      </div>
-
-      <div class="uc-card reveal">
-        <div class="uc-num">04</div>
-        <div class="uc-title">Product Launches</div>
-        <p class="uc-desc">Subtle motion on a product still — a slow rotation, a running tap, a spinning fan — makes for compelling hero content on landing pages and at point of sale.</p>
-        <div class="uc-tags"><span class="uc-tag">KBB</span><span class="uc-tag">Appliances</span><span class="uc-tag">Interiors</span></div>
-      </div>
-
-      <div class="uc-card reveal">
-        <div class="uc-num">05</div>
-        <div class="uc-title">Pitch Decks</div>
-        <p class="uc-desc">Investor decks and client presentations gain instant credibility when a render moves. A few seconds of cinematic motion communicates vision and finish.</p>
-        <div class="uc-tags"><span class="uc-tag">Investor Decks</span><span class="uc-tag">Client Pitches</span></div>
-      </div>
-
-      <div class="uc-card reveal">
-        <div class="uc-num">06</div>
-        <div class="uc-title">Digital Advertising</div>
-        <p class="uc-desc">Motion dramatically increases click-through rates. Dynamic Stills deliver it for banner ads, email headers and digital out-of-home at a fraction of animation cost.</p>
-        <div class="uc-tags"><span class="uc-tag">Display Ads</span><span class="uc-tag">Email</span><span class="uc-tag">DOOH</span></div>
+        <div class="vcard-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
 
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- MORE EXAMPLES — video grid -->
-  <section class="more-examples">
-    <div class="more-examples-header">
-      <div>
-        <div class="section-label" style="color:rgba(255,255,255,0.4); margin-bottom:8px;">All Examples</div>
-        <h2 class="section-headline" style="color:var(--white);">In Action</h2>
-      </div>
-      <p>Every clip started as a single CGI still. Hover to preview — more examples being added regularly.</p>
+<!-- ── IN YOUR WORLD ── -->
+<section class="iyw-section">
+  <div class="iyw-header">
+    <div>
+      <p class="section-eyebrow">Works across every sector</p>
+      <h2>In Your<br/>World</h2>
     </div>
-    <div class="more-grid">
+    <p class="iyw-header-desc">The same technique. Applied to your render. Tuned to how your audience actually watches.</p>
+  </div>
 
-      <div class="more-card" data-src="videos/sunset-tower-dolly-pan.mp4" data-num="01" data-title="Slow dolly pan" data-tag="Architectural" data-prompt='"Slow dolly pan the camera and have the sunset shine from behind the tower"'>
-        <div class="more-card-video">
-          <video muted loop playsinline preload="none"><source src="videos/sunset-tower-dolly-pan.mp4" type="video/mp4"/></video>
-          <div class="play-hint"></div>
-        </div>
-        <div class="more-card-body">
-          <div class="more-card-meta"><span class="more-card-num">01</span><span class="more-card-tag">Architectural</span></div>
-          <div class="more-card-title">Slow dolly pan</div>
-          <p class="more-card-prompt">"Slow dolly pan the camera and have the sunset shine from behind the tower"</p>
-        </div>
+  <div class="iyw-row">
+    <div class="iyw-num">01</div>
+    <div class="iyw-body">
+      <span class="iyw-tag">Property &amp; Architecture</span>
+      <h3 class="iyw-title">Make the building<br/>feel alive</h3>
+      <p class="iyw-desc">A slow dolly or orbital pan around an exterior CGI transforms a static render into something that feels photographic. Developers use these on sales portals, planning applications, and Instagram — where static renders scroll straight past.</p>
+      <div class="iyw-pills">
+        <span class="iyw-pill">Residential</span>
+        <span class="iyw-pill">Commercial</span>
+        <span class="iyw-pill">Planning &amp; Consent</span>
+        <span class="iyw-pill iyw-pill-accent">Dolly Pan</span>
       </div>
-
-      <div class="more-card" data-src="videos/waterfall-car-dolly-zoom.mp4" data-num="02" data-title="Dolly zoom in" data-tag="Lifestyle" data-prompt='"Slow dolly zoom in — animate the waterfall in the back, do not move the car"'>
-        <div class="more-card-video">
-          <video muted loop playsinline preload="none"><source src="videos/waterfall-car-dolly-zoom.mp4" type="video/mp4"/></video>
-          <div class="play-hint"></div>
-        </div>
-        <div class="more-card-body">
-          <div class="more-card-meta"><span class="more-card-num">02</span><span class="more-card-tag">Lifestyle</span></div>
-          <div class="more-card-title">Dolly zoom in</div>
-          <p class="more-card-prompt">"Slow dolly zoom in — animate the waterfall in the back, do not move the car"</p>
-        </div>
-      </div>
-
-      <div class="more-card" data-src="videos/snow-scene-dolly-zoom.mp4" data-num="03" data-title="Dolly zoom out" data-tag="Seasonal" data-prompt='"Have snow gently falling across the scene in front of the camera"'>
-        <div class="more-card-video">
-          <video muted loop playsinline preload="none"><source src="videos/snow-scene-dolly-zoom.mp4" type="video/mp4"/></video>
-          <div class="play-hint"></div>
-        </div>
-        <div class="more-card-body">
-          <div class="more-card-meta"><span class="more-card-num">03</span><span class="more-card-tag">Seasonal</span></div>
-          <div class="more-card-title">Dolly zoom out</div>
-          <p class="more-card-prompt">"Have snow gently falling across the scene in front of the camera"</p>
-        </div>
-      </div>
-
-      <div class="more-card" data-src="videos/product-rotate-fan.mp4" data-num="04" data-title="Product rotation" data-tag="Product · KBB" data-prompt='"Slowly rotate the product left — make the fan under the grate spin"'>
-        <div class="more-card-video">
-          <video muted loop playsinline preload="none"><source src="videos/product-rotate-fan.mp4" type="video/mp4"/></video>
-          <div class="play-hint"></div>
-        </div>
-        <div class="more-card-body">
-          <div class="more-card-meta"><span class="more-card-num">04</span><span class="more-card-tag">Product · KBB</span></div>
-          <div class="more-card-title">Product rotation</div>
-          <p class="more-card-prompt">"Slowly rotate the product left — make the fan under the grate spin"</p>
-        </div>
-      </div>
-
-      <div class="more-card" data-src="videos/tap-dolly-pan.mp4" data-num="05" data-title="Slow dolly pan" data-tag="Bathroom" data-prompt='"Slow dolly pan the camera in — have the tap running"'>
-        <div class="more-card-video">
-          <video muted loop playsinline preload="none"><source src="videos/tap-dolly-pan.mp4" type="video/mp4"/></video>
-          <div class="play-hint"></div>
-        </div>
-        <div class="more-card-body">
-          <div class="more-card-meta"><span class="more-card-num">05</span><span class="more-card-tag">Bathroom</span></div>
-          <div class="more-card-title">Slow dolly pan</div>
-          <p class="more-card-prompt">"Slow dolly pan the camera in — have the tap running"</p>
-        </div>
-      </div>
-
-      <div class="more-card" data-src="videos/jacuzzi-steam.mp4" data-num="06" data-title="Animate &amp; atmosphere" data-tag="Lifestyle" data-prompt='"Animate steam — turn on the jacuzzi, make the water bubble and froth"'>
-        <div class="more-card-video">
-          <video muted loop playsinline preload="none"><source src="videos/jacuzzi-steam.mp4" type="video/mp4"/></video>
-          <div class="play-hint"></div>
-        </div>
-        <div class="more-card-body">
-          <div class="more-card-meta"><span class="more-card-num">06</span><span class="more-card-tag">Lifestyle</span></div>
-          <div class="more-card-title">Animate &amp; atmosphere</div>
-          <p class="more-card-prompt">"Animate steam — turn on the jacuzzi, make the water bubble and froth"</p>
-        </div>
-      </div>
-
-      <!-- PLACEHOLDERS — replace with new .more-card blocks when new videos are added -->
-      <div class="more-card placeholder">
-        <div class="more-card-video"><div class="ph-icon">▶</div></div>
-        <div class="more-card-body">
-          <div class="more-card-meta"><span class="more-card-num">07</span><span class="more-card-tag">Coming soon</span></div>
-          <div class="more-card-title">New example</div>
-          <p class="more-card-prompt">Add a new video file to the videos/ folder and update this card.</p>
-        </div>
-      </div>
-      <div class="more-card placeholder">
-        <div class="more-card-video"><div class="ph-icon">▶</div></div>
-        <div class="more-card-body">
-          <div class="more-card-meta"><span class="more-card-num">08</span><span class="more-card-tag">Coming soon</span></div>
-          <div class="more-card-title">New example</div>
-          <p class="more-card-prompt">Add a new video file to the videos/ folder and update this card.</p>
-        </div>
-      </div>
-      <div class="more-card placeholder">
-        <div class="more-card-video"><div class="ph-icon">▶</div></div>
-        <div class="more-card-body">
-          <div class="more-card-meta"><span class="more-card-num">09</span><span class="more-card-tag">Coming soon</span></div>
-          <div class="more-card-title">New example</div>
-          <p class="more-card-prompt">Add a new video file to the videos/ folder and update this card.</p>
-        </div>
-      </div>
-
     </div>
-  </section>
-
-  <!-- CTA — black left, video right -->
-  <section class="cta-section" id="contact">
-    <div class="cta-text">
-      <span class="cta-eyebrow">Bring your stills to life</span>
-      <h2 class="cta-headline">TURN YOUR CGI<br>STILLS INTO<br>MOVING CONTENT</h2>
-      <p class="cta-sub">If you already have CGI stills, you're closer to motion content than you think. Tell us what you're working on and we'll show you exactly what's possible.</p>
-      <a href="https://www.imagefoundry.co.uk/contact-us/" class="cta-btn">Get in Touch</a>
-    </div>
-    <div class="cta-video-panel">
-      <video class="cta-video" autoplay muted loop playsinline>
+    <div class="iyw-media">
+      <video muted loop playsinline preload="none">
         <source src="videos/sunset-tower-dolly-pan.mp4" type="video/mp4" />
       </video>
+      <span class="iyw-media-label">Sunset Tower — Dolly Pan</span>
     </div>
-  </section>
+  </div>
 
-  <!-- VIDEO MODAL -->
-  <div class="video-modal" id="videoModal">
-    <div class="modal-inner">
-      <video class="modal-video" id="modalVideo" controls autoplay muted playsinline></video>
-      <div class="modal-info">
-        <div class="modal-title" id="modalTitle"></div>
-        <div class="modal-prompt" id="modalPrompt"></div>
-        <button class="modal-close" id="modalClose">Close ✕</button>
+  <div class="iyw-row iyw-flip">
+    <div class="iyw-media">
+      <video muted loop playsinline preload="none">
+        <source src="videos/jacuzzi-steam.mp4" type="video/mp4" />
+      </video>
+      <span class="iyw-media-label">Jacuzzi — Steam &amp; Atmosphere</span>
+    </div>
+    <div class="iyw-body">
+      <span class="iyw-tag">Bathrooms &amp; Interiors</span>
+      <h3 class="iyw-title">Sell the feeling,<br/>not just the fixture</h3>
+      <p class="iyw-desc">A gentle atmospheric motion — rising steam, soft light shift, a slow push-in — turns a bathroom CGI into something aspirational. KBB retailers use these on POS screens, brand reels, and product launch campaigns where static imagery no longer cuts through.</p>
+      <div class="iyw-pills">
+        <span class="iyw-pill">KBB Retail</span>
+        <span class="iyw-pill">Showroom Screens</span>
+        <span class="iyw-pill">Brand Campaigns</span>
+        <span class="iyw-pill iyw-pill-accent">Atmosphere &amp; Steam</span>
+      </div>
+    </div>
+    <div class="iyw-num">02</div>
+  </div>
+
+  <div class="iyw-row">
+    <div class="iyw-num">03</div>
+    <div class="iyw-body">
+      <span class="iyw-tag">Products &amp; Objects</span>
+      <h3 class="iyw-title">A product that<br/>commands attention</h3>
+      <p class="iyw-desc">A slow orbit or spin around a product CGI makes it look premium and considered — the kind of motion that performs on Meta ads and digital out-of-home. No new photography. No studio time. Just the render you already have, now moving.</p>
+      <div class="iyw-pills">
+        <span class="iyw-pill">E-commerce</span>
+        <span class="iyw-pill">Meta Ads</span>
+        <span class="iyw-pill">Digital OOH</span>
+        <span class="iyw-pill iyw-pill-accent">Product Rotate</span>
+      </div>
+    </div>
+    <div class="iyw-media">
+      <video muted loop playsinline preload="none">
+        <source src="videos/product-rotate-fan.mp4" type="video/mp4" />
+      </video>
+      <span class="iyw-media-label">Fan — Product Rotate</span>
+    </div>
+  </div>
+
+  <div class="iyw-row iyw-flip">
+    <div class="iyw-media">
+      <video muted loop playsinline preload="none">
+        <source src="videos/snow-scene-dolly-zoom.mp4" type="video/mp4" />
+      </video>
+      <span class="iyw-media-label">Snow Scene — Dolly Zoom</span>
+    </div>
+    <div class="iyw-body">
+      <span class="iyw-tag">Exterior &amp; Landscape</span>
+      <h3 class="iyw-title">Weather, mood,<br/>and atmosphere</h3>
+      <p class="iyw-desc">Seasonal CGI renders — winter scenes, golden-hour skies, rain-washed streets — gain a new dimension with cinematic movement. A dolly zoom through a snow scene creates the kind of scroll-stopping content that brand-new animation would cost ten times more to produce.</p>
+      <div class="iyw-pills">
+        <span class="iyw-pill">Seasonal Campaigns</span>
+        <span class="iyw-pill">Landscape &amp; Masterplan</span>
+        <span class="iyw-pill iyw-pill-accent">Dolly Zoom</span>
+      </div>
+    </div>
+    <div class="iyw-num">04</div>
+  </div>
+
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="how-section">
+  <div class="how-inner">
+    <div class="how-top">
+      <div>
+        <p class="section-eyebrow">How it works</p>
+        <h2>Three steps.<br/>One looping clip.</h2>
+      </div>
+      <p>The whole process is designed to be effortless on your side. You send us the render. We take it from there.</p>
+    </div>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="how-step-num">01</div>
+        <h3>Send us your CGI</h3>
+        <p>Share any finished still render — from a previous Image Foundry project or from another source. Any format, any resolution. If it came from us, we already have it on file.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">02</div>
+        <h3>We agree the move</h3>
+        <p>We suggest a camera direction — dolly, pan, zoom, orbit — based on your scene, your product, and how you plan to use the clip. You sign it off. We get to work.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">03</div>
+        <h3>Clip delivered in days</h3>
+        <p>A 7–10 second looping MP4, optimised for web, social, and digital advertising. Quality-checked. Revisions included. Ready to publish.</p>
       </div>
     </div>
   </div>
+</section>
+
+<!-- ── WHY ── -->
+<section class="why-section">
+  <div class="why-inner">
+    <p class="section-eyebrow">Why it matters</p>
+    <h2>The same asset.<br/><span>Five times</span> the reach.</h2>
+    <div class="why-cards">
+      <div class="why-card">
+        <div class="why-card-num">01</div>
+        <h3>No new budget required</h3>
+        <p>You've already paid for the CGI. This isn't a re-render — it's a value-add on top of what you own. The cost is a fraction of commissioning new video content.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-card-num">02</div>
+        <h3>Motion stops the scroll</h3>
+        <p>A moving image commands attention in the first half-second — before a viewer has decided to look. On Meta, Instagram, and digital display, motion outperforms static every time.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-card-num">03</div>
+        <h3>Ready for every channel</h3>
+        <p>One clip works across your website hero, Instagram Reels, Meta ads, and digital out-of-home. No re-editing. No reformatting. Just publish.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-copy">
+      <h2>Which render<br/>should move first?</h2>
+      <p>Tell us what you have and we'll come back within 24 hours with a suggested camera direction and a quote.</p>
+    </div>
+    <a href="https://www.imagefoundry.co.uk/contact-us/" class="btn-dark">Start the Conversation</a>
+  </div>
+</section>
 
 <footer>
   <div class="footer-grid">
     <div class="footer-logo-block">
-      <div>
-        <img src="../assets/logo.svg" alt="Image Foundry" style="width:150px; display:block; filter: brightness(0) invert(1); margin-bottom: 8px;" />
-      </div>
-      <a href="https://www.imagefoundry.co.uk/contact-us/" class="footer-lets-talk">Let's talk</a>
+      <img src="../assets/logo.svg" alt="Image Foundry" style="width:150px; display:block; filter: brightness(0) invert(1);" />
+      <a href="https://www.imagefoundry.co.uk/contact-us/" class="footer-lets-talk">Let's Talk</a>
     </div>
     <div class="footer-right">
-      <nav>
-        <ul class="footer-nav">
-          <li><a href="https://www.imagefoundry.co.uk/about-us/">Who We Are</a></li>
-          <li><a href="https://www.imagefoundry.co.uk/insights/">Insights</a></li>
-          <li><a href="https://www.imagefoundry.co.uk/process/">Our Process</a></li>
-          <li><a href="https://www.imagefoundry.co.uk/contact-us/">Contact Us</a></li>
-        </ul>
-      </nav>
+      <ul class="footer-nav">
+        <li><a href="https://www.imagefoundry.co.uk/about-us/">Who We Are</a></li>
+        <li><a href="https://www.imagefoundry.co.uk/insights/">Insights</a></li>
+        <li><a href="https://www.imagefoundry.co.uk/process/">Our Process</a></li>
+        <li><a href="https://www.imagefoundry.co.uk/contact-us/">Contact Us</a></li>
+      </ul>
       <div class="footer-legal">
         <a href="https://www.imagefoundry.co.uk/privacy-policy/privacy-policy/">Privacy</a>
         <a href="#">Cookies</a>
@@ -2125,174 +1003,139 @@
   </div>
 </footer>
 
-  <script>
-    // Scroll reveal
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal, .stagger').forEach(el => obs.observe(el));
+<!-- ── VIDEO MODAL ── -->
+<div class="video-modal" id="videoModal">
+  <div class="modal-inner">
+    <video class="modal-video" id="modalVideo" controls autoplay muted playsinline></video>
+    <button class="modal-close" id="modalClose">Close ✕</button>
+  </div>
+</div>
 
-    // Scroll: reveal phone + contact btn
-    const sf = document.querySelector('.sf');
-    window.addEventListener('scroll', () => {
-      sf.classList.toggle('scrolled', window.scrollY > 80);
-    });
+<script>
+  /* ── Scroll ── */
+  const sf = document.querySelector('.sf');
+  window.addEventListener('scroll', () => sf.classList.toggle('scrolled', window.scrollY > 80));
 
-    // Nav panel content
-    const IF = 'https://www.imagefoundry.co.uk';
-    const LI = 'https://www.imagefoundry.co.uk/lp/images';
-    const panels = {
-      industry: {
-        heading: 'Industries',
-        body: 'Explore the industries Image Foundry are transforming.',
-        grid: [
-          { label:'Interiors', img:`${LI}/industry/interiors-living-room.jpeg`, href:`${IF}/industry/interiors/` },
-          { label:'Bathrooms', img:`${LI}/industry/bathroom-basin.jpg`,         href:`${IF}/industry/bathrooms/` },
-          { label:'Products',  img:`${LI}/industry/product-shot.png`,           href:`${IF}/industry/product/` },
-          { label:'Kitchens',  img:`${LI}/industry/kitchen-interior.jpg`,       href:`${IF}/industry/kitchen/` },
-          { label:'Bedrooms',  img:`${LI}/industry/bedroom-interior.jpeg`,      href:`${IF}/industry/bedrooms/` },
-          { label:'Property',  img:`${LI}/industry/property-exterior.jpeg`,     href:`${IF}/industry/property/` },
-        ]
-      },
-      about: { heading:'Who We Are', body:"Over 20 years of CGI expertise.", grid:[
-        { label:'Our Story',    img:`${LI}/gallery/door-black-georgian-dusk.jpeg`, href:`${IF}/about-us/` },
-        { label:'Our Process',  img:`${LI}/gallery/gallery-home-office.jpeg`,      href:`${IF}/process/` },
-        { label:'Get in Touch', img:`${LI}/industry/bathroom-basin.jpg`,           href:`${IF}/contact-us/` },
+  /* ── Nav ── */
+  const IF = 'https://www.imagefoundry.co.uk';
+  const LI = 'https://www.imagefoundry.co.uk/lp/images';
+  const panels = {
+    industry: { heading:'Industries', body:'Explore the industries Image Foundry are transforming.',
+      grid:[
+        { label:'Interiors', img:`${LI}/industry/interiors-living-room.jpeg`, href:`${IF}/industry/interiors/` },
+        { label:'Bathrooms', img:`${LI}/industry/bathroom-basin.jpg`,         href:`${IF}/industry/bathrooms/` },
+        { label:'Products',  img:`${LI}/industry/product-shot.png`,           href:`${IF}/industry/product/` },
+        { label:'Kitchens',  img:`${LI}/industry/kitchen-interior.jpg`,       href:`${IF}/industry/kitchen/` },
+        { label:'Bedrooms',  img:`${LI}/industry/bedroom-interior.jpeg`,      href:`${IF}/industry/bedrooms/` },
+        { label:'Property',  img:`${LI}/industry/property-exterior.jpeg`,     href:`${IF}/industry/property/` },
       ]},
-      cases: { heading:'Case Studies', body:"Real projects, real results.", grid:[
-        { label:'Strata Homes',    img:`${LI}/gallery/gallery-cgi-ai-3a.png`,         href:`${IF}/case-studies/` },
-        { label:'Ideal Standard',  img:`${LI}/gallery/gallery-bathroom-marble.jpeg`,   href:`${IF}/case-studies/` },
-        { label:'Irsap Radiators', img:`${LI}/gallery/radiator-living-room.png`,       href:`${IF}/case-studies/` },
-        { label:'Franke Kitchen',  img:`${LI}/gallery/gallery-kitchen-appliances.jpeg`,href:`${IF}/case-studies/` },
-        { label:'Outdoor Living',  img:`${LI}/gallery/outdoor-decking.png`,            href:`${IF}/case-studies/` },
-        { label:'External Doors',  img:`${LI}/colourways/colourway-red.jpg`,           href:`${IF}/case-studies/` },
-      ]},
-      insights: { heading:'Insights & Ideas', body:"Practical thinking on CGI and AI imagery.", grid:[
-        { label:'CGI vs Photography', img:`${LI}/gallery/gallery-cgi-ai-4a.png`,  href:`${IF}/insights/` },
-        { label:'AI in Production',   img:`${LI}/gallery/gallery-cgi-ai-4b.png`,  href:`${IF}/insights/` },
-        { label:'Colourway Imaging',  img:`${LI}/colourways/colourway-teal.png`,  href:`${IF}/insights/` },
-      ]},
-      process: { heading:'How We Work', body:"A CGI-first, AI-extended methodology.", grid:[
-        { label:'Range Audit',       img:`${LI}/gallery/door-black-georgian-dusk.jpeg`, href:`${IF}/process/` },
-        { label:'3D Master Build',   img:`${LI}/gallery/gallery-home-office.jpeg`,      href:`${IF}/process/` },
-        { label:'AI Scene Placement',img:`${LI}/gallery/outdoor-decking.png`,           href:`${IF}/process/` },
-      ]},
-      contact: { heading:'Start the Conversation', body:"Tell us about your project.", grid:[
-        { label:'Get in Touch', img:`${LI}/colourways/colourway-red.jpg`,   href:`${IF}/contact-us/` },
-        { label:'Book a Call',  img:`${LI}/colourways/colourway-blue.jpeg`, href:`${IF}/contact-us/` },
-        { label:'See Our Work', img:`${LI}/colourways/colourway-oak.png`,   href:`${IF}/contact-us/` },
-      ]}
-    };
+    about:    { heading:'Who We Are',             body:'Over 20 years of CGI expertise.',                   grid:[{ label:'Our Story',    img:`${LI}/gallery/door-black-georgian-dusk.jpeg`, href:`${IF}/about-us/` },{ label:'Our Process',  img:`${LI}/gallery/gallery-home-office.jpeg`, href:`${IF}/process/` },{ label:'Get in Touch', img:`${LI}/industry/bathroom-basin.jpg`, href:`${IF}/contact-us/` }] },
+    cases:    { heading:'Case Studies',           body:'Real projects, real results.',                      grid:[{ label:'Strata Homes', img:`${LI}/gallery/gallery-cgi-ai-3a.png`, href:`${IF}/case-studies/` },{ label:'Ideal Standard', img:`${LI}/gallery/gallery-bathroom-marble.jpeg`, href:`${IF}/case-studies/` },{ label:'Irsap Radiators', img:`${LI}/gallery/radiator-living-room.png`, href:`${IF}/case-studies/` },{ label:'Franke Kitchen', img:`${LI}/gallery/gallery-kitchen-appliances.jpeg`, href:`${IF}/case-studies/` },{ label:'Outdoor Living', img:`${LI}/gallery/outdoor-decking.png`, href:`${IF}/case-studies/` },{ label:'External Doors', img:`${LI}/colourways/colourway-red.jpg`, href:`${IF}/case-studies/` }] },
+    insights: { heading:'Insights & Ideas',       body:'Practical thinking on CGI and AI imagery.',        grid:[{ label:'CGI vs Photography', img:`${LI}/gallery/gallery-cgi-ai-4a.png`, href:`${IF}/insights/` },{ label:'AI in Production', img:`${LI}/gallery/gallery-cgi-ai-4b.png`, href:`${IF}/insights/` },{ label:'Colourway Imaging', img:`${LI}/colourways/colourway-teal.png`, href:`${IF}/insights/` }] },
+    process:  { heading:'How We Work',            body:'A CGI-first, AI-extended methodology.',            grid:[{ label:'Range Audit', img:`${LI}/gallery/door-black-georgian-dusk.jpeg`, href:`${IF}/process/` },{ label:'3D Master Build', img:`${LI}/gallery/gallery-home-office.jpeg`, href:`${IF}/process/` },{ label:'AI Scene Placement', img:`${LI}/gallery/outdoor-decking.png`, href:`${IF}/process/` }] },
+    contact:  { heading:'Start the Conversation', body:'Tell us about your project.',                      grid:[{ label:'Get in Touch', img:`${LI}/colourways/colourway-red.jpg`, href:`${IF}/contact-us/` },{ label:'Book a Call', img:`${LI}/colourways/colourway-blue.jpeg`, href:`${IF}/contact-us/` },{ label:'See Our Work', img:`${LI}/colourways/colourway-oak.png`, href:`${IF}/contact-us/` }] }
+  };
 
-    function renderPanel(key) {
-      const d = panels[key];
-      const el = document.getElementById('navContentPanel');
-      if (!d) { el.innerHTML = ''; return; }
-      el.innerHTML = `
-        <div class="ncp-header">
-          <h2 class="ncp-heading">${d.heading}</h2>
-          <p class="ncp-body">${d.body}</p>
-        </div>
-        <div class="ncp-grid">
-          ${d.grid.map(i=>`
-            <a class="ncp-item" href="${i.href}">
-              <img src="${i.img}" alt="${i.label}" loading="lazy"/>
-              <span class="ncp-item-label">${i.label}</span>
-            </a>`).join('')}
-        </div>`;
-    }
+  function renderPanel(key) {
+    const d = panels[key];
+    const el = document.getElementById('navContentPanel');
+    if (!d) { el.innerHTML = ''; return; }
+    el.innerHTML = `
+      <div class="ncp-header">
+        <h2 class="ncp-heading">${d.heading}</h2>
+        <p class="ncp-body">${d.body}</p>
+      </div>
+      <div class="ncp-grid">
+        ${d.grid.map(i=>`<a class="ncp-item" href="${i.href}"><img src="${i.img}" alt="${i.label}" loading="lazy"/><span class="ncp-item-label">${i.label}</span></a>`).join('')}
+      </div>`;
+  }
 
-    document.querySelectorAll('.nav-links li a').forEach(a => {
-      a.addEventListener('mouseenter', () => {
-        document.querySelectorAll('.nav-links li a').forEach(l => l.classList.remove('is-active'));
-        a.classList.add('is-active');
-        const panel = document.getElementById('navContentPanel');
-        if (a.dataset.key === 'industry') {
-          panel.style.visibility = 'visible'; panel.style.opacity = '1';
-          renderPanel('industry');
-        } else {
-          panel.style.visibility = 'hidden'; panel.style.opacity = '0';
-        }
-      });
-    });
-
-    function openNav() {
-      document.body.classList.add('nav-open');
-      const def = document.querySelector('.nav-links li a[data-key="industry"]');
+  document.querySelectorAll('.nav-links li a').forEach(a => {
+    a.addEventListener('mouseenter', () => {
       document.querySelectorAll('.nav-links li a').forEach(l => l.classList.remove('is-active'));
-      if (def) def.classList.add('is-active');
+      a.classList.add('is-active');
       const panel = document.getElementById('navContentPanel');
       panel.style.visibility = 'visible'; panel.style.opacity = '1';
-      renderPanel('industry');
-    }
-    function closeNav() { document.body.classList.remove('nav-open'); }
-
-    // ── Playlist player ──
-    const mainVideo  = document.getElementById('mainVideo');
-    const mainSrc    = document.getElementById('mainSrc');
-    const mainNum    = document.getElementById('mainNum');
-    const mainTitle  = document.getElementById('mainTitle');
-    const mainPrompt = document.getElementById('mainPrompt');
-    const plItems    = Array.from(document.querySelectorAll('.pl-item'));
-
-    function playItem(item) {
-      plItems.forEach(i => i.classList.remove('active'));
-      item.classList.add('active');
-      item.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-      mainSrc.src            = item.dataset.src;
-      mainNum.textContent    = item.dataset.num;
-      mainTitle.textContent  = item.dataset.title;
-      mainPrompt.textContent = item.dataset.prompt;
-      mainVideo.load();
-      mainVideo.play();
-    }
-
-    plItems.forEach(item => item.addEventListener('click', () => playItem(item)));
-
-    mainVideo.addEventListener('ended', () => {
-      const current = plItems.findIndex(i => i.classList.contains('active'));
-      playItem(plItems[(current + 1) % plItems.length]);
+      renderPanel(a.dataset.key);
     });
+  });
 
-    // More examples grid: hover-to-play, click loads into main player
+  function openNav() {
+    document.body.classList.add('nav-open');
+    const def = document.querySelector('.nav-links li a[data-key="industry"]');
+    document.querySelectorAll('.nav-links li a').forEach(l => l.classList.remove('is-active'));
+    if (def) def.classList.add('is-active');
+    const panel = document.getElementById('navContentPanel');
+    panel.style.visibility = 'visible'; panel.style.opacity = '1';
+    renderPanel('industry');
+  }
+  function closeNav() { document.body.classList.remove('nav-open'); }
 
-    // More examples — hover preview, click opens modal
-    const videoModal  = document.getElementById('videoModal');
-    const modalVideo  = document.getElementById('modalVideo');
-    const modalTitle  = document.getElementById('modalTitle');
-    const modalPrompt = document.getElementById('modalPrompt');
+  document.querySelector('.sf-burger').addEventListener('click', () =>
+    document.body.classList.contains('nav-open') ? closeNav() : openNav());
+  document.getElementById('navClose').addEventListener('click', closeNav);
 
-    function openModal(src, title, prompt) {
-      modalVideo.src = src;
-      modalTitle.textContent = title;
-      modalPrompt.textContent = prompt;
-      modalVideo.play();
-      videoModal.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeModal() {
-      videoModal.classList.remove('open');
-      modalVideo.pause();
-      modalVideo.src = '';
-      document.body.style.overflow = '';
-    }
+  /* ── Video grid ── */
+  const videoModal = document.getElementById('videoModal');
+  const modalVideo = document.getElementById('modalVideo');
 
-    document.getElementById('modalClose').addEventListener('click', closeModal);
-    videoModal.addEventListener('click', e => { if (e.target === videoModal) closeModal(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  function openModal(src) {
+    modalVideo.src = src;
+    modalVideo.play();
+    videoModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    videoModal.classList.remove('open');
+    modalVideo.pause();
+    modalVideo.src = '';
+    document.body.style.overflow = '';
+  }
 
-    document.querySelectorAll('.more-card:not(.placeholder)').forEach(card => {
-      const v = card.querySelector('video');
-      card.addEventListener('mouseenter', () => v && v.play());
-      card.addEventListener('mouseleave', () => { if (v) { v.pause(); v.currentTime = 0; } });
-      card.addEventListener('click', () => openModal(card.dataset.src, card.dataset.title, card.dataset.prompt));
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  videoModal.addEventListener('click', e => { if (e.target === videoModal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  document.querySelectorAll('.iyw-row').forEach(row => {
+    const v = row.querySelector('video');
+    if (!v) return;
+    row.addEventListener('mouseenter', () => v.play());
+    row.addEventListener('mouseleave', () => { v.pause(); v.currentTime = 0; });
+  });
+
+  document.querySelectorAll('.vcard').forEach(card => {
+    const v = card.querySelector('video');
+    card.addEventListener('mouseenter', () => v && v.play());
+    card.addEventListener('mouseleave', () => { if (v) { v.pause(); v.currentTime = 0; } });
+    card.addEventListener('click', () => openModal(card.dataset.src));
+  });
+
+  /* ── Animated counters ── */
+  const counters = document.querySelectorAll('.trust-stat-num[data-target]');
+  const cObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      cObs.unobserve(entry.target);
+      const el = entry.target;
+      const target = +el.dataset.target;
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || '';
+      const comma  = el.dataset.comma === 'true';
+      const duration = 1800;
+      const start = performance.now();
+      function update(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const val = Math.round(ease * target);
+        el.textContent = prefix + (comma ? val.toLocaleString() : val) + suffix;
+        if (progress < 1) requestAnimationFrame(update);
+      }
+      requestAnimationFrame(update);
     });
-
-    document.querySelector('.sf-burger').addEventListener('click', () => {
-      document.body.classList.contains('nav-open') ? closeNav() : openNav();
-    });
-    document.getElementById('navClose').addEventListener('click', closeNav);
-  </script>
+  }, { threshold: 0.3 });
+  counters.forEach(c => cObs.observe(c));
+</script>
 
 </body>
 </html>
