@@ -25,6 +25,9 @@ img, video { display: block; max-width: 100%; }
   transition: background 800ms ease;
 }
 .sf.scrolled .sf-top-row { background: #000; }
+body.nav-open .sf-phone { max-width: 0 !important; opacity: 0 !important; }
+body.nav-open .sf-contact-btn { opacity: 0 !important; pointer-events: none !important; max-height: 0 !important; }
+body.nav-open .sf.scrolled .sf-top-row { background: transparent; }
 .sf-phone {
   white-space: nowrap; color: #fff;
   font-size: 18px; font-weight: 700; letter-spacing: -0.015em;
