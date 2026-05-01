@@ -244,18 +244,18 @@
       padding: 0 var(--pad) clamp(48px, 7vw, 96px);
     }
     .eyebrow {
-      font-size: 10px; font-weight: 700;
-      text-transform: uppercase; letter-spacing: .32em;
-      color: var(--pink);
-      display: flex; align-items: center; gap: 14px;
-      margin-bottom: 18px;
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .28em;
+      color: var(--yellow);
+      display: inline-flex; align-items: center; gap: 12px;
+      margin-bottom: 28px;
     }
-    .eyebrow::before { content:''; width: 36px; height: 2px; background: var(--pink); }
+    .eyebrow::before { content:''; width: 32px; height: 2px; background: var(--yellow); flex-shrink: 0; }
 
     .hero-h1 {
-      font-size: clamp(58px, 10.5vw, 148px);
+      font-size: clamp(64px, 10vw, 130px);
       font-weight: 800; text-transform: uppercase;
-      letter-spacing: 0.1em; line-height: 0.9;
+      letter-spacing: 0.1em; line-height: 0.88;
     }
     /* "PEOPLE" rendered as outline — graphic contrast */
     .hero-h1 .outline {
@@ -264,14 +264,15 @@
     }
 
     .hero-foot {
-      margin-top: clamp(28px, 3vw, 44px);
+      margin-top: clamp(36px, 4vw, 56px);
       display: flex; align-items: flex-end;
       justify-content: space-between; gap: 20px; flex-wrap: wrap;
     }
     .hero-desc {
-      font-size: 18px; font-weight: 400;
-      color: rgba(255,255,255,.65); max-width: 400px;
-      line-height: 1.65; letter-spacing: -0.27px;
+      font-size: clamp(17px, 1.8vw, 22px); font-weight: 400;
+      color: rgba(255,255,255,0.8); max-width: 480px;
+      line-height: 1.6;
+      border-left: 3px solid var(--pink); padding-left: 20px;
     }
     .scroll-hint {
       display: flex; align-items: center; gap: 10px;
@@ -317,23 +318,23 @@
     /* ── labels / headings / prose — dark bg defaults ── */
     .section-label {
       font-size: 11px; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.3em;
+      text-transform: uppercase; letter-spacing: .28em;
       color: var(--pink);
-      display: flex; align-items: center; gap: 12px;
+      display: inline-flex; align-items: center; gap: 12px;
       margin-bottom: 24px;
     }
-    .section-label::before { content:''; width: 32px; height: 2px; background: var(--pink); flex-shrink: 0; }
+    .section-label::before { content:''; width: 24px; height: 2px; background: var(--pink); flex-shrink: 0; }
 
     .section-h2 {
       font-size: clamp(36px, 4.5vw, 64px);
       font-weight: 800; text-transform: uppercase;
-      letter-spacing: 0.1em; line-height: 0.9;
+      letter-spacing: 0.08em; line-height: .92;
       color: var(--white);
       margin-bottom: clamp(24px, 3vw, 40px);
     }
 
     .prose p {
-      font-size: 18px;
+      font-size: clamp(16px, 1.7vw, 20px);
       color: rgba(255,255,255,.65);
       line-height: 1.65; margin-bottom: 20px;
       font-weight: 400; letter-spacing: 0;
@@ -357,8 +358,25 @@
     .article.light .section-h2,
     .article.white .section-h2  { color: var(--ink); }
 
+    .article.light .section-h2.hollow,
+    .article.white .section-h2.hollow {
+      -webkit-text-stroke: 2px var(--ink);
+      color: transparent;
+    }
+
+    .article.light .section-h2 .hollow-text,
+    .article.white .section-h2 .hollow-text {
+      -webkit-text-stroke: 2px var(--ink);
+      color: transparent;
+    }
+
+    .section-h2 .pink-word {
+      color: var(--pink);
+      -webkit-text-stroke: 0px transparent;
+    }
+
     .article.light .prose p,
-    .article.white .prose p     { color: #3a3a3a; letter-spacing: -0.27px; }
+    .article.white .prose p     { color: #555; }
 
     .article.light .prose strong,
     .article.white .prose strong { color: var(--ink); font-weight: 700; }
@@ -870,7 +888,7 @@
     <div class="text-block">
       <div class="text-block-left">
         <div class="section-label">Adding purpose</div>
-        <h2 class="section-h2">Take a CG-only<br>room set. Add people.<br>Suddenly it<br>feels alive.</h2>
+        <h2 class="section-h2">Take a CG-only<br>room set. Add people.<br><span class="hollow-text">Suddenly it<br>feels alive.</span></h2>
       </div>
       <div class="text-block-right">
         <div class="prose">
@@ -916,7 +934,7 @@
     <div class="text-block">
       <div class="text-block-left">
         <div class="section-label">Real value</div>
-        <h2 class="section-h2">Show what the<br>space is <span style="color:var(--pink)">for</span>,<br>not just what<br>it looks like.</h2>
+        <h2 class="section-h2"><span class="hollow-text">Show what<br>the space is </span><span class="pink-word">for</span><span class="hollow-text">,<br>not just what<br>it looks like.</span></h2>
       </div>
       <div class="text-block-right">
         <div class="prose">
@@ -956,7 +974,7 @@
     <div class="text-block">
       <div class="text-block-left">
         <div class="section-label">Workflow</div>
-        <h2 class="section-h2">Start with a still.<br>End with a<br>dynamic still.</h2>
+        <h2 class="section-h2"><span class="hollow-text">Start with<br>a still.</span><br><span class="pink-word">End with a<br>dynamic still.</span></h2>
       </div>
       <div class="text-block-right">
         <div class="prose">
@@ -996,7 +1014,7 @@
     <div class="text-block">
       <div class="text-block-left">
         <div class="section-label">Quality control · Flexibility</div>
-        <h2 class="section-h2">The golden<br>five or six<br>seconds that<br>are flawless.</h2>
+        <h2 class="section-h2"><span class="hollow-text">The golden<br></span><span class="pink-word">five or six<br>seconds</span><span class="hollow-text"> that<br>are flawless.</span></h2>
       </div>
       <div class="text-block-right">
         <div class="prose">
