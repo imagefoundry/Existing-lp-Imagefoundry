@@ -214,7 +214,7 @@ body.nav-open .nav-overlay { transform: translateX(0); }
 .section-label::before { content:''; width: 24px; height: 2px; background: #2A657D; flex-shrink: 0; }
 
 .section-h2 {
-  font-size: clamp(42px, 5.5vw, 100px); font-weight: 700; text-transform: uppercase;
+  font-size: clamp(36px, 5.5vw, 77px); font-weight: 700; text-transform: uppercase;
   letter-spacing: -1.35px; line-height: 0.85; color: #000; margin-bottom: 2rem;
 }
 .section-h2 .hollow-text { -webkit-text-fill-color: transparent; -webkit-text-stroke: 1px currentColor; }
