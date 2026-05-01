@@ -192,8 +192,8 @@ body.nav-open .nav-overlay { transform: translateX(0); }
 
 .text-block {
   padding: 7rem 0 5rem;
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: clamp(40px,5vw,100px); align-items: center;
+  display: grid; grid-template-columns: 5fr 6fr;
+  gap: clamp(40px,5vw,100px); align-items: start;
   position: relative;
 }
 .text-block::after {
@@ -202,7 +202,7 @@ body.nav-open .nav-overlay { transform: translateX(0); }
 }
 .text-block-left  { display: flex; flex-direction: column; }
 .text-block-right {
-  display: flex; flex-direction: column; justify-content: center;
+  display: flex; flex-direction: column; justify-content: flex-start;
   border-left: 1px solid #DBDBDB;
   padding-left: clamp(40px,5vw,100px); align-self: stretch;
 }
