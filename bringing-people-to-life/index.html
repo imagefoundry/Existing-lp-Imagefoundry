@@ -433,6 +433,11 @@
       document.querySelectorAll('.nav-links li a').forEach(l => l.classList.remove('is-active'));
       a.classList.add('is-active');
     });
+    a.addEventListener('mouseleave', () => {
+      document.querySelectorAll('.nav-links li a').forEach(l => l.classList.remove('is-active'));
+      const def = document.querySelector('.nav-links li a[data-key="industry"]');
+      if (def) def.classList.add('is-active');
+    });
   });
 
   function openNav() {
