@@ -432,15 +432,6 @@
     a.addEventListener('mouseenter', () => {
       document.querySelectorAll('.nav-links li a').forEach(l => l.classList.remove('is-active'));
       a.classList.add('is-active');
-      const panel = document.getElementById('navContentPanel');
-      if (a.dataset.key === 'industry') {
-        panel.style.visibility = 'visible';
-        panel.style.opacity = '1';
-        renderPanel('industry');
-      } else {
-        panel.style.visibility = 'hidden';
-        panel.style.opacity = '0';
-      }
     });
   });
 
