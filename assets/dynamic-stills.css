@@ -82,7 +82,7 @@ body.nav-open .nav-overlay { transform: translateX(0); }
 .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.35) 55%, rgba(0,0,0,.1) 100%); }
 .hero-content { position: relative; z-index: 2; padding: var(--px) var(--px) clamp(72px,10vw,120px); max-width: 1200px; width: 100%; }
 .hero-eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--yellow); margin-bottom: 28px; display: inline-flex; align-items: center; gap: 12px; }
-.hero-eyebrow::before { content: ''; display: block; width: 32px; height: 2px; background: var(--yellow); flex-shrink: 0; }
+.hero-eyebrow::before { display: none; }
 .hero-h1 { font-size: clamp(72px, 10vw, 160px); font-weight: 800; letter-spacing: -0.03em; line-height: 0.88; color: #fff; margin-bottom: 36px; }
 .hero-h1 em { font-style: normal; color: var(--yellow); }
 .hero-sub { font-size: 20px; font-weight: 400; color: rgba(255,255,255,0.85); max-width: 560px; line-height: 26px; letter-spacing: -0.015em; border-left: 3px solid var(--pink); padding-left: 20px; margin-bottom: clamp(36px,4vw,56px); }
@@ -130,6 +130,7 @@ body.nav-open .nav-overlay { transform: translateX(0); }
 
 /* ── SHOWCASE ─────────────────────────── */
 .showcase-section { background: var(--off-white); padding: clamp(36px,4vw,56px) var(--px) clamp(72px,9vw,120px); border-bottom: 1px solid var(--light-grey); }
+.showcase-section .section-eyebrow::before { display: none; }
 .showcase-inner { width: 100%; }
 .section-eyebrow { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .28em; color: var(--pink); margin-bottom: 20px; display: inline-flex; align-items: center; gap: 12px; }
 .section-eyebrow::before { content: ''; display: block; width: 24px; height: 2px; background: var(--pink); flex-shrink: 0; }
@@ -157,7 +158,7 @@ body.nav-open .nav-overlay { transform: translateX(0); }
 .how-top h2 { font-size: clamp(36px,5vw,72px); font-weight: 800; text-transform: uppercase; line-height: .92; letter-spacing: -1.35px; color: #fff; }
 .how-top p { font-size: 18px; color: rgba(255,255,255,.8); line-height: 22px; letter-spacing: -0.015em; }
 .how-section .section-eyebrow { color: var(--yellow); }
-.how-section .section-eyebrow::before { background: var(--yellow); }
+.how-section .section-eyebrow::before { display: none; }
 .how-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 3px; background: rgba(0,0,0,.2); }
 .how-step { background: rgba(0,0,0,.15); padding: clamp(32px,4vw,56px); position: relative; }
 .how-step::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--yellow); }
@@ -185,9 +186,9 @@ body.nav-open .nav-overlay { transform: translateX(0); }
 @media (max-width: 860px) { .why-cards { grid-template-columns: 1fr; } }
 
 /* ── CTA ──────────────────────────────── */
-.cta-section { background: var(--pink); padding: clamp(72px,9vw,128px) var(--px); }
+.cta-section { background: var(--pink); padding: clamp(32px,5vw,88px) var(--px); }
 .cta-inner { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: clamp(32px,4vw,64px); flex-wrap: wrap; }
-.cta-copy h2 { font-size: clamp(36px,5.5vw,80px); font-weight: 800; text-transform: uppercase; line-height: .92; letter-spacing: -1.35px; color: #fff; margin-bottom: 16px; }
+.cta-copy h2 { font-size: clamp(36px,5.5vw,80px); font-weight: 800; text-transform: none; line-height: .92; letter-spacing: -1.35px; color: #fff; margin-bottom: 16px; }
 .cta-copy p { font-size: 18px; color: rgba(255,255,255,.85); line-height: 22px; letter-spacing: -0.015em; max-width: 440px; }
 .btn-dark { display: inline-block; padding: 1rem 7rem 1rem 1rem; background: #fff; color: var(--pink) !important; font-size: 22px; font-weight: 500; letter-spacing: -0.015em; text-transform: uppercase; text-decoration: none !important; white-space: nowrap; flex-shrink: 0; border: none; position: relative; transition: all 800ms ease; border-radius: 0; }
 .btn-dark::after { content: ""; position: absolute; top: 50%; right: 28px; height: 1px; width: 60px; background: var(--pink); }
