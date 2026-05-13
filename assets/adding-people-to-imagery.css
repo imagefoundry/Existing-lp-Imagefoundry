@@ -381,6 +381,9 @@
   .demo-stat { padding: 14px 20px; }
 }
 
+/* Gap between the two image pairs */
+.pair + .pair { margin-top: clamp(32px, 4vw, 48px); }
+
 /* ≤399px — small phone */
 @media (max-width: 399px) {
   :root { --px: 16px; }
