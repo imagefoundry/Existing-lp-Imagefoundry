@@ -154,7 +154,7 @@ body.nav-open .nav-overlay { transform: translateX(0); }
   font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .28em;
   color: #DAAD52; display: inline-flex; align-items: center; gap: 12px;
 }
-.eyebrow::before { content:''; width: 40px; height: 2px; background: #DAAD52; flex-shrink: 0; }
+.eyebrow::before { display: none; }
 .hero-h1 {
   font-size: clamp(72px, 14vw, 220px); font-weight: 700; text-transform: uppercase;
   letter-spacing: -0.03em; line-height: 0.88; color: #fff; margin: 0;
@@ -211,7 +211,7 @@ body.nav-open .nav-overlay { transform: translateX(0); }
   font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: -0.015em;
   color: #2A657D; display: flex; align-items: center; gap: 10px; margin-bottom: 1.5rem;
 }
-.section-label::before { content:''; width: 24px; height: 2px; background: #2A657D; flex-shrink: 0; }
+.section-label::before { display: none; }
 
 .section-h2 {
   font-size: clamp(36px, 5.5vw, 77px); font-weight: 700; text-transform: uppercase;
@@ -271,7 +271,6 @@ body.nav-open .nav-overlay { transform: translateX(0); }
   gap: 0; align-items: center;
 }
 .closing .section-label { color: rgba(255,255,255,.6); }
-.closing .section-label::before { background: rgba(255,255,255,.4); }
 .closing .section-h2 { color: #fff; }
 .closing .prose p { color: rgba(255,255,255,.75); }
 .closing .prose strong { color: #fff; }

@@ -19,7 +19,7 @@
 .hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
 .hero-content { position: relative; z-index: 3; padding: 0 var(--px) clamp(72px, 10vw, 120px); max-width: 1200px; }
 .hero-eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--yellow); margin-bottom: 28px; display: inline-flex; align-items: center; gap: 12px; }
-.hero-eyebrow::before { content: ''; display: block; width: 32px; height: 2px; background: var(--yellow); flex-shrink: 0; }
+.hero-eyebrow::before { display: none; }
 .hero-h1 { font-size: clamp(64px, 10vw, 160px); font-weight: 800; letter-spacing: -0.03em; line-height: 0.88; color: #fff; margin-bottom: 36px; }
 .hero-sub { font-size: 20px; font-weight: 400; color: rgba(255,255,255,0.85); max-width: 580px; line-height: 26px; letter-spacing: -0.015em; border-left: 3px solid var(--pink); padding-left: 20px; }
 .hero-cta { margin-top: 44px; display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
@@ -211,7 +211,7 @@
 .section-takeaways { padding: clamp(64px, 8vw, 100px) var(--px); border-top: 1px solid var(--light-grey); }
 .takeaways-hdr { margin-bottom: clamp(40px, 5vw, 64px); }
 .section-eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--pink); margin-bottom: 20px; display: inline-flex; align-items: center; gap: 12px; }
-.section-eyebrow::before { content: ''; width: 40px; height: 2px; background: var(--pink); flex-shrink: 0; }
+.section-eyebrow::before { display: none; }
 .section-h2 { font-size: clamp(46px, 5.5vw, 80px); font-weight: 800; letter-spacing: -1.35px; text-transform: uppercase; line-height: 0.9; }
 .takeaways-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--light-grey); }
 .takeaway-card { padding: clamp(28px, 3vw, 44px) clamp(20px, 2.5vw, 36px); border-right: 1px solid var(--light-grey); border-bottom: 1px solid var(--light-grey); position: relative; }
@@ -234,7 +234,7 @@
 .cta-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
 .cta-image:hover img { transform: scale(1.04); }
 .cta-eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 20px; display: inline-flex; align-items: center; gap: 10px; }
-.cta-eyebrow::before { content: ''; display: block; width: 24px; height: 2px; background: rgba(255,255,255,0.5); flex-shrink: 0; }
+.cta-eyebrow::before { display: none; }
 .cta-h2 { font-size: clamp(44px, 5.5vw, 84px); font-weight: 800; letter-spacing: -1.35px; text-transform: uppercase; line-height: 0.9; color: #fff; margin-bottom: 28px; }
 .cta-sub { font-size: 18px; font-weight: 400; letter-spacing: -0.015em; color: rgba(255,255,255,0.75); max-width: 440px; line-height: 22px; margin-bottom: 44px; }
 .cta-btn {
