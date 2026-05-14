@@ -404,7 +404,8 @@ footer { background: #000; padding: 3rem 0; }
   .prose p { font-size: 16px; line-height: 22px; }
   .pull p { font-size: 20px; }
   .cta-row { flex-direction: column; gap: 8px; }
-  .btn-dark, .btn-outline-dark { display: block; padding: 1.2rem 7rem 1.2rem 1rem; }
+  .btn-dark, .btn-outline-dark, .footer-lets-talk { display: block; width: 100%; padding: 1.2rem 1rem; text-align: center; }
+  .btn-dark::after, .btn-outline-dark::after, .footer-lets-talk::after { display: none; }
   .footer-grid { padding: 0 var(--pad); }
   .footer-nav a { font-size: 20px; }
   footer { padding: 2.5rem 0 1.5rem; }
