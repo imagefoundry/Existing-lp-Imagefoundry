@@ -6,16 +6,15 @@
   <title>Adding People to Imagery — Image Foundry Labs</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Bootstrap 5 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Animate.css -->
-  <link href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" rel="stylesheet">
-  <!-- Swiper -->
-  <link href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://www.imagefoundry.co.uk" crossorigin />
+  <link rel="preload" as="image" href="https://www.imagefoundry.co.uk/lp/images/industry/interiors-living-room.jpeg" />
+  <link rel="preload" as="image" href="https://www.imagefoundry.co.uk/lp/images/industry/bathroom-basin.jpg" />
+  <link rel="preload" as="image" href="https://www.imagefoundry.co.uk/lp/images/industry/product-shot.png" />
+  <link rel="preload" as="image" href="https://www.imagefoundry.co.uk/lp/images/industry/kitchen-interior.jpg" />
+  <link rel="preload" as="image" href="https://www.imagefoundry.co.uk/lp/images/industry/bedroom-interior.jpeg" />
+  <link rel="preload" as="image" href="https://www.imagefoundry.co.uk/lp/images/industry/property-exterior.jpeg" />
   <!-- Google Fonts — Barlow Condensed -->
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-  <!-- Image Foundry theme CSS (direct from live site) -->
-  <link href="https://www.imagefoundry.co.uk/wp-content/themes/blankslate/css/if.css" rel="stylesheet">
   <link href="../assets/bringing-people-to-life.css" rel="stylesheet">
   <link href="../assets/adding-people-to-imagery.css" rel="stylesheet">
 </head>
@@ -471,7 +470,7 @@
   <div class="footer-grid">
     <div class="footer-logo-block">
       <div>
-        <img src="../assets/logo.svg" alt="Image Foundry" style="width:150px; display:block; filter: brightness(0) invert(1); margin-bottom: 8px;" />
+        <a href="https://www.imagefoundry.co.uk/"><img src="../assets/logo.svg" alt="Image Foundry" style="width:150px; display:block; filter: brightness(0) invert(1); margin-bottom: 8px;" /></a>
       </div>
       <a href="https://www.imagefoundry.co.uk/contact-us/" class="footer-lets-talk">Let's talk</a>
     </div>
@@ -499,10 +498,6 @@
   </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/wowjs@1.1.3/dist/wow.min.js"></script>
-<script src="../assets/if.js"></script>
 <script>
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
@@ -605,33 +600,23 @@
         </div>`;
     }
 
-    // Hover nav links → only industry shows the left panel
     document.querySelectorAll('.nav-links li a').forEach(a => {
       a.addEventListener('mouseenter', () => {
         document.querySelectorAll('.nav-links li a').forEach(l => l.classList.remove('is-active'));
         a.classList.add('is-active');
-        const panel = document.getElementById('navContentPanel');
-        if (a.dataset.key === 'industry') {
-          panel.style.visibility = 'visible';
-          panel.style.opacity = '1';
-          renderPanel('industry');
-        } else {
-          panel.style.visibility = 'hidden';
-          panel.style.opacity = '0';
-        }
+      });
+      a.addEventListener('mouseleave', () => {
+        document.querySelectorAll('.nav-links li a').forEach(l => l.classList.remove('is-active'));
+        const def = document.querySelector('.nav-links li a[data-key="industry"]');
+        if (def) def.classList.add('is-active');
       });
     });
 
-    // Open / close
     function openNav() {
       document.body.classList.add('nav-open');
-      // default: show industry panel
       const def = document.querySelector('.nav-links li a[data-key="industry"]');
       document.querySelectorAll('.nav-links li a').forEach(l => l.classList.remove('is-active'));
       if (def) def.classList.add('is-active');
-      const panel = document.getElementById('navContentPanel');
-      panel.style.visibility = 'visible';
-      panel.style.opacity = '1';
       renderPanel('industry');
     }
     function closeNav() { document.body.classList.remove('nav-open'); }

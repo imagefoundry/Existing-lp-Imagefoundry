@@ -2,7 +2,7 @@
 
 /* Fix: if.css sets body { opacity:0 } and relies on if.js to fade in.
    if.js is included so this is just a safety fallback. */
-body { opacity: 0; }
+body { opacity: 1; }
 
 :root {
   --pad: 4%;
@@ -25,6 +25,7 @@ img, video { display: block; max-width: 100%; }
   transition: background 800ms ease;
 }
 .sf.scrolled .sf-top-row { background: #000; }
+@media (max-width: 767px) { .sf.scrolled .sf-top-row { background: transparent; box-shadow: none; } }
 body.nav-open .sf-phone { max-width: 0 !important; opacity: 0 !important; }
 body.nav-open .sf-contact-btn { opacity: 0 !important; pointer-events: none !important; max-height: 0 !important; }
 body.nav-open .sf.scrolled .sf-top-row { background: transparent; }
@@ -53,8 +54,8 @@ body.nav-open .sf.scrolled .sf-top-row { background: transparent; }
   content: ""; position: absolute;
   top: 50%; right: 1rem; height: 1px; width: 60px; background: #000;
 }
-.sf-contact-btn a:hover { background: #000; color: #fff; }
-.sf-contact-btn a:hover::after { background: #fff; }
+.sf-contact-btn a:hover { background: #fff; color: #000; }
+.sf-contact-btn a:hover::after { background: #000; }
 
 /* Burger */
 .sf-burger {
@@ -395,14 +396,22 @@ footer { background: #000; padding: 3rem 0; }
 /* ≤767px — mobile landscape / large phone */
 @media screen and (max-width: 767px) {
   :root { --pad: 1.5rem; }
+  .site-header { padding: 20px var(--pad); padding-left: var(--pad); }
+  .site-header .bi img { width: 110px; }
+  .sf { top: 20px; }
+  .hero-content { padding: 90px var(--pad) clamp(32px,6vw,60px); }
+  .hero-h1 { font-size: clamp(52px, 13vw, 72px); }
   .hero-h1 .outline { -webkit-text-stroke: 1.5px #fff; }
   .hero-foot { flex-direction: column; align-items: flex-start; gap: 1rem; }
-  .hero-desc { font-size: 16px; line-height: 22px; }
+  .hero-desc { font-size: 16px; line-height: 22px; max-width: 100%; }
   .scroll-hint { display: none; }
+  .section-h2 { font-size: clamp(30px, 8vw, 48px); margin-bottom: 1.25rem; }
   .cta-h2 { font-size: 42px; letter-spacing: -.5px; }
   .trust-stat-num { font-size: 44px; }
   .prose p { font-size: 16px; line-height: 22px; }
-  .pull p { font-size: 20px; }
+  .pull { margin: 1rem 0; }
+  .pull p { font-size: 18px; }
+  .pink-big { padding-right: 0; }
   .cta-row { flex-direction: column; gap: 8px; }
   .btn-dark, .btn-outline-dark, .footer-lets-talk { display: block; width: 100%; padding: 1.2rem 1rem; text-align: center; }
   .btn-dark::after, .btn-outline-dark::after, .footer-lets-talk::after { display: none; }
@@ -414,6 +423,7 @@ footer { background: #000; padding: 3rem 0; }
 /* ≤559px — small phone */
 @media screen and (max-width: 559px) {
   :root { --pad: 1.25rem; }
+  .hero-h1 { font-size: clamp(44px, 12vw, 60px); }
   .ncp-grid { grid-template-columns: 1fr; }
   .cta-h2 { font-size: 34px; }
   .trust-stat-num { font-size: 38px; }
@@ -430,6 +440,7 @@ footer { background: #000; padding: 3rem 0; }
 /* ≤359px — very small phone */
 @media screen and (max-width: 359px) {
   :root { --pad: 1rem; }
+  .hero-h1 { font-size: 40px; }
   .cta-h2 { font-size: 28px; }
   .trust-stat-num { font-size: 32px; }
   .pink-band, .closing, .cta { padding: 2.5rem var(--pad); }

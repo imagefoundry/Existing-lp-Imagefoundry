@@ -6,16 +6,10 @@
   <title>Bringing People to Life in CGI Video — Image Foundry Labs</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Bootstrap 5 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Animate.css (for WOW animations) -->
-  <link href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" rel="stylesheet">
-  <!-- Swiper -->
-  <link href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://www.imagefoundry.co.uk" crossorigin />
   <!-- Google Fonts — Barlow Condensed -->
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-  <!-- Image Foundry theme CSS (direct from live site) -->
-  <link href="https://www.imagefoundry.co.uk/wp-content/themes/blankslate/css/if.css" rel="stylesheet">
+  <link href="../assets/if.css" rel="stylesheet">
   <link rel="stylesheet" href="../assets/bringing-people-to-life.css" />
   <link rel="stylesheet" href="../assets/bringing-people-to-life-page.css" />
 </head>
@@ -71,7 +65,7 @@
       to Life
     </h1>
     <div class="hero-foot">
-      <p class="hero-desc">Adding AI-generated characters and camera motion to CGI to elevate your brand.</p>
+      <p class="hero-desc">Adding AI-generated characters and camera motion to CGI for brand elevation.</p>
       <div class="scroll-hint"><div class="scroll-line"></div>Scroll</div>
     </div>
   </div>
@@ -126,13 +120,13 @@
 <!-- Videos come directly after "That is a dynamic still" — they ARE the dynamic stills -->
 <div class="vid-pair">
   <div class="vid-cell">
-    <video autoplay muted loop playsinline preload="auto">
+    <video muted loop playsinline preload="none">
       <source src="videos/Gen-4-Turbo-Slow-dolly-cam-zoom-in-3323483187-4K.mp4" type="video/mp4" />
     </video>
     <div class="vid-label">Populated still CGI</div>
   </div>
   <div class="vid-cell">
-    <video autoplay muted loop playsinline preload="auto">
+    <video muted loop playsinline preload="none">
       <source src="videos/Gen-4-slow-dolly-cam-zoom-in-2855323523-4K.mp4" type="video/mp4" />
     </video>
     <div class="vid-label">Slow Zoom In</div>
@@ -181,7 +175,7 @@
 </section>
 
 <div class="vid-break">
-  <video autoplay muted loop playsinline preload="auto">
+  <video muted loop playsinline preload="none">
     <source src="videos/Gen-4-Slow-dolly-cam-zoom-in-2563450850-4K.mp4" type="video/mp4" />
   </video>
   <div class="vid-break-shade"></div>
@@ -195,8 +189,8 @@
     <div class="cta-right">
       <p class="cta-sub">Talk to the Image Foundry team about adding people and motion to your CGI assets. We work across property and product sectors. Interior or Exterior.</p>
       <div class="cta-row">
-        <a class="btn btn-dark" href="mailto:hello@loveimagefoundry.com">Let's talk</a>
-        <a class="btn btn-outline-dark" href="#">View case studies</a>
+        <a class="btn btn-dark" href="https://www.imagefoundry.co.uk/contact-us/">Let's talk</a>
+        <a class="btn btn-outline-dark" href="https://www.imagefoundry.co.uk/work/">View case studies</a>
       </div>
     </div>
   </div>
@@ -207,7 +201,7 @@
   <div class="footer-grid">
     <div class="footer-logo-block">
       <div>
-        <img src="../assets/logo.svg" alt="Image Foundry" style="width:150px; display:block; filter: brightness(0) invert(1); margin-bottom: 8px;" />
+        <a href="https://www.imagefoundry.co.uk/"><img src="../assets/logo.svg" alt="Image Foundry" style="width:150px; display:block; filter: brightness(0) invert(1); margin-bottom: 8px;" /></a>
       </div>
       <a href="https://www.imagefoundry.co.uk/contact-us/" class="footer-lets-talk">Let's talk</a>
     </div>
@@ -355,6 +349,14 @@
     document.body.classList.contains('nav-open') ? closeNav() : openNav();
   });
   document.getElementById('navClose').addEventListener('click', closeNav);
+
+  const vObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const v = entry.target;
+      if (entry.isIntersecting) { v.play(); } else { v.pause(); }
+    });
+  }, { threshold: 0.25 });
+  document.querySelectorAll('.vid-cell video, .vid-break video').forEach(v => vObs.observe(v));
 </script>
 <script>
   const counters = document.querySelectorAll('.trust-stat-num[data-target]');
@@ -382,15 +384,5 @@
   }, { threshold: 0.3 });
   counters.forEach(c => observer.observe(c));
 </script>
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Swiper -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-<!-- WOW.js (scroll animations) -->
-<script src="https://cdn.jsdelivr.net/npm/wowjs@1.1.3/dist/wow.min.js"></script>
-<!-- Image Foundry theme JS (direct from live site) -->
-<script src="https://www.imagefoundry.co.uk/wp-content/themes/blankslate/js/if.js"></script>
 </body>
 </html>

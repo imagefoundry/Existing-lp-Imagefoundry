@@ -6,10 +6,13 @@
   <title>Dynamic Stills — Image Foundry</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Bootstrap 5 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Animate.css (for WOW animations) -->
-  <link href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://www.imagefoundry.co.uk" crossorigin />
+  <link rel="preload" as="image" href="https://www.imagefoundry.co.uk/lp/images/industry/interiors-living-room.jpeg" />
+  <link rel="preload" as="image" href="https://www.imagefoundry.co.uk/lp/images/industry/bathroom-basin.jpg" />
+  <link rel="preload" as="image" href="https://www.imagefoundry.co.uk/lp/images/industry/product-shot.png" />
+  <link rel="preload" as="image" href="https://www.imagefoundry.co.uk/lp/images/industry/kitchen-interior.jpg" />
+  <link rel="preload" as="image" href="https://www.imagefoundry.co.uk/lp/images/industry/bedroom-interior.jpeg" />
+  <link rel="preload" as="image" href="https://www.imagefoundry.co.uk/lp/images/industry/property-exterior.jpeg" />
   <!-- Swiper -->
   <link href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" rel="stylesheet">
   <!-- Google Fonts — Barlow Condensed -->
@@ -107,7 +110,7 @@
     <div class="video-grid">
 
       <div class="vcard" data-src="videos/sunset-tower-dolly-pan.mp4">
-        <video muted loop playsinline preload="metadata">
+        <video muted loop playsinline preload="none">
           <source src="videos/sunset-tower-dolly-pan.mp4" type="video/mp4" />
         </video>
         <div class="vcard-overlay"></div>
@@ -119,7 +122,7 @@
       </div>
 
       <div class="vcard" data-src="videos/waterfall-car-dolly-zoom.mp4">
-        <video muted loop playsinline preload="metadata">
+        <video muted loop playsinline preload="none">
           <source src="videos/waterfall-car-dolly-zoom.mp4" type="video/mp4" />
         </video>
         <div class="vcard-overlay"></div>
@@ -131,7 +134,7 @@
       </div>
 
       <div class="vcard" data-src="videos/magnific_static-camera.-the-water-_2968692411.mp4">
-        <video muted loop playsinline preload="metadata">
+        <video muted loop playsinline preload="none">
           <source src="videos/magnific_static-camera.-the-water-_2968692411.mp4" type="video/mp4" />
         </video>
         <div class="vcard-overlay"></div>
@@ -143,7 +146,7 @@
       </div>
 
       <div class="vcard" data-src="videos/product-rotate-fan.mp4">
-        <video muted loop playsinline preload="metadata">
+        <video muted loop playsinline preload="none">
           <source src="videos/product-rotate-fan.mp4" type="video/mp4" />
         </video>
         <div class="vcard-overlay"></div>
@@ -155,19 +158,19 @@
       </div>
 
       <div class="vcard" data-src="videos/1 - Opening Scene.mp4">
-        <video muted loop playsinline preload="metadata">
+        <video muted loop playsinline preload="none">
           <source src="videos/1 - Opening Scene.mp4" type="video/mp4" />
         </video>
         <div class="vcard-overlay"></div>
         <div class="vcard-info">
           <span class="vcard-tag">Exterior</span>
-          <div class="vcard-title">Opening Scene</div>
+          <div class="vcard-title">Sunset Lighting</div>
         </div>
         <div class="vcard-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
 
       <div class="vcard" data-src="videos/tap-dolly-pan.mp4">
-        <video muted loop playsinline preload="metadata">
+        <video muted loop playsinline preload="none">
           <source src="videos/tap-dolly-pan.mp4" type="video/mp4" />
         </video>
         <div class="vcard-overlay"></div>
@@ -196,7 +199,7 @@
       </div>
     </div>
     <div class="iyw-media">
-      <video muted loop playsinline preload="metadata">
+      <video muted loop playsinline preload="none">
         <source src="videos/sunset-tower-dolly-pan.mp4" type="video/mp4" />
       </video>
       <span class="iyw-media-label">Oberoi Hotels — Dolly Zoom</span>
@@ -205,7 +208,7 @@
 
   <div class="iyw-row iyw-flip">
     <div class="iyw-media">
-      <video muted loop playsinline preload="metadata">
+      <video muted loop playsinline preload="none">
         <source src="videos/magnific_static-camera.-the-water-_2968692411.mp4" type="video/mp4" />
       </video>
       <span class="iyw-media-label">Aqualisa — Steam &amp; Atmosphere</span>
@@ -235,7 +238,7 @@
       </div>
     </div>
     <div class="iyw-media">
-      <video muted loop playsinline preload="metadata">
+      <video muted loop playsinline preload="none">
         <source src="videos/product-rotate-fan.mp4" type="video/mp4" />
       </video>
       <span class="iyw-media-label">Fan — Product Rotate</span>
@@ -244,10 +247,10 @@
 
   <div class="iyw-row iyw-flip">
     <div class="iyw-media">
-      <video muted loop playsinline preload="metadata">
+      <video muted loop playsinline preload="none">
         <source src="videos/1 - Opening Scene.mp4" type="video/mp4" />
       </video>
-      <span class="iyw-media-label">Opening Scene</span>
+      <span class="iyw-media-label">Sunset Lighting</span>
     </div>
     <div class="iyw-body">
       <span class="iyw-tag">Exterior &amp; Landscape</span>
@@ -298,17 +301,17 @@
     <h2>The same asset.<br/><span>Five times</span> the reach.</h2>
     <div class="why-cards">
       <div class="why-card">
-        <div class="why-card-num">01</div>
+
         <h3>No new budget required</h3>
         <p>You've already paid for the CGI. This isn't a re-render — it's a value-add on top of what you own. The cost is a fraction of commissioning new video content.</p>
       </div>
       <div class="why-card">
-        <div class="why-card-num">02</div>
+
         <h3>Motion stops the scroll</h3>
         <p>A moving image commands attention in the first half-second — before a viewer has decided to look. On Meta, Instagram, and digital display, motion outperforms static every time.</p>
       </div>
       <div class="why-card">
-        <div class="why-card-num">03</div>
+
         <h3>Ready for every channel</h3>
         <p>One clip works across your website hero, Instagram Reels, Meta ads, and digital out-of-home. No re-editing. No reformatting. Just ready to publish.</p>
       </div>
@@ -330,7 +333,7 @@
 <footer>
   <div class="footer-grid">
     <div class="footer-logo-block">
-      <img src="../assets/logo.svg" alt="Image Foundry" style="width:150px; display:block; filter: brightness(0) invert(1);" />
+      <a href="https://www.imagefoundry.co.uk/"><img src="../assets/logo.svg" alt="Image Foundry" style="width:150px; display:block; filter: brightness(0) invert(1);" /></a>
       <a href="https://www.imagefoundry.co.uk/contact-us/" class="footer-lets-talk">Let's Talk</a>
     </div>
     <div class="footer-right">
@@ -365,8 +368,6 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Swiper -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 <!-- WOW.js (scroll animations) -->
@@ -416,9 +417,11 @@
     a.addEventListener('mouseenter', () => {
       document.querySelectorAll('.nav-links li a').forEach(l => l.classList.remove('is-active'));
       a.classList.add('is-active');
-      const panel = document.getElementById('navContentPanel');
-      panel.style.visibility = 'visible'; panel.style.opacity = '1';
-      renderPanel(a.dataset.key);
+    });
+    a.addEventListener('mouseleave', () => {
+      document.querySelectorAll('.nav-links li a').forEach(l => l.classList.remove('is-active'));
+      const def = document.querySelector('.nav-links li a[data-key="industry"]');
+      if (def) def.classList.add('is-active');
     });
   });
 
@@ -427,8 +430,6 @@
     const def = document.querySelector('.nav-links li a[data-key="industry"]');
     document.querySelectorAll('.nav-links li a').forEach(l => l.classList.remove('is-active'));
     if (def) def.classList.add('is-active');
-    const panel = document.getElementById('navContentPanel');
-    panel.style.visibility = 'visible'; panel.style.opacity = '1';
     renderPanel('industry');
   }
   function closeNav() { document.body.classList.remove('nav-open'); }
@@ -465,10 +466,16 @@
     row.addEventListener('mouseleave', () => { v.pause(); v.currentTime = 0; });
   });
 
+  const vObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const v = entry.target.querySelector('video');
+      if (!v) return;
+      if (entry.isIntersecting) { v.play(); } else { v.pause(); v.currentTime = 0; }
+    });
+  }, { threshold: 0.25 });
+
   document.querySelectorAll('.vcard').forEach(card => {
-    const v = card.querySelector('video');
-    card.addEventListener('mouseenter', () => v && v.play());
-    card.addEventListener('mouseleave', () => { if (v) { v.pause(); v.currentTime = 0; } });
+    vObs.observe(card);
     card.addEventListener('click', () => openModal(card.dataset.src));
   });
 
