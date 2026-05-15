@@ -7,17 +7,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://www.imagefoundry.co.uk" crossorigin />
-  <link rel="preload" as="image" href="https://www.imagefoundry.co.uk/lp/images/industry/interiors-living-room.jpeg" />
-  <link rel="preload" as="image" href="https://www.imagefoundry.co.uk/lp/images/industry/bathroom-basin.jpg" />
-  <link rel="preload" as="image" href="https://www.imagefoundry.co.uk/lp/images/industry/product-shot.png" />
-  <link rel="preload" as="image" href="https://www.imagefoundry.co.uk/lp/images/industry/kitchen-interior.jpg" />
-  <link rel="preload" as="image" href="https://www.imagefoundry.co.uk/lp/images/industry/bedroom-interior.jpeg" />
-  <link rel="preload" as="image" href="https://www.imagefoundry.co.uk/lp/images/industry/property-exterior.jpeg" />
+  <link rel="preload" as="image" href="images/AI People - Cafe.webp" fetchpriority="high" />
   <!-- Google Fonts — Barlow Condensed -->
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
   <link href="../assets/if.css" rel="stylesheet">
   <link href="../assets/bringing-people-to-life.css" rel="stylesheet">
   <link href="../assets/adding-people-to-imagery.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
@@ -64,7 +60,7 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-bg" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.65) 100%), url('images/AI People - Cafe.png')"></div>
+    <div class="hero-bg" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.65) 100%), url('images/AI People - Cafe.webp')"></div>
     <div class="hero-content">
       <span class="hero-eyebrow">Image Foundry Labs</span>
       <h1 class="hero-h1">
@@ -151,7 +147,7 @@
     <!-- METHOD 01 -->
     <div class="method-card wow">
       <div class="method-card-image">
-        <img src="images/2D Cut-Out People.jpg" alt="2D Cut-Out People" loading="lazy" />
+        <picture><source srcset="images/2D Cut-Out People.webp" type="image/webp"><img src="images/2D Cut-Out People.jpg" alt="2D Cut-Out People" loading="lazy" /></picture>
       </div>
       <div class="method-card-body">
         <span class="method-card-tag dark">Method 01</span>
@@ -169,7 +165,7 @@
     <!-- METHOD 02 -->
     <div class="method-card wow">
       <div class="method-card-image">
-        <img src="images/3D People.jpg" alt="3D People" loading="lazy" />
+        <picture><source srcset="images/3D People.webp" type="image/webp"><img src="images/3D People.jpg" alt="3D People" loading="lazy" /></picture>
       </div>
       <div class="method-card-body">
         <span class="method-card-tag">Method 02</span>
@@ -187,7 +183,7 @@
     <!-- METHOD 03 -->
     <div class="method-card wow">
       <div class="method-card-image">
-        <img src="images/Mixed Methodology.jpg" alt="Mixed Methodology" loading="lazy" />
+        <picture><source srcset="images/Mixed Methodology.webp" type="image/webp"><img src="images/Mixed Methodology.jpg" alt="Mixed Methodology" loading="lazy" /></picture>
       </div>
       <div class="method-card-body">
         <span class="method-card-tag rec">★ Method 03 — Recommended</span>
@@ -205,7 +201,7 @@
     <!-- METHOD 04 -->
     <div class="method-card wow">
       <div class="method-card-image">
-        <img src="images/Classic Photo Shoot.jpg" alt="Classic Photo Shoot" loading="lazy" />
+        <picture><source srcset="images/Classic Photo Shoot.webp" type="image/webp"><img src="images/Classic Photo Shoot.jpg" alt="Classic Photo Shoot" loading="lazy" /></picture>
       </div>
       <div class="method-card-body">
         <span class="method-card-tag dark">Method 04</span>
@@ -246,7 +242,7 @@
       </div>
     </div>
     <div class="method-ai-image">
-      <img src="images/AI-Based People.png" alt="AI-Based People" loading="lazy" />
+      <picture><source srcset="images/AI-Based People.webp" type="image/webp"><img src="images/AI-Based People.png" alt="AI-Based People" loading="lazy" /></picture>
       <div class="method-ai-num">05 / 05</div>
     </div>
   </div>
@@ -262,7 +258,7 @@
     </div>
     <div class="gallery-grid">
       <div class="gi wow"><img src="../bringing-people-to-life/images/Gemini_Generated_Image_u0yzseu0yzseu0yz_txt.png" alt="AI People 1" loading="lazy" /><div class="gi-tag">AI Generation — 01</div></div>
-      <div class="gi wow"><img src="images/AI People - Study Lounge.png" alt="AI People 2" loading="lazy" /><div class="gi-tag">AI Generation — 02</div></div>
+      <div class="gi wow"><picture><source srcset="images/AI People - Study Lounge.webp" type="image/webp"><img src="images/AI People - Study Lounge.png" alt="AI People 2" loading="lazy" /></picture><div class="gi-tag">AI Generation — 02</div></div>
       <div class="gi wow gi-yellow">
         <div class="gi-yellow-inner">
           <span class="gi-yellow-eyebrow">Demographic Precision</span>
@@ -270,9 +266,9 @@
           <p class="gi-yellow-body">Age, gender, ethnicity — tailored for every customer persona.</p>
         </div>
       </div>
-      <div class="gi wow"><img src="images/AI product shot.png" alt="AI Product Shot" loading="lazy" /><div class="gi-tag">AI Generation — 04</div></div>
-      <div class="gi wow"><img src="images/AI People - Apartment.jpg" alt="AI People 4" loading="lazy" /><div class="gi-tag">AI Generation — 05</div></div>
-      <div class="gi wow"><img src="images/AI-Based People.png" alt="AI People 6" loading="lazy" /><div class="gi-tag">AI Generation — 06</div></div>
+      <div class="gi wow"><picture><source srcset="images/AI product shot.webp" type="image/webp"><img src="images/AI product shot.png" alt="AI Product Shot" loading="lazy" /></picture><div class="gi-tag">AI Generation — 04</div></div>
+      <div class="gi wow"><picture><source srcset="images/AI People - Apartment.webp" type="image/webp"><img src="images/AI People - Apartment.jpg" alt="AI People 4" loading="lazy" /></picture><div class="gi-tag">AI Generation — 05</div></div>
+      <div class="gi wow"><picture><source srcset="images/AI-Based People.webp" type="image/webp"><img src="images/AI-Based People.png" alt="AI People 6" loading="lazy" /></picture><div class="gi-tag">AI Generation — 06</div></div>
     </div>
   </section>
 
@@ -368,7 +364,7 @@
       </form>
     </div>
     <div class="cta-image">
-      <img src="images/Mixed Methodology.jpg" alt="Mixed Methodology" />
+      <picture><source srcset="images/Mixed Methodology.webp" type="image/webp"><img src="images/Mixed Methodology.jpg" alt="Mixed Methodology" loading="lazy" /></picture>
       <div class="cta-image-overlay"></div>
     </div>
   </section>
@@ -534,7 +530,12 @@
     });
     document.getElementById('navClose').addEventListener('click', closeNav);
 
-    // Contact form
+    // EmailJS
+    const EMAILJS_SERVICE  = "service_nyex4pe";
+    const EMAILJS_TEMPLATE = "template_8hrq2fb";
+    const EMAILJS_KEY      = "59R6alpkOM4DFZCqV";
+    emailjs.init({ publicKey: EMAILJS_KEY });
+
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
       const form = this;
@@ -542,17 +543,12 @@
       btn.textContent = 'Sending…';
       btn.disabled = true;
 
-      const body = new URLSearchParams({
+      emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, {
+        source:   'Adding People to Imagery LP',
         email:    form.email.value,
         company:  form.company.value,
         timeline: form.timeline.options[form.timeline.selectedIndex].text,
         method:   form.method.options[form.method.selectedIndex].text,
-      });
-
-      fetch('https://formspree.io/f/rohit@loveimagefoundry.co.uk', {
-        method: 'POST',
-        headers: { 'Accept': 'application/json', 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: body.toString(),
       })
       .then(() => {
         form.reset();
