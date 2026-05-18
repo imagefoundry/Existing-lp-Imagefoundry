@@ -475,6 +475,7 @@
     });
   }, { threshold: 0.25 });
 
+  document.querySelectorAll('.iyw-row').forEach(row => vObs.observe(row));
   document.querySelectorAll('.vcard').forEach(card => {
     vObs.observe(card);
     card.addEventListener('click', () => openModal(card.dataset.src));
