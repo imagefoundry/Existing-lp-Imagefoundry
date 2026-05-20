@@ -262,8 +262,8 @@ body.nav-open .nav-overlay { transform: translateX(0); }
 .pink-side { font-size: 18px; line-height: 22px; color: rgba(255,255,255,.85); border-left: 1px solid rgba(255,255,255,.35); padding-left: clamp(30px,4vw,80px); }
 
 /* ── VIDEO BREAK ──────────────────────────────── */
-.vid-break { position: relative; height: clamp(180px,56.25vw,576px); overflow: hidden; }
-.vid-break video { width: 100%; height: 100%; object-fit: cover; }
+.vid-break { position: relative; aspect-ratio: 16/9; max-height: 80vh; overflow: hidden; }
+.vid-break video { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .vid-break-shade { position: absolute; inset: 0; background: rgba(0,0,0,.2); }
 
 /* ── CLOSING ──────────────────────────────────── */
